@@ -1,0 +1,200 @@
+Stores and points of sale
+In the admin area, you can now find the "DeliveryWare" item in the navigation. Navigate to the subitem "Shops".
+
+Here you have to create a new store.
+
+For this documentation we use screenshots from the provided demo data for illustration.
+
+Settings: General
+Infomation:
+Active: This switch activates the store so that it can be selected by the customer.
+Default: This item is relevant if you want to run multiple stores. It decides which store will be preselected later.
+Max Radius: Here you should specify your delivery radius. No unit should be specified. Enter "10", if you want to deliver within a radius of 10km.
+Name: Enter the name of your store, as you want your customers to see it later. should see it later.
+Logo: In this field the assignment of your logo takes place. So that the picture is selectable, this must have been uploaded before under "Content ==> Media". must have been uploaded.
+Settings: Contact
+E-mail: Input field for your e-mail address.
+Phone number: Input field for your phone number. As the input is made, it will be output later. Spaces and separators are allowed. Example: "0 52 51 / 100 100 100".
+Fax number: Input field for your fax number.
+Imprint and invoice
+The data for the imprint and the invoice are entered here.
+
+Settings: Address
+First name: Input field for your first name.
+Last name: Input field for your last name.
+Street: Input field for the street of your location (without house number).
+Number: Input field for the house number of your location.
+Zip code: Input field for the zip code of your location.
+City: Input field for the city of your location.
+Country: Input field for the country of your location.
+Latitude & Longitude: These fields are filled automatically as soon as the entries are saved. This is geographical information.
+Warehouse Management
+Stock
+If a product is only available in limited quantities over a period of time, you can adjust the availabilities here. adjust here.
+
+Products
+If products are available exclusively for this store and should not be displayed in all other stores, then you can assign them here.
+
+Delivery areas
+Each store has its own delivery area. You have the choice between delivery area by radius or by postcode area. by postcode area. Here you can also set the minimum order value for delivery. The minimum order value only applies for delivery - not for self-collection.
+
+Time settings
+For the correct determination of the delivery times, you must enter a time zone here. In addition an estimated preparation and delivery time.
+
+You can then configure the opening and delivery times for each day of the week.
+
+Orders
+Here you will find an overview of all orders received for this store. You have the option of displaying the order details directly.
+
+Other settings
+Sales channels
+This store is exclusively bound to one or more sales channels and is not displayed in other sales channels. in other sales channels.
+
+Deliverers
+Configure your delivery service for meals, optionally you can add a GPS tracking code. This allows your customers to follow the delivery live.
+
+Printer
+Each store can have several receipt printers, so the order can be printed quickly and easily.
+
+
+E-Mail Templates
+So that the appropriate configuration of the order is also displayed in the e-mails, a manual adjustment is necessary.
+
+Just copy this excerpt into your email template
+
+{% if nestedItem.payload.dewa is defined and nestedItem.payload.dewa|length %}
+    {% for item in nestedItem.payload.dewa %}
+        <br/>
+        {% if item.value is iterable %}
+            {{ item.name }}: {{ item.value | join(', ') }}
+        {% else %}
+            {{ item.name }}: {{ item.value }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+With DeliveryWare it is possible to add additional options to the individual categories. For example, for a salad there are always certain dressings to choose from or the customer should have the option to choose the size of a pizza.
+
+For this documentation, we use screenshots from the demo data provided for illustration purposes.
+
+dewa-options-Beispiel
+
+Create ptions
+In the administrator area under "DeliveryWare ==> Options" there is the Possibility to create own options.
+
+Name: In this input field the name of the operator must be deposited. This name will also be displayed in the frontend.
+
+Type: There are several types to choose from:
+
+Simple selection: In the form of a dropdown. Select this field for later price calculations (price factor).
+dewa-options-single
+
+Radio button selection: This option is a list selection with absolute prices.
+dewa-options-radio
+
+Checkbox selection: This is a multiple selection.
+dewa-options-checkbox
+
+Text field:
+dewa-options-textarea
+
+Unit: (Only relevant for single selection)
+Reference unit: (Only relevant for single selection)
+
+Dashboard
+For this documentation we use screenshots from the provided demo data for illustration.
+
+The DeliveryWare dashboard can be found in the backend under Dashboard -> Shops. Dashboard von DeliveryWare ist im Backend unter Dashboard -> Shops zu finden.
+
+dewa-dashboard-Beispiel
+
+Overview from the dashboard
+The dashboard can be divided into five sections.
+
+dewa-dashboard-Einteilung
+
+So that the customer always knows which status his order has at the moment, he will be informed will be informed about every change of status in the order confirmation and by e-mail.
+
+Open orders:
+Orders received are listed here. Basic information such as address, payment method, delivery or self-collection self-collection, telephone number and distance to the customer are displayed immediately.
+
+Clicking on the order number opens the detailed view of the order. Here you can see what the order contains from the customer. The map is also focused on the delivery destination.
+
+If an order should not be accepted, this can be rejected by click on "CANCEL" you can also reject it. Otherwise you have to confirm the order to continue the process.
+
+dewa-dashboard-offene-Bestellung
+
+In progress:
+If you have confirmed the order and set up a receipt printer, a message appears. message appears, whether a receipt should be printed.
+
+The order now has the status "In process". The customer is informed in the order confirmation and can see that the status has changed.
+
+dewa-dashboard-bestaetigte-Bestellung
+
+To continue the process, it is now necessary to click on "COLLECTION" or "Delivery". The button recognizes which option is available based on the selection made by the customer.
+
+If the customer has selected "Delivery", a message appears in which a delivery service must be selected. must be selected.
+
+Delivery:
+This is the last status of an order.
+
+By placing the order in this tile, the customer is informed that the order has been has been processed and is in delivery.
+
+If GPS tracking has been set up, the customer also has the option of track the delivery / the supplier live.
+
+If the delivery is completed and the order is paid, the order can be can now be completed.
+
+Self collection:
+This is the last status of an order.
+
+By placing the order in this tile, the customer is informed that the order has been has been processed so far that it is ready for collection.
+
+Now the order can be completed.
+
+Map:
+The map serves as a tool for planning a route for delivery, among other things. can be planned.
+
+By default, the focus is always in the center of all orders. If an order is focused, the map also focuses on the corresponding address.
+
+
+Printer setup
+Star mC-Print2
+connect your printer to the network
+print a self test by pressing the POWER ON and the FEED button
+on the printout you will find an IP address for your local network
+log in and go to the CloudPRNT tab Printer setup
+
+
+enter the URL of your store + /printer - e.g. https://dewashop.de/printer.
+go to the tab Home and copy the MAC address of your printer
+
+
+now log in to the admin area of your store.
+open the store settings and scroll to the bottom of the page
+create a printer and copy the MAC address
+
+enter the URL of your store + /printer - e.g. https://dewashop.de/printer.
+
+
+
+All right, the setup has been completed.
+
+Now make a test order, go to the store dashboard and when accepting it, select the select the freshly set up receipt printer.
+
+If by chance you have not forgotten to put a paper roll into the printer, you should now have this (or a similar) result!
+
+
+
+By the way, there's also an official video for the printer. It is for our competitor competitor WooCommerce but a look into it might be helpful for you!
+
+
+In the app settings, you can also trigger the creation of receipts for each order - this is worthwhile e.g. if you receive orders in the evening for the next day (baker, butcher, etc.)
+
+/admin#/sw/extension/config/DewaShop
+
+
+
+ Back to top
+
+
+
