@@ -1,0 +1,18 @@
+*{
+    &::-webkit-scrollbar {
+        width: $dewa-admin-config-scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $dewa-admin-config-background-card;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: darken($dewa-admin-config-general-background, 30%);
+        border-radius: $dewa-admin-config-border-radius;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: darken($dewa-admin-config-general-background, 50%);
+    }
+}

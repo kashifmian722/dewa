@@ -1,0 +1,20 @@
+.checkout-card{
+    font-size: .8em;
+
+    .dewa-card-subtitle{
+        margin-top:20px;
+    }
+
+    .dewa-checkout-change-btn{
+        color:$sw-color-brand-secondary;
+
+        &:hover{
+            color:darken($sw-color-brand-secondary, 5%);
+            text-decoration: none;
+        }
+    }
+
+    .payment-method-description > p, .shipping-method-description > p {
+        color: $sw-text-color;
+    }
+}

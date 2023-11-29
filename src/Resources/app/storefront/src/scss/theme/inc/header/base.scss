@@ -1,0 +1,62 @@
+.header-main{
+    @if $dewa-header-color-scheme == 'colorized'{
+        background-color: $dewa-primary-color;
+    }
+
+    @if $dewa-header-color-scheme == 'light'{
+        background-color: #fff;
+        border-bottom:2px solid $dewa-primary-color;
+    }
+
+
+    .header-row{
+        padding-bottom: 15px;
+        padding-top: 15px;
+
+        @import "inc/logo";
+        @import "inc/navigation";
+        @import "inc/actions";
+    }
+}
+
+.header-minimal{
+    @if $dewa-header-color-scheme == 'colorized'{
+        background-color: $dewa-primary-color;
+        color:color-yiq($dewa-primary-color);
+
+        a:not(.btn){
+            color:color-yiq($dewa-primary-color);
+        }
+    }
+
+    @if $dewa-header-color-scheme == 'light'{
+        background-color: #fff;
+        color:color-yiq(#fff);
+        border-bottom:2px solid $dewa-primary-color;
+
+        a{
+            color:$dewa-primary-color;
+        }
+    }
+
+    display: flex;
+    align-items: center;
+
+    .header-minimal-back-to-shop-button{
+        background-color: lighten($dewa-primary-color, 5%);
+        border:none;
+        color:color-yiq($dewa-primary-color);
+
+        &:hover, &:active{
+            background-color: lighten($dewa-primary-color, 10%) !important;
+        }
+    }
+
+    .header-logo-main{
+        img{
+            max-height: $dewa-header-logo-max-height;
+        }
+    }
+}
+
+

@@ -1,0 +1,14 @@
+.product-detail-cross-selling{
+
+    .product-cross-selling-tab-navigation{
+        ul{
+            li{
+                a{
+                    &.active{
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

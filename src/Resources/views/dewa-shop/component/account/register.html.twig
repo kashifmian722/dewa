@@ -1,0 +1,82 @@
+<form action="{{ path('frontend.account.register.save') }}"
+      class="register-form"
+      method="post"
+      data-form-csrf-handler="true"
+      data-form-validation="true">
+
+    {{ sw_csrf('frontend.account.register.save') }}
+
+
+    {% sw_include '@Storefront/dewa-shop/component/account/register/hidden-fields.html.twig' %}
+
+
+
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            {% sw_include '@Storefront/dewa-shop/component/account/register/firstname.html.twig' %}
+        </div>
+
+        <div class="form-group col-sm-6">
+            {% sw_include '@Storefront/dewa-shop/component/account/register/lastname.html.twig' %}
+        </div>
+
+
+        <div class="form-group col-md-6">
+            {% sw_include '@Storefront/dewa-shop/component/account/register/email.html.twig' %}
+        </div>
+
+        <div class="form-group col-md-6">
+            {% sw_include '@Storefront/dewa-shop/component/account/register/phone.html.twig' with{
+                'prefix': 'billingAddress',
+                'data': data.get('billingAddress')
+            } %}
+        </div>
+    </div>
+
+    {% sw_include '@Storefront/dewa-shop/component/account/register/address/address.html.twig' with{
+        'prefix': 'billingAddress',
+        'data': data.get('billingAddress')
+    } %}
+
+    <div class="custom-control custom-checkbox register-guest-control">
+        <input type="checkbox"
+               class="custom-control-input"
+               name="guest"
+               value="1"
+               id="personalGuest"
+               {% if data.get('guest') %}checked="checked"{% endif %}
+               data-form-field-toggle="true"
+               data-form-field-toggle-target=".js-form-field-toggle-guest-mode"
+               data-form-field-toggle-value="false">
+
+        <label class="custom-control-label"
+               for="personalGuest">
+            {{ "checkout.registerGuestmodeLabel"|trans|sw_sanitize }}
+        </label>
+    </div>
+
+
+    <div class="js-form-field-toggle-guest-mode">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {% sw_include '@Storefront/dewa-shop/component/account/register/password.html.twig' %}
+            </div>
+            <div class="form-group col-md-6">
+                {% sw_include '@Storefront/dewa-shop/component/account/register/password-confirm.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    {% sw_include '@Storefront/storefront/component/privacy-notice.html.twig' %}
+
+    <p class="register-required-info">
+        {{ "general.requiredFields"|trans|sw_sanitize }}
+    </p>
+
+    <div class="register-submit">
+        <button type="submit"
+                class="btn btn-primary btn-block">
+            {{ "account.registerSubmit"|trans|sw_sanitize }}
+        </button>
+    </div>
+</form>

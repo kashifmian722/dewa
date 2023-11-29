@@ -1,0 +1,32 @@
+@import "~scss/variables";
+
+.dewa-icon-select {
+
+}
+
+.dewa-svg-icon-btn {
+  position: relative;
+
+  .select-check {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0 4px 4px;
+    background-color: rgba(255,255,255,0.6);
+
+    input {
+      display: block;
+    }
+  }
+
+  span {
+    display: block;
+    padding: 10px;
+    border-radius: 50%;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

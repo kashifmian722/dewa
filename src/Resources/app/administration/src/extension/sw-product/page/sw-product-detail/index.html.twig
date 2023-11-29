@@ -1,0 +1,8 @@
+{% block sw_product_detail_content_tabs_general %}
+    {% parent %}
+    <sw-tabs-item v-if="product && product.extensions && product.extensions.dewaProductIndex"
+                  :route="{ name: 'sw.product.detail.dewa' }"
+                  title="dewa-shop.navigation.main">
+        {{ $tc('dewa-shop.navigation.main') }}
+    </sw-tabs-item>
+{% endblock %}

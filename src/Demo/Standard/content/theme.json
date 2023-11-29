@@ -1,0 +1,44 @@
+[
+  {
+    "_skipEnrichData": true,
+    "id": "{THEME_ID}",
+    "configValues": {
+      "sw-color-brand-primary": {
+        "value": "#d95030"
+      },
+      "dewa-footer-activate-contact": {
+        "value": true
+      },
+      "dewa-footer-activate-socials": {
+        "value": true
+      },
+      "dewa-social-facebook": {
+        "value": "https://facebook.com"
+      },
+      "dewa-social-twitter": {
+        "value": "https://twitter.com"
+      },
+      "dewa-social-instagram": {
+        "value": "https://www.instagram.com/deliveryware/"
+      },
+      "dewa-social-youtube": {
+        "value": "https://youtube.com"
+      },
+      "dewa-social-appstore": {
+        "value": "https://www.apple.com/app-store"
+      },
+      "dewa-social-googleplay": {
+        "value": "https://play.google.com/"
+      },
+      "sw-font-family-base": {
+        "value": "'Baloo 2', cursive"
+      },
+      "sw-font-family-headline": {
+        "value": "'Merienda One', cursive"
+      },
+      "dewa-custom-font": {
+        "value": ""
+      }
+    }
+  }
+]

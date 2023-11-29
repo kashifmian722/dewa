@@ -1,0 +1,14 @@
+<input type="text"
+       class="form-control{% if formViolations.getViolations('/lastName') is not empty %} is-invalid{% endif %}"
+       autocomplete="section-personal family-name"
+       id="{{ prefix }}personalLastName"
+       placeholder="{{ "account.personalLastNamePlaceholder"|trans|striptags }}"
+       name="{% if prefix %}{{ prefix }}[lastName]{% else %}lastName{% endif %}"
+       value="{{ data.get('lastName') }}"
+       required="required">
+
+{% if formViolations.getViolations('/lastName') is not empty %}
+    {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+        violationPath: '/lastName'
+    } %}
+{% endif %}

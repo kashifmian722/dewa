@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+    {% block page_account %}
+        <div class="container-fluid dewa-account-area">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-2">
+                    <div class="pt-4 pb-5">
+                        {% block page_account_main_content %}{% endblock %}
+                    </div>
+                </div>
+                <div class="d-none d-lg-block col-lg-4 offset-lg-1 dewa-checkout-aside-column" data-dewa-content-min-height>
+                    <div class="py-4 h-100">
+                        <div class="sticky-top">
+                            {% if context.customer and not context.customer.guest %}
+                                {% sw_include '@Storefront/storefront/page/account/sidebar.html.twig' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

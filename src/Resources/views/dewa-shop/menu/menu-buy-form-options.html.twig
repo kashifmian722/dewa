@@ -1,0 +1,78 @@
+{% if option.option.type == 'single' %}
+    <select id="{{ product.id }}{{ option.id }}"
+            class="custom-select"
+            name="{{ namePrefix }}[configurator][{{ option.id }}]"
+            data-unit-name="{{ option.option.unit.shortCode }}"
+            data-reference-unit="{{ option.option.referenceUnit }}">
+        {% for item in option.option.items %}
+            <option value="{{ item.id }}"
+                    data-id="{{ item.id }}"
+                    data-name="{{ item.translated.name }}"
+                    data-price="{{ item.price }}"
+                    data-price-factor="{{ item.priceFactor }}"
+                    data-purchase-unit="{{ item.purchaseUnit }}"
+                    data-quantity="{{ item.quantity }}">
+                {{ item.translated.name }}: <span data-item-price>{{ item.price|currency }}</span>
+            </option>
+        {% endfor %}
+    </select>
+{% elseif option.option.type == 'radio' %}
+    <div class="dewa-option-multi-list">
+        {% for item in option.option.items %}
+            <div class="custom-control custom-radio">
+                <input type="radio"
+                       id="{{ product.id }}{{ option.id }}{{ item.id }}"
+                       class="custom-control-input"
+                       name="{{ namePrefix }}[configurator][{{ option.id }}][]"
+                       value="{{ item.id }}"
+                       data-id="{{ item.id }}"
+                       data-name="{{ item.translated.name }}"
+                       data-price="{{ item.price }}"
+                       data-price-factor="{{ item.priceFactor }}"
+                       {% if loop.first %}checked="checked"{% endif %}>
+                <label class="custom-control-label"
+                       for="{{ product.id }}{{ option.id }}{{ item.id }}">
+                    {{ item.translated.name }}: <span data-item-price>{{ item.price|currency }}</span>
+                </label>
+
+                <a href="javascript:"
+                   data-dewa-modal="{{ path('dewa-shop.menu-ingredients', {'entityName': 'dewa_option_item', 'id': item.id}) }}"
+                   data-target="#dewaIngredientModal"
+                   class="dewa-product-info-popup">
+                    <span class="fi-rs-info"></span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% elseif option.option.type == 'checkbox' %}
+    <div class="dewa-option-multi-list">
+        {% for item in option.option.items %}
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox"
+                       id="{{ product.id }}{{ option.id }}{{ item.id }}"
+                       class="custom-control-input"
+                       name="{{ namePrefix }}[configurator][{{ option.id }}][]"
+                       value="{{ item.id }}"
+                       data-id="{{ item.id }}"
+                       data-name="{{ item.translated.name }}"
+                       data-price="{{ item.price }}"
+                       data-price-factor="{{ item.priceFactor }}">
+                <label class="custom-control-label"
+                       for="{{ product.id }}{{ option.id }}{{ item.id }}">
+                    {{ item.translated.name }}: <span data-item-price>{{ item.price|currency }}</span>
+                </label>
+                <a href="javascript:"
+                   data-dewa-modal="{{ path('dewa-shop.menu-ingredients', {'entityName': 'dewa_option_item', 'id': item.id}) }}"
+                   data-target="#dewaIngredientModal"
+                   class="dewa-product-info-popup">
+                    <span class="fi-rs-info"></span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% elseif option.option.type == 'textarea' %}
+    <textarea class="form-control"
+              id="{{ product.id }}{{ option.id }}"
+              placeholder="{{ "contact.commentPlaceholder" | trans }}"
+              name="configurator[{{ option.id }}]"></textarea>
+{% endif %}

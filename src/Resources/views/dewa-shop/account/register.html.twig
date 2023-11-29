@@ -1,0 +1,148 @@
+{% block dewa_dewa_custom_account_dewa_register %}
+    <form action="{{ path('frontend.account.register.save') }}"
+          class="register-form"
+          method="post"
+          data-form-csrf-handler="true"
+          data-form-validation="true">
+
+        {{ sw_csrf('frontend.account.register.save') }}
+
+        <input type="hidden" name="redirectTo" value="{{ redirectTo }}">
+
+        <input type="hidden" name="redirectParameters" value="{{ redirectParameters }}">
+
+        <input type="hidden" name="errorRoute" value="frontend.account.register.page"/>
+
+        <input type="hidden" name="errorParameters" value="{{ errorParameters }}">
+
+        {% sw_include '@Storefront/storefront/component/address/address-personal.html.twig' with {
+            'showBirthdayField': config('core.loginRegistration.showBirthdayField'),
+            'accountType': data.get('accountType')
+        } %}
+
+        {% block component_account_register_company_fields %}
+            {% sw_include '@Storefront/storefront/component/address/address-personal-company.html.twig' with {
+                'prefix': 'billingAddress',
+                'address': data.get('billingAddress')
+            } %}
+        {% endblock %}
+
+        {% block component_account_register_personal_mail_label %}
+            <label class="form-label"
+                   for="personalMail">
+                {{ "account.personalMailLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+            </label>
+        {% endblock %}
+
+        {% block component_account_register_personal_mail_input %}
+            <input type="email"
+                   class="form-control{% if formViolations.getViolations('/email') is not empty %} is-invalid{% endif %}"
+                   autocomplete="section-personal email"
+                   id="personalMail"
+                   placeholder="{{ "account.personalMailPlaceholder"|trans|striptags }}"
+                   name="email"
+                   value="{{ data.get('email') }}"
+                {% if config('core.loginRegistration.requireEmailConfirmation') %}
+                    data-form-validation-equal="personalMail"
+                {% endif %}
+                   required="required">
+        {% endblock %}
+
+        {% block component_account_register_personal_mail_input_error %}
+            {% if formViolations.getViolations('/email') is not empty %}
+                {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+                    violationPath: '/email'
+                } %}
+            {% endif %}
+        {% endblock %}
+
+        <span class="js-form-field-toggle-guest-mode">
+
+            <label class="form-label"
+                   for="personalPassword">
+                {{ "account.personalPasswordLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+            </label>
+
+            <input type="password"
+                   class="form-control{% if formViolations.getViolations('/password') is not empty %} is-invalid{% endif %}"
+                   autocomplete="new-password"
+                   id="personalPassword"
+                   placeholder="{{ "account.personalPasswordPlaceholder"|trans|striptags }}"
+                   name="password"
+                   minlength="{{ config('core.loginRegistration.passwordMinLength') }}"
+                       {% if config('core.loginRegistration.requirePasswordConfirmation') %}
+                           data-form-validation-equal="newPassword"
+                       {% endif %}
+                {% if config('core.loginRegistration.passwordMinLength') != 0 %}
+                    data-form-validation-length="{{ config('core.loginRegistration.passwordMinLength') }}"
+                    data-form-validation-length-message=" {{ "account.personalPasswordDescription"|trans({
+                        '%minLength%': config('core.loginRegistration.passwordMinLength')
+                    })|sw_sanitize }}"
+                {% endif %}
+                        required="required">
+
+
+            {% if config('core.loginRegistration.passwordMinLength') != 0 %}
+                <small class="form-text js-validation-message"
+                       data-form-validation-length-text="true">
+                    {{ "account.personalPasswordDescription"|trans({
+                        '%minLength%': config('core.loginRegistration.passwordMinLength')
+                    })|sw_sanitize }}
+                </small>
+            {% endif %}
+
+            {% if formViolations.getViolations('/password') is not empty %}
+                {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+                    violationPath: '/password'
+                } %}
+            {% endif %}
+
+
+            {% sw_include '@Storefront/storefront/component/address/address-form.html.twig' with {
+                'prefix': 'billingAddress',
+                'data': data.get('billingAddress'),
+            } %}
+
+            {% if formViolations.getViolations("/phoneNumber") is not empty %}
+                {% set violationPath = "/phoneNumber" %}
+            {% elseif formViolations.getViolations("/#{prefix}/phoneNumber") is not empty %}
+                {% set violationPath = "/#{prefix}/phoneNumber" %}
+            {% endif %}
+
+
+            <label class="form-label" for="{{ prefix }}AddressPhoneNumber">
+                {{ "address.phoneNumberLabel"|trans|sw_sanitize }}{{ config('core.loginRegistration.phoneNumberFieldRequired') ? "general.required"|trans|sw_sanitize }}
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   id="{{ prefix }}AddressPhoneNumber"
+                   placeholder="{{ "address.phoneNumberPlaceholder"|trans|striptags }}"
+                   name="{{ prefix }}[phoneNumber]"
+                   value="{{ data.get('phoneNumber') }}"
+                            {{ config('core.loginRegistration.phoneNumberFieldRequired') ? 'required="true"' }}>
+
+            {% if violationPath %}
+                {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+            {% endif %}
+        </span>
+
+
+        {% sw_include '@Storefront/storefront/component/captcha/base.html.twig' with { 'captchas': config('core.basicInformation.activeCaptchas') } %}
+
+
+        {% sw_include '@Storefront/storefront/component/privacy-notice.html.twig' %}
+
+
+        <p class="register-required-info">
+            {{ "general.requiredFields"|trans|sw_sanitize }}
+        </p>
+
+        <div class="register-submit">
+            <button type="submit"
+                    class="btn btn-primary btn-lg">
+                {{ "account.registerSubmit"|trans|sw_sanitize }}
+            </button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,27 @@
+.footer-socials{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .footer-social-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: ease all $dewa-general-easing;
+
+        width: $dewa-footer-icon-width;
+        height: $dewa-footer-icon-height;
+        border-radius: $border-radius;
+        margin: 0 10px 10px 0;
+        background-color: darken($dewa-footer-background-color,5%);
+
+        &:hover{
+            text-decoration: none;
+            background-color: darken($dewa-footer-background-color,10%);
+        }
+
+        .icon > svg {
+            top: auto;
+        }
+    }
+}

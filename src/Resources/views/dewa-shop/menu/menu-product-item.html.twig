@@ -1,0 +1,81 @@
+<div class="dewa-menu-product {{ dewaLayout }}" data-dewa-product-badges="{{ product.extensions.badges.getIds()|join("|") }}">
+    {% if dewaLayout == 'dewaCard' %}
+        {% sw_include '@Storefront/dewa-shop/menu/inc/menu-product-item-box.html.twig' %}
+    {% else %}
+        {% if product.calculatedPrice.listPrice and theme_config('dewa-color-price-line-through-percentage') %}
+            {% if product.calculatedPrice.listPrice.price > product.calculatedPrice.totalPrice %}
+                <span class="list-price-percentage badge badge-danger">-{{ product.calculatedPrice.listPrice.percentage|round }} %</span>
+            {% endif %}
+        {% endif %}
+        <div class="row">
+            {% if product.cover and theme_config('dewa-menu-activate-product-images') %}
+                <div class="col-lg-2 order-0 mb-4 mb-lg-0{% if theme_config('dewa-menu-product-images-position') == 'left' %} order-lg-0{% else%} order-lg-2{% endif%} d-flex flex-column justify-content-center">
+                    <div class="dewa-product-image">
+                        {% sw_thumbnails 'product-image-thumbnails' with {
+                            media: product.cover.media,
+                            sizes: {
+                                'xs': '501px',
+                                'sm': '315px',
+                                'md': '427px',
+                                'lg': '333px',
+                                'xl': '284px'
+                            },
+                            attributes: {
+                                'alt': (product.cover.media.translated.alt ?: product.translated.name),
+                                'title': (product.cover.media.translated.title ?: product.translated.name)
+                            }
+                        } %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="{% if product.cover and theme_config('dewa-menu-activate-product-images') %}col-lg-10 order-1{% else%}col-12{% endif%} d-flex flex-column justify-content-center">
+                <div class="h3 dewa-product-title">
+                    <span class="dewa-product-number text-muted small">{{ product.productNumber }}</span>
+
+                    {{ product.translated.name }}
+
+                    <div class="dewa-product-info-container">
+                        {% if product.extensions.badges.elements %}
+                            {% sw_include '@Storefront/dewa-shop/component/product-badges.html.twig' with {
+                                badges: product.extensions.badges
+                            } %}
+                        {% endif %}
+
+                        {% if product.extensions.ingredients | length > 0 %}
+                            <a href="javascript:" aria-label="{{ 'dewa-shop.menu.ingredients' |trans }}" data-dewa-modal="{{ path('dewa-shop.menu-ingredients', {'entityName': 'product', 'id': product.id}) }}" class="dewa-product-info-popup">
+                                <span class="fi-rs-info"></span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="dewa-product-content">
+                    <div class="dewa-product-description">
+                        {{ product.translated.description|raw }}
+                    </div>
+
+                    <div class="dewa-product-price-action-container">
+                        <div class="dewa-product-price">
+                            {% set price = product.calculatedPrice %}
+
+                            {% if hasToggle %}
+                                {{ "dewa-shop.menu.from"|trans }}
+                            {% endif %}
+
+                            {{ price.totalPrice|currency }}*
+
+                            {% if price.listPrice and price.listPrice.price > price.totalPrice %}
+                                <span class="list-price-price dewa-list-price-stroke">{{ price.listPrice.price|currency }}</span>
+                            {% endif %}
+
+                            {% sw_include '@Storefront/dewa-shop/component/product-references.html.twig' %}
+                        </div>
+
+                        {% sw_include '@Storefront/dewa-shop/component/dewa-product-action.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>

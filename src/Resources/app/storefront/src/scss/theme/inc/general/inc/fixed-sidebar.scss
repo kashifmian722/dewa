@@ -1,0 +1,42 @@
+[data-dewa-sticky-item]{
+    transition: ease right .45s;
+
+    &.is-visible{
+        position: fixed;
+        right: 1.5rem;
+        z-index: 1000;
+    }
+
+    &.js-dewa-sticky-cart{
+        bottom:75px;
+    }
+
+    &.js-dewa-sticky-account{
+        bottom: 125px;
+    }
+
+    &.js-dewa-sticky-contact{
+        bottom: 175px;
+    }
+}
+
+@include media-breakpoint-down(md){
+    [data-dewa-sticky-item], .scroll-up-button {
+        &.is-visible {
+            right: 0;
+
+            button, .header-actions-btn, &.header-actions-btn{
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+
+                &.header-cart-btn{
+                   .header-cart-badge{
+                       left:-15px;
+                   }
+                }
+            }
+        }
+    }
+}
+
+

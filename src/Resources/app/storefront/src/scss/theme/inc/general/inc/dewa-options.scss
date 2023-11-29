@@ -1,0 +1,22 @@
+.dewa-option-container{
+    margin-top:10px;
+    font-size: .8em;
+    border-left: 3px solid $sw-color-brand-primary;
+    padding-left: 10px;
+
+    .option-row{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        .option-title{
+            font-weight: 700;
+        }
+
+        .option-items{
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+    }
+}

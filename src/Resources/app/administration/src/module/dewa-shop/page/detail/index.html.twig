@@ -1,0 +1,436 @@
+<sw-page class="dewa-shop-detail">
+    <template slot="smart-bar-header" v-if="item">
+        <h2> {{ item.name }}</h2>
+    </template>
+
+    <template slot="smart-bar-actions" v-if="item">
+        <sw-button :routerLink="{ name: 'dewa.shop.list' }">
+            {{ $tc('dewa-shop.action.cancel') }}
+        </sw-button>
+
+        <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+            {{ $tc('dewa-shop.action.save') }}
+        </sw-button-process>
+
+        <sw-button :routerLink="{ name: 'dewa.dashboard.detail' }" variant="dewa">
+            {{ $tc('dewa-shop.navigation.dashboard') }}
+        </sw-button>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch
+                slot="language-switch"
+                :disabled="item && item._isNew"
+                @on-change="onChangeLanguage">
+        </sw-language-switch>
+    </template>
+
+    <template slot="content" v-if="item">
+        <sw-card-view>
+            <sw-tabs :small="true" defaultItem="general">
+                <template slot-scope="{ active }">
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.general')"
+                                  name="general"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.general') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.turnover')"
+                                  name="turnover"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.turnover') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.address')"
+                                  name="address"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.address') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.stock')"
+                                  name="stock"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.stock') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.shopArea')"
+                                  name="shopArea"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.shopArea') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.timeSettings')"
+                                  name="timeSettings"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.timeSettings') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.orders')"
+                                  name="orders"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.orders') }}
+                    </sw-tabs-item>
+
+                    <sw-tabs-item :title="$tc('dewa-shop.cards.other')"
+                                  name="other"
+                                  :activeTab="active">
+                        {{ $tc('dewa-shop.cards.other') }}
+                    </sw-tabs-item>
+                </template>
+
+                <template slot="content" slot-scope="{ active }">
+                    <template v-if="active === 'turnover'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.contact')">
+                        <dewa-shop-turnover :shopId="item.id"/>
+                    </template>
+
+                    <sw-card v-if="active === 'general'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.general')">
+
+                        <sw-container columns="1fr 1fr" gap="0 20px">
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('dewa-shop.properties.deliveryActive')"
+                                      v-model="item.deliveryActive">
+                            </sw-field>
+
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('dewa-shop.properties.collectActive')"
+                                      v-model="item.collectActive">
+                            </sw-field>
+
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('dewa-shop.properties.active')"
+                                      v-model="item.active">
+                            </sw-field>
+
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('dewa-shop.properties.isDefault')"
+                                      :helpText="$tc('dewa-shop.tooltip.shopIsDefault')"
+                                      v-model="item.isDefault">
+                            </sw-field>
+                        </sw-container>
+
+                        <div class="sw-field">
+                            <sw-upload-listener
+                                    :uploadTag="item.id"
+                                    autoUpload
+                                    @media-upload-finish="setMediaItem">
+                            </sw-upload-listener>
+                            <sw-media-upload-v2
+                                    :uploadTag="item.id"
+                                    defaultFolder="product_manufacturer"
+                                    :source="item.mediaId"
+                                    :allowMultiSelect="false"
+                                    :label="$tc('dewa-shop.properties.logo')"
+                                    variant="regular"
+                                    @sw-media-upload-media-upload-success="setMediaItem"
+                                    @media-drop="onDropMedia"
+                                    @media-upload-sidebar-open="onOpenMediaModal"
+                                    @media-upload-remove-image="onUnlinkMedia">
+                            </sw-media-upload-v2>
+                        </div>
+
+                        <sw-alert variant="info">
+                            {{ $tc('dewa-shop.tooltip.spInfo') }}
+                        </sw-alert>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('dewa-shop.properties.spActive')"
+                                  v-model="item.searchPortalActive">
+                        </sw-field>
+
+                        <sw-field
+                                type="textarea"
+                                v-model="item.description"
+                                :label="$tc('dewa-shop.properties.spDescription')"
+                        />
+
+                        <sw-multi-select
+                                v-model="item.shopCategories"
+                                :options="shopCategoryOptions"
+                                :label="$tc('dewa-shop.properties.spShopCategories')"
+                        />
+                    </sw-card>
+
+                    <sw-card v-if="active === 'general'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.contact')">
+                        <sw-container columns="1fr 1fr" gap="0 20px">
+                            <sw-field :label="$tc('dewa-shop.properties.name')"
+                                      v-model="item.name"
+                                      required
+                                      validation="required"
+                                      :error="itemNameError"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.email')"
+                                      v-model="item.email"
+                                      required
+                                      validation="required"
+                                      :error="itemEmailError"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.phoneNumber')" v-model="item.phoneNumber"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.faxNumber')" v-model="item.faxNumber"></sw-field>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'general'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.imprint')">
+                        <sw-container columns="1fr 1fr" gap="0 20px">
+                            <sw-field :label="$tc('dewa-shop.properties.executiveDirector')" v-model="item.executiveDirector"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.placeOfFulfillment')" v-model="item.placeOfFulfillment"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.placeOfJurisdiction')" v-model="item.placeOfJurisdiction"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.bankBic')" v-model="item.bankBic"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.bankIban')" v-model="item.bankIban"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.bankName')" v-model="item.bankName"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.taxOffice')" v-model="item.taxOffice"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.taxNumber')" v-model="item.taxNumber"></sw-field>
+                            <sw-field :label="$tc('dewa-shop.properties.vatId')" v-model="item.vatId"></sw-field>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'address'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.address')">
+                        <sw-container columns="1fr 1fr" gap="0 20px">
+                            <sw-field :label="$tc('dewa-shop.properties.firstName')" v-model="item.firstName"></sw-field>
+
+                            <sw-field :label="$tc('dewa-shop.properties.lastName')" v-model="item.lastName"></sw-field>
+
+                            <sw-field :label="$tc('dewa-shop.properties.street')"
+                                      v-model="item.street"
+                                      required
+                                      validation="required"
+                                      :error="itemStreetError"></sw-field>
+
+                            <sw-field :label="$tc('dewa-shop.properties.streetNumber')" v-model="item.streetNumber"></sw-field>
+
+                            <sw-field :label="$tc('dewa-shop.properties.zipcode')"
+                                      v-model="item.zipcode"
+                                      required
+                                      validation="required"
+                                      :error="itemZipcodeError"></sw-field>
+
+                            <sw-field :label="$tc('dewa-shop.properties.city')"
+                                      v-model="item.city"
+                                      required
+                                      validation="required"
+                                      :error="itemCityError"></sw-field>
+
+                            <sw-entity-single-select
+                                :label="$tc('dewa-shop.properties.country')"
+                                v-model="item.countryId"
+                                labelProperty="name"
+                                entity="country"
+                                required
+                                validation="required"
+                                :error="itemCountryIdError">
+                            </sw-entity-single-select>
+
+                            <sw-field type="switch"
+                                      bordered
+                                      :label="$tc('dewa-shop.properties.autoLocation')"
+                                      v-model="item.autoLocation">
+                            </sw-field>
+
+                            <sw-number-field
+                                    :disabled="item.autoLocation"
+                                    :label="$tc('dewa-shop.properties.locationLat')"
+                                    numberType="float"
+                                    step="0.00001"
+                                    digits="5"
+                                    v-model="item.locationLat"
+                            />
+
+                            <sw-number-field
+                                    :disabled="item.autoLocation"
+                                    :label="$tc('dewa-shop.properties.locationLon')"
+                                    numberType="float"
+                                    step="0.00001"
+                                    digits="5"
+                                    v-model="item.locationLon"
+                            />
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'address' && !item._isNew"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.overview')">
+                        <dewa-map :item="item"></dewa-map>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'stock'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.stock')"
+                             class="dewa-entity-grid">
+                        <dewa-entity-grid
+                                entity="dewa_stock"
+                                key="dewa_stock"
+                                :isLoading="isLoading"
+                                :criteria="stockCriteria"
+                                :filterColumns="stockFilterColumns"
+                                :defaultItem="{ shopId: item.id }">
+                        </dewa-entity-grid>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'stock'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.linkedProducts')">
+                        <sw-alert variant="info">
+                            {{ $tc('dewa-shop.notification.linkedProducts') }}
+                        </sw-alert>
+
+                        <sw-entity-many-to-many-select
+                                :localMode="true"
+                                labelProperty="name"
+                                v-model="item.products">
+                        </sw-entity-many-to-many-select>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'shopArea'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.shopArea')">
+
+                        <sw-container columns="1fr 1fr" gap="0 20px">
+                            <sw-single-select v-model="item.deliveryType"
+                                              :options="deliveryTypeOptions"
+                                              :label="$tc('dewa-shop.properties.deliveryType')">
+                            </sw-single-select>
+
+                            <sw-field v-if="item.deliveryType === 'radius'"
+                                      type="number"
+                                      :label="$tc('dewa-shop.properties.maxRadius')"
+                                      :helpText="$tc('dewa-shop.tooltip.shopMaxRadius')"
+                                      v-model="item.maxRadius">
+                            </sw-field>
+
+                            <sw-field v-if="item.deliveryType === 'radius'"
+                                      type="number"
+                                      :label="$tc('dewa-shop.properties.minOrderValue')"
+                                      v-model="item.minOrderValue">
+                            </sw-field>
+
+                            <sw-field v-if="item.deliveryType === 'radius'"
+                                      type="number"
+                                      :label="$tc('dewa-shop.properties.deliveryPrice')"
+                                      v-model="item.deliveryPrice">
+                            </sw-field>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'shopArea' && item.deliveryType === 'area'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.shopArea')"
+                             class="dewa-entity-grid">
+                        <dewa-entity-grid
+                                key="dewa_shop_area"
+                                entity="dewa_shop_area"
+                                :isLoading="isLoading"
+                                :criteria="shopAreaCriteria"
+                                :filterColumns="shopAreaFilterColumns"
+                                :defaultItem="{ shopId: item.id }">
+                        </dewa-entity-grid>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'timeSettings'" :isLoading="isLoading" :title="$tc('dewa-shop.cards.timeSettings')">
+
+                        <sw-container columns="1fr 1fr 1fr" gap="0 20px">
+                            <sw-single-select
+                                    v-model="item.timeZone"
+                                    :options="timezoneOptions"
+                                    required
+                                    :label="$tc('sw-users-permissions.users.user-detail.labelTimezone')"
+                                    :is-loading="timezoneOptions.length <= 0"
+                            />
+
+                            <sw-field type="number"
+                                      :label="$tc('dewa-shop.properties.preparationTime')"
+                                      v-model="item.preparationTime">
+                            </sw-field>
+
+                            <sw-field type="number"
+                                      :helpText="$tc('dewa-shop.tooltip.shopDeliveryTime')"
+                                      :label="$tc('dewa-shop.properties.deliveryTime')"
+                                      v-model="item.deliveryTime">
+                            </sw-field>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'timeSettings' && !item._isNew" :isLoading="isLoading" :title="$tc('dewa-shop.cards.openingHours')">
+                        <dewa-opening-hours v-model="item.openingHours"></dewa-opening-hours>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'timeSettings' && !item._isNew" :isLoading="isLoading" :title="$tc('dewa-shop.cards.deliveryHours')">
+                        <dewa-opening-hours v-model="item.deliveryHours"></dewa-opening-hours>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'orders'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.linkedOrders')"
+                             class="dewa-entity-grid">
+                        <dewa-entity-grid
+                            key="dewa_shop_order"
+                            entity="dewa_shop_order"
+                            :isLoading="isLoading"
+                            :criteria="shopOrderCriteria"
+                            :filterColumns="shopOrderFilterColumns"
+                            :defaultItem="{ shopId: item.id }">
+                        </dewa-entity-grid>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'other'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.linkedSalesChannels')">
+                        <sw-alert variant="info">
+                            {{ $tc('dewa-shop.notification.linkedSalesChannels') }}
+                        </sw-alert>
+
+                        <sw-entity-many-to-many-select
+                                :localMode="true"
+                                labelProperty="name"
+                                v-model="item.salesChannels">
+                        </sw-entity-many-to-many-select>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'other'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.linkedDeliverers')"
+                             class="dewa-entity-grid">
+                        <dewa-entity-grid
+                                key="dewa_deliverer"
+                                entity="dewa_deliverer"
+                                :isLoading="isLoading"
+                                :criteria="delivererCriteria"
+                                :filterColumns="delivererFilterColumns"
+                                :defaultItem="{ shopId: item.id }">
+                        </dewa-entity-grid>
+                    </sw-card>
+
+                    <sw-card v-if="active === 'other'"
+                             :isLoading="isLoading"
+                             :title="$tc('dewa-shop.cards.linkedPrinters')"
+                             class="dewa-entity-grid">
+                        <dewa-entity-grid
+                                entity="dewa_printer"
+                                key="dewa_printer"
+                                :isLoading="isLoading"
+                                :criteria="printerCriteria"
+                                :filterColumns="printerFilterColumns"
+                                :defaultItem="{ shopId: item.id }">
+                        </dewa-entity-grid>
+                    </sw-card>
+                </template>
+            </sw-tabs>
+        </sw-card-view>
+
+        <sw-media-modal-v2
+                variant="regular"
+                v-if="mediaModalIsOpen"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                :allowMultiSelect="false"
+                @media-upload-remove-image="onUnlinkMedia"
+                @media-modal-selection-change="onSelectionChanges"
+                @modal-close="onCloseModal">
+        </sw-media-modal-v2>
+    </template>
+</sw-page>

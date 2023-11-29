@@ -1,0 +1,23 @@
+{% for option in options %}
+    {% if option.option.type != 'deposit' and not (isBundle and option.option.type == 'single') %}
+        {% if option.isCollapsible %}
+            <div class="dewa-option-collapse-container" data-option="{{ option.id }}">
+                <a class="form-label dewa-option-collapse-label" data-toggle="collapse" href="#option{{ option.id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    {{ option.translated.name }} <span class="fi-rs-angle-small-down"></span>
+                </a>
+
+                <div class="collapse dewa-option-collapse-content" id="option{{ option.id }}">
+                    {% sw_include '@Storefront/dewa-shop/menu/menu-buy-form-options.html.twig' %}
+                </div>
+            </div>
+        {% else %}
+            <div class="form-group" data-option="{{ option.id }}">
+                <label class="form-label" for="{{ product.id }}{{ option.id }}">
+                    {{ option.translated.name }}
+                </label>
+
+                {% sw_include '@Storefront/dewa-shop/menu/menu-buy-form-options.html.twig' %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endfor %}

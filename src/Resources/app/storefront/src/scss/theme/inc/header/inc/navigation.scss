@@ -1,0 +1,82 @@
+.main-navigation{
+    margin:0;
+
+    @include media-breakpoint-only(lg) {
+        margin-top:10px;
+    }
+
+    nav{
+        display: flex;
+        justify-content: center;
+
+        .dewa-link{
+            position: relative;
+
+            @if $dewa-header-color-scheme == 'colorized'{
+                background-color:$dewa-header-navigation-link-background-color;
+
+                .main-navigation-link{
+                    &.active{
+                        background-color:$dewa-header-navigation-link-background-color-active;
+                    }
+
+                    .main-navigation-link-text{
+                        color:color-yiq($dewa-header-navigation-link-background-color);
+                    }
+                }
+            }
+
+            @if $dewa-header-color-scheme == 'light'{
+                background-color: #fff;
+
+                .main-navigation-link {
+                    &.active {
+                        background-color: $dewa-primary-color;
+
+                        .main-navigation-link-text{
+                            color:color-yiq($dewa-primary-color);
+                        }
+
+                    }
+
+                    .main-navigation-link-text{
+                        color:color-yiq(#fff);
+                    }
+                }
+
+                &:hover{
+                    background-color: $dewa-header-navigation-link-background-color;
+
+                    .main-navigation-link-text{
+                        color:$dewa-header-navigation-link-color-hover;
+                    }
+                }
+            }
+
+            &:hover{
+                background-color: $dewa-header-navigation-link-background-color-hover;
+            }
+
+            transition: ease all $dewa-general-easing;
+            font-weight: 500;
+            margin-right: 10px;
+            border-radius: $border-radius;
+
+            .main-navigation-link{
+                padding: 5px 10px;
+
+                .main-navigation-link-text{
+                    padding-bottom: 0;
+                    border:none;
+                }
+
+                &.active{
+                    border-radius: $border-radius;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        @import "flyout";
+    }
+}

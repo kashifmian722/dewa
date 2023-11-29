@@ -1,0 +1,270 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+
+    {% set activateSocial = theme_config('dewa-footer-activate-socials') %}
+    {% set activatePayments = theme_config('dewa-footer-activate-payments') %}
+    {% set columnAmount = theme_config('dewa-footer-column-amount') %}
+    {% set columnBootstrap = 12/columnAmount %}
+
+    {% if activateSocial %}
+        {% set socials = [
+            {
+                'title': 'Facebook',
+                'icon': 'facebook',
+                'url': theme_config('dewa-social-facebook')
+            },
+            {
+                'title': 'Twitter',
+                'icon': 'twitter',
+                'url': theme_config('dewa-social-twitter')
+            },
+            {
+                'title': 'Instagram',
+                'icon': 'instagram',
+                'url': theme_config('dewa-social-instagram')
+            },
+            {
+                'title': 'Youtube',
+                'icon': 'youtube',
+                'url': theme_config('dewa-social-youtube')
+            },
+            {
+                'title': 'Pinterest',
+                'icon': 'pinterest-p',
+                'url': theme_config('dewa-social-pinterest')
+            },
+            {
+                'title': 'Linked In',
+                'icon': 'linkedin',
+                'url': theme_config('dewa-social-linkedin')
+            },
+            {
+                'title': 'Xing',
+                'icon': 'xing',
+                'url': theme_config('dewa-social-xing')
+            },
+            {
+                'title': 'Appstore',
+                'icon': 'apple',
+                'url': theme_config('dewa-social-appstore')
+            },
+            {
+                'title': 'Google Play',
+                'icon': 'google',
+                'url': theme_config('dewa-social-googleplay')
+            },
+            {
+                'title': 'Twitch',
+                'icon': 'twitch',
+                'url': theme_config('dewa-social-twitch')
+            },
+            {
+                'title': 'WhatsApp',
+                'icon': 'whatsapp',
+                'url': theme_config('dewa-social-whatsapp')
+            }
+        ] %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block layout_footer_navigation %}
+    <div id="footerColumns"
+         class="row footer-columns"
+         data-collapse-footer="true">
+
+        {% block layout_footer_navigation_hotline %}
+            {% if theme_config('dewa-footer-activate-contact') %}
+                <div class="col-md-{{ columnBootstrap}} footer-column js-footer-column">
+                    {% block layout_footer_navigation_hotline_headline %}
+                        {{ parent() }}
+                    {% endblock %}
+
+                    {% block layout_footer_navigation_hotline_content %}
+                        <div id="collapseFooterHotline"
+                             class="footer-column-content collapse js-footer-column-content footer-contact"
+                             aria-labelledby="collapseFooterHotlineTitle">
+                            <div class="footer-column-content-inner">
+                                <p class="footer-contact-hotline">
+                                    {{ 'footer.serviceHotline'|trans|sw_sanitize }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block layout_footer_navigation_columns %}
+            {% for root in page.footer.navigation.tree %}
+                {% block layout_footer_navigation_column %}
+                    <div class="col-md-{{ columnBootstrap}} footer-column js-footer-column">
+                        {% block layout_footer_navigation_information_headline %}
+                            {{ parent() }}
+                        {% endblock %}
+                        {% block layout_footer_navigation_information_content %}
+                            {{ parent() }}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+
+    <div class="row footer-columns" data-collapse-footer="true">
+        {% if activateSocial %}
+            <div class="col-md-6 footer-column js-footer-column dewa-footer-socials">
+                <div class="footer-column js-footer-column">
+                    {% block layout_footer_socials_headline %}
+                        <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                             id="collapseFooterSocialsTitle"
+                             data-target="#collapseFooterSocials"
+                             aria-expanded="true"
+                             aria-controls="collapseFooterSocials">
+                            {{ 'dewa-shop.footer.social.headline'|trans }}
+                            <div class="footer-column-toggle">
+                                <span class="footer-plus-icon">
+                                    {% sw_icon 'plus' %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endblock %}
+
+
+                    {% block layout_footer_socials_content %}
+                        <div id="collapseFooterSocials" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterSocialsTitle">
+                            <div class="footer-column-content-inner">
+                                <div class="footer-socials">
+                                    {% set counterSocial = 0 %}
+                                    {% for social in socials %}
+                                        {% if social.url %}
+                                            <a class="footer-social-button" rel="noopener" aria-label="{{ social.title }} Page" target="_blank" href="{{ social.url }}" title="{{ social.title }}">
+                                                {% sw_icon 'icon' style {
+                                                    fileName: social.icon,
+                                                    pack: 'fab'
+                                                } %}
+                                            </a>
+                                        {% else %}
+                                            {% set counterSocial = counterSocial +1 %}
+                                        {% endif %}
+                                        {% if counterSocial == socials|length %}
+                                            <div class="alert alert-info alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <div class="h4 alert-heading">{{ "dewa-shop.footer.social.noSocials.headline"|trans|sw_sanitize }}</div>
+                                                {{ "dewa-shop.footer.social.noSocials.content"|trans|sw_sanitize }}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% block layout_footer_payment_logos %}
+            {% if page.salesChannelPaymentMethods and activatePayments %}
+                <div class="col-md-6 footer-column js-footer-column dewa-footer-payment">
+                    {% block layout_footer_payment_headline %}
+                        <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                             id="collapseFooterPaymentsTitle"
+                             data-target="#collapseFooterPayments"
+                             aria-expanded="true"
+                             aria-controls="collapseFooterPayments">
+                            {{ 'dewa-shop.footer.payments.headline'|trans }}
+                            <div class="footer-column-toggle">
+                                <span class="footer-plus-icon">
+                                    {% sw_icon 'plus' %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block layout_footer_payments_content %}
+                        <div id="collapseFooterPayments" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterPaymentsTitle">
+                            <div class="footer-column-content-inner">
+                                <div class="footer-payments">
+                                    {% for paymentMethod in page.salesChannelPaymentMethods %}
+                                        {% block layout_footer_payment_logo %}
+                                            {% if paymentMethod.media %}
+                                                <div class="footer-logo image is-payment">
+                                                    {% sw_thumbnails 'footer-payment-image-thumbnails' with {
+                                                        media: paymentMethod.media,
+                                                        sizes: {
+                                                            'default': '100px'
+                                                        },
+                                                        attributes: {
+                                                            'class': 'img-fluid footer-logo-image',
+                                                            'alt': (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+                                                            'title': (paymentMethod.media.translated.title ?: paymentMethod.translated.name)
+                                                        }
+                                                    } %}
+                                                </div>
+                                            {% else %}
+                                                <div class="footer-logo text is-payment">
+                                                    {{ paymentMethod.translated.name }}
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block layout_footer_navigation_information_icons %}
+    <div class="footer-column-toggle">
+        <span class="footer-plus-icon">
+            {% sw_icon 'plus' %}
+        </span>
+    </div>
+{% endblock %}
+
+{% block layout_footer_navigation_hotline_icons %}
+    <div class="footer-column-toggle">
+        <span class="footer-plus-icon">
+            {% sw_icon 'plus' %}
+        </span>
+    </div>
+{% endblock %}
+
+{% block layout_footer_payment_shipping_logos %}{% endblock %}
+
+{% block layout_footer_bottom %}
+    <div class="footer-bottom">
+        {% block layout_footer_service_menu %}
+
+            {% if page.header.serviceMenu.elements %}
+                <div class="container">
+                    {% block layout_footer_service_menu_content %}
+                        <ul class="dewa-footer-service-menu list-unstyled">
+                            {% for serviceMenuItem in page.header.serviceMenu %}
+                                {% block layout_footer_service_menu_item %}
+                                    {{ parent() }}
+                                {% endblock %}
+                            {% endfor %}
+                        </ul>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block layout_footer_vat %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block appflix_layout_footer_copyright %}
+            <div class="footer-copyright">
+                Made with <span class="fi-rs-heart"></span> by <a href="https://deliveryware.de" target="_blank" rel="noopener">DeliveryWare</a>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

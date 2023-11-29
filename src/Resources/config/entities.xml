@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Shopware 6 EntityExtensions -->
+        <service id="Appflix\DewaShop\Core\Content\Category\CategoryExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Product\ProductExtension">
+            <tag name="shopware.entity.extension" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Product\Aggregate\ProductIndex\ProductIndexDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_product_index" />
+        </service>
+
+        <!-- Bundle -->
+        <service id="Appflix\DewaShop\Core\Content\Bundle\BundleDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_bundle" />
+        </service>
+
+        <!-- Option -->
+        <service id="Appflix\DewaShop\Core\Content\Option\OptionDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option" />
+        </service>
+
+        <!-- OptionCategory -->
+        <service id="Appflix\DewaShop\Core\Content\OptionCategory\OptionCategoryDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_category" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\OptionCategory\Aggregate\OptionCategoryTranslation\OptionCategoryTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_category_translation" />
+        </service>
+
+        <!-- OptionProduct -->
+        <service id="Appflix\DewaShop\Core\Content\OptionProduct\OptionProductDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_product" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\OptionProduct\Aggregate\OptionProductTranslation\OptionProductTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_product_translation" />
+        </service>
+
+        <!-- OptionItem -->
+        <service id="Appflix\DewaShop\Core\Content\OptionItem\OptionItemDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_item" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\OptionItem\Aggregate\OptionItemTranslation\OptionItemTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_option_item_translation" />
+        </service>
+
+        <!-- Ingredient -->
+        <service id="Appflix\DewaShop\Core\Content\Ingredient\IngredientDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_ingredient" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Ingredient\Aggregate\IngredientProduct\IngredientProductDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_ingredient_product" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Ingredient\Aggregate\IngredientOptionItem\IngredientOptionItemDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_ingredient_option_item" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Ingredient\Aggregate\IngredientTranslation\IngredientTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_ingredient_translation" />
+        </service>
+
+        <!-- Badge -->
+        <service id="Appflix\DewaShop\Core\Content\Badge\BadgeDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_badge" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Badge\Aggregate\BadgeProduct\BadgeProductDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_badge_product" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Badge\Aggregate\BadgeTranslation\BadgeTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_badge_translation" />
+        </service>
+
+        <!-- SvgIcon -->
+        <service id="Appflix\DewaShop\Core\Content\SvgIcon\SvgIconDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_svg_icon" />
+        </service>
+
+        <!-- Shop -->
+        <service id="Appflix\DewaShop\Core\Content\Shop\ShopDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopCategory\ShopCategoryDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop_category" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopOrder\ShopOrderDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop_order" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopArea\ShopAreaDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop_area" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopProduct\ShopProductDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop_product" />
+        </service>
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopSalesChannel\ShopSalesChannelDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_shop_sales_channel" />
+        </service>
+
+        <!-- Deliverer -->
+        <service id="Appflix\DewaShop\Core\Content\Deliverer\DelivererDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_deliverer" />
+        </service>
+
+        <!-- Printer -->
+        <service id="Appflix\DewaShop\Core\Content\Printer\PrinterDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_printer" />
+        </service>
+
+        <!-- PrintJob -->
+        <service id="Appflix\DewaShop\Core\Content\Printer\Aggregate\PrintJob\PrintJobDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_print_job" />
+        </service>
+
+        <!-- PrintTurnover -->
+        <service id="Appflix\DewaShop\Core\Content\Printer\Aggregate\PrintTurnover\PrintTurnoverDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_print_turnover" />
+        </service>
+
+        <!-- Location -->
+        <service id="Appflix\DewaShop\Core\Content\Location\LocationDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_location" />
+        </service>
+
+        <!-- Stock -->
+        <service id="Appflix\DewaShop\Core\Content\Stock\StockDefinition">
+            <tag name="shopware.entity.definition" entity="dewa_stock" />
+        </service>
+
+        <!-- Framework: DAL -->
+        <service id="Appflix\DewaShop\Core\Framework\DataAbstractionLayer\Exception\DewaExceptionHandler">
+            <tag name="shopware.dal.exception_handler"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,20 @@
+<sw-page class="dewa-settings-deliverer-app">
+    <template slot="content">
+        <sw-card-view>
+
+            <sw-card :isLoading="isLoading" :title="$tc('dewa-shop.navigation.delivererApp')">
+                <p>
+                    {{ $tc('dewa-shop.delivererApp.appContent') }}
+                </p>
+                <div class="dewa-app-button-container">
+                    <sw-button class="dewa-button-android" :disabled="true">
+                        {{ $tc('dewa-shop.delivererApp.downloadAndroid') }}
+                    </sw-button>
+                    <sw-button class="dewa-button-ios" :disabled="true">
+                        {{ $tc('dewa-shop.delivererApp.downloadIos') }}
+                    </sw-button>
+                </div>
+            </sw-card>
+        </sw-card-view>
+    </template>
+</sw-page>

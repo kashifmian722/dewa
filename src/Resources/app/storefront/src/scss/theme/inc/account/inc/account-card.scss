@@ -1,0 +1,25 @@
+.dewa-account-area{
+
+    .card-col{
+
+        .card{
+
+            .card-body{
+                font-size: .8em;
+
+                .card-title{
+
+                }
+            }
+
+            .dewa-checkout-change-btn{
+                color:$sw-color-brand-secondary;
+
+                &:hover{
+                    color:darken($sw-color-brand-secondary, 5%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

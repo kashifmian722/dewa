@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Core -->
+        <service id="Appflix\DewaShop\Core\Subscriber\OrderStateMachineSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\InvoiceService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Storefront -->
+        <service id="Appflix\DewaShop\Storefront\Subscriber\NavigationSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="sales_channel.category.repository"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Subscriber\ProductCriteriaSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Subscriber\CategoryCriteriaSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Subscriber\CheckoutSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="MoorlFoundation\Core\Service\LocationService"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\StockService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Subscriber\SalesChannelContextSubscriber" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Subscriber\KernelSubscriber">
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="category.repository"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Administration -->
+    </services>
+</container>

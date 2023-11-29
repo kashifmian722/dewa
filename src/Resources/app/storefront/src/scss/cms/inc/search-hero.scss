@@ -1,0 +1,18 @@
+.cms-block-appflix-search-hero{
+    overflow: visible;
+
+    .appflix-hero-search{
+        position: relative;
+    }
+
+    .search-suggest{
+
+        .dewa-search-suggest-container{
+            background-color: #fff;
+
+            .dewa-search-suggest-product-description{
+                display: none;
+            }
+        }
+    }
+}

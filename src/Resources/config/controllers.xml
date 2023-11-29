@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Storefront -->
+        <service id="Appflix\DewaShop\Storefront\Controller\MenuBuyFormController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\TableRegistrationController" public="true">
+            <argument type="service" id="event_dispatcher"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\AccountController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Shopware\Storefront\Page\Account\Login\AccountLoginPageLoader"/>
+            <argument type="service" id="customer.repository"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\CheckoutController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\ShopSelectionController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="MoorlFoundation\Core\Service\LocationService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\SearchPortalController" public="true">
+            <argument type="service" id="Shopware\Core\Framework\Log\LoggerFactory"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\GpsController" public="true">
+            <argument type="service" id="dewa_deliverer.repository"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Appflix\DewaShop\Storefront\Controller\PrinterController" public="true">
+            <argument type="service" id="dewa_printer.repository"/>
+            <argument type="service" id="dewa_print_job.repository"/>
+            <argument type="service" id="dewa_print_turnover.repository"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\PrintService"/>
+            <argument type="service" id="twig"/>
+            <argument type="service" id="translator"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="Shopware\Core\Framework\Log\LoggerFactory"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <!-- Administration -->
+        <service id="Appflix\DewaShop\Administration\Controller\ShopController" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Administration\Controller\PrintController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\PrintService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Administration\Controller\OrderController" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Administration\Controller\GoogleApiTestController" public="true">
+        </service>
+    </services>
+</container>

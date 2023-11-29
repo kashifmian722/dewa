@@ -1,0 +1,66 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body %}
+
+    {% if config('AppflixDewaShop.config.appflixDeactivateOffcanvasCart') %}
+        <script>
+            window.deactivateOffcanvasCart = true;
+        </script>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_header %}
+    <header class="header-main">
+        {% block base_header_inner %}
+            <div class="container-fluid">
+                {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+            </div>
+        {% endblock %}
+    </header>
+{% endblock %}
+
+{% block base_navigation %}{% endblock %}
+
+{% block base_body_inner %}
+    {{ parent() }}
+
+    {# TODO: Build Modals on-the-fly #}
+    {% sw_include '@Storefront/dewa-shop/header/dewa-search-modal.html.twig' %}
+    <div class="modal fade" id="dewaModal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+    <div class="modal fade" id="dewaIngredientModal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+{% endblock %}
+
+{% block base_body_script %}
+    {{ parent() }}
+    {% if theme_config('dewa-custom-js') %}
+        <script>
+            {{ theme_config('dewa-custom-js') | raw }}
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block base_main_inner %}
+    {% if 'frontend.checkout' in activeRoute or 'frontend.account' in activeRoute %}
+        {% if 'frontend.account.login.page' in activeRoute or 'frontend.account.register.page' in activeRoute or 'frontend.account.recover.page' in activeRoute %}
+            {% set dewaSidebar = false %}
+        {% else %}
+            {% set dewaSidebar = true %}
+        {% endif %}
+    {% endif %}
+
+    <div class="{% if dewaSidebar %}dewa-sidebar-container{% else %}container{% endif %}">
+        {% block base_main_container %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block base_footer %}
+    {% if controllerAction | lower == 'cartpage' %}
+        {% sw_include '@Storefront/storefront/layout/footer/footer-minimal.html.twig' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

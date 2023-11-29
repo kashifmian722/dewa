@@ -1,0 +1,17 @@
+.dewa-weekday-config {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(7, minmax(170px, 1fr));
+  overflow-x: scroll;
+
+  > li {
+    list-style: none;
+  }
+
+  .dewa-weekday-config-title {
+    margin-bottom: 20px;
+  }
+}

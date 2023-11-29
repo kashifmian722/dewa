@@ -1,0 +1,70 @@
+<div class="dewa-shop-modal">
+    <div class="row align-items-center">
+        <div class="col-12{% if shop.locationLat and shop.locationLon %} col-md-5{% endif %} mt-4 mt-md-0">
+            <div class="dewa-shop-modal-contact">
+                <div class="headline"><span class="fi-rs-building"></span>{{ "dewa-shop.contact" | trans }}</div>
+                {% if shop.email %}
+                    <div>
+                        {{ "dewa-shop.email" | trans }}: <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                    </div>
+                {% endif %}
+                {% if shop.phoneNumber %}
+                    <div>
+                        {{ "dewa-shop.phone" | trans }}: <a href="tel:{{ shop.phoneNumber }}">{{ shop.phoneNumber }}</a>
+                    </div>
+                {% endif %}
+                {% if shop.faxNumber %}
+                    <div>
+                        {{ "dewa-shop.fax" | trans }}: {{ shop.faxNumber }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="dewa-shop-modal-adress">
+                <div class="headline mt-4"><span class="fi-rs-marker"></span>{{ "dewa-shop.address" | trans }}</div>
+                {% if shop.street %}
+                    <div>
+                        {{ shop.street }} {{ shop.streetNumber }}
+                    </div>
+                {% endif %}
+                {% if shop.city %}
+                    <div>
+                        {{ shop.zipcode }} {{ shop.city }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if shop.locationLat and shop.locationLon %}
+            <div class="col-md-7">
+                <div class="dewa-map">
+                    <div id="dewaMap" class="dewa-map-content" data-dewa-checkout-shop
+                         data-location-lat="{{ shop.locationLat }}" data-location-lon="{{ shop.locationLon }}">
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if shop.openingHours %}
+        <div class="mt-4">
+            <div class="headline">
+                <span class="fi-rs-time-forward"></span>
+                {{ "dewa-shop.openingHours" | trans }}
+            </div>
+            {% sw_include '@Storefront/dewa-shop/component/opening-hours.html.twig' with {
+                'openingHours': shop.openingHours
+            } %}
+        </div>
+    {% endif %}
+
+    {% if shop.deliveryActive and shop.deliveryHours %}
+        <div class="mt-4">
+            <div class="headline">
+                <span class="fi-rs-time-forward"></span>
+                {{ "dewa-shop.deliveryHours" | trans }}
+            </div>
+            {% sw_include '@Storefront/dewa-shop/component/opening-hours.html.twig' with {
+                'openingHours': shop.deliveryHours
+            } %}
+        </div>
+    {% endif %}
+</div>

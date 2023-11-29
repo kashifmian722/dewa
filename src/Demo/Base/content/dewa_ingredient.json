@@ -1,0 +1,147 @@
+[
+  {
+    "id": "{ID:INGREDIENT_1}",
+    "name": "Fisch und Fischerzeugnisse",
+    "description": "Fischhaltige Zutaten und Fischerzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_2}",
+    "name": "Schalenfrüchte",
+    "description": "Nusseiweißhaltige Zutaten. Unter Nüsse fallen Mandel, Hasel-, Pecan-, Wal-, Para-, Macadamia-Nuss, Cashew-Kern und Pistazie"
+  },
+  {
+    "id": "{ID:INGREDIENT_3}",
+    "name": "Soja",
+    "description": "Sojaeiweißhaltige Zutaten, auch Sojalezithin"
+  },
+  {
+    "id": "{ID:INGREDIENT_4}",
+    "name": "Ei und Eierzeugnisse",
+    "description": "Eiweißhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_5}",
+    "name": "Gluten",
+    "description": "Glutenhaltige Zutaten, d.h. klebereiweißhaltiges Getreide bzw. Getreideprodukte aus Weizen, Grünkern, Dinkel, Hafer, Roggen und Gerste"
+  },
+  {
+    "id": "{ID:INGREDIENT_6}",
+    "name": "Sellerie",
+    "description": "Selleriehaltige Zutaten"
+  },
+  {
+    "id": "{ID:Krebstiere und Krebstiererzeugnisse}",
+    "name": "Krebstiere und Krebstiererzeugnisse",
+    "description": "Krebstierhaltige Zutaten und Krebstiererzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_7}",
+    "name": "Sesamsamen und Sesamsamenerzeugnisse",
+    "description": "Sesamsamenhaltige Zutaten und Sesamsamenerzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_8}",
+    "name": "Schwefeldioxid und Sulfite",
+    "description": "Schwefeldioxid und Sulfithaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_9}",
+    "name": "Weizen",
+    "description": "Weizeneiweißhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_10}",
+    "name": "Senf und Senferzeugnisse",
+    "description": "Senfhaltige Zutaten und Senferzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_11}",
+    "name": "Lupine und daraus hergestellte Erzeugnisse",
+    "description": "Lupinhaltige Zutaten und daraus hergestellte Erzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_12}",
+    "name": "Milch",
+    "description": "Milcheiweiß- und milchzuckerhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_13}",
+    "name": "Erdnuss",
+    "description": "Erdnusseiweißhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_14}",
+    "name": "Weichtiere und daraus hergestellte Erzeugnisse",
+    "description": "Weichtierhaltige Zutaten und daraus hergestellte Erzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_15}",
+    "name": "Taurin",
+    "description": "Taurin"
+  },
+  {
+    "id": "{ID:INGREDIENT_16}",
+    "name": "Süßungsmittel",
+    "description": "Süßungsmittel"
+  },
+  {
+    "id": "{ID:INGREDIENT_17}",
+    "name": "Sulfite",
+    "description": "Sulfite"
+  },
+  {
+    "id": "{ID:INGREDIENT_18}",
+    "name": "Stabilisatoren",
+    "description": "Stabilisatoren"
+  },
+  {
+    "id": "{ID:INGREDIENT_19}",
+    "name": "Säuerungsmittel",
+    "description": "Säuerungsmittel"
+  },
+  {
+    "id": "{ID:INGREDIENT_20}",
+    "name": "Phosphat",
+    "description": "Phosphat"
+  },
+  {
+    "id": "{ID:INGREDIENT_21}",
+    "name": "Phenylalaninquelle",
+    "description": "Phenylalaninquelle"
+  },
+  {
+    "id": "{ID:INGREDIENT_22}",
+    "name": "Konservierungsstoffe",
+    "description": "Konservierungsstoffe"
+  },
+  {
+    "id": "{ID:INGREDIENT_23}",
+    "name": "Koffein",
+    "description": "Koffein"
+  },
+  {
+    "id": "{ID:INGREDIENT_24}",
+    "name": "Geschwärzt",
+    "description": "Geschwärzt"
+  },
+  {
+    "id": "{ID:INGREDIENT_25}",
+    "name": "Geschmacksverstärker",
+    "description": "Geschmacksverstärker"
+  },
+  {
+    "id": "{ID:INGREDIENT_26}",
+    "name": "Farbstoff",
+    "description": "Farbstoff"
+  },
+  {
+    "id": "{ID:INGREDIENT_27}",
+    "name": "Drehspieß",
+    "description": "Drehspieß"
+  },
+  {
+    "id": "{ID:INGREDIENT_28}",
+    "name": "Antioxidationsmittel",
+    "description": "Antioxidationsmittel"
+  }
+]

@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% if theme_config('dewa-custom-font') %}
+        {{ theme_config('dewa-custom-font') | raw }}
+    {% endif %}
+
+    {% if theme_config('dewa-custom-css') %}
+        <style>
+            {{ theme_config('dewa-custom-css') | raw }}
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block layout_head_meta_tags_general %}
+    {{ parent() }}
+
+    {% if theme_config('dewa-custom-head') %}
+        {{ theme_config('dewa-custom-head') | raw }}
+    {% endif %}
+{% endblock %}

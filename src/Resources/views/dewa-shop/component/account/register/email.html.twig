@@ -1,0 +1,17 @@
+<input type="email"
+       class="form-control{% if formViolations.getViolations('/email') is not empty %} is-invalid{% endif %}"
+       autocomplete="section-personal email"
+       id="personalMail"
+       placeholder="{{ "account.personalMailPlaceholder"|trans|striptags }}"
+       name="email"
+       value="{{ data.get('email') }}"
+    {% if config('core.loginRegistration.requireEmailConfirmation') %}
+        data-form-validation-equal="personalMail"
+    {% endif %}
+       required="required">
+
+{% if formViolations.getViolations('/email') is not empty %}
+    {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+        violationPath: '/email'
+    } %}
+{% endif %}

@@ -1,0 +1,51 @@
+<div class="dewa-icon-select">
+    <button @click="onOpenModal" class="dewa-svg-icon-btn">
+        <span v-if="item"
+              :style="style"
+              v-html="item.content"></span>
+        <span v-else>
+            {{ $tc('dewa-shop.action.choseIcon') }}
+        </span>
+    </button>
+
+    <sw-modal v-if="showModal && items"
+              :title="$tc('dewa-shop.cards.selectIcon')"
+              @modal-close="onCloseModal">
+        <sw-container v-if="!isLoading" columns="repeat(auto-fit, minmax(70px, 1fr)" gap="10px 10px">
+            <div v-for="icon in items" class="dewa-svg-icon-btn">
+                <div v-if="!icon.locked" class="select-check">
+                    <input type="checkbox"
+                           :checked="isSelected(icon.id)"
+                           :value="isSelected(icon.id)"
+                           @change="selectItem(icon.id ,icon)">
+                </div>
+                <span :style="style"
+                      @click="onSelectIcon(icon)"
+                      v-html="icon.content"></span>
+            </div>
+        </sw-container>
+
+        <template #modal-footer>
+            <sw-button @click="onClickUpload" size="small" variant="primary">
+                {{ $tc('dewa-shop.action.upload') }}
+            </sw-button>
+            <form style="display: none;" ref="fileForm">
+                <input class="sw-plugin-file-upload__file-input"
+                       type="file"
+                       id="files"
+                       multiple
+                       accept="application/svg+xml"
+                       ref="fileInput"
+                       @change="onFileInputChange"/>
+            </form>
+
+            <sw-button @click="onDeleteSelectedItems" size="small" variant="danger">
+                {{ $tc('dewa-shop.action.deleteSelected') }}
+            </sw-button>
+
+            <sw-button @click="onCloseModal" size="small">
+                {{ $tc('dewa-shop.action.cancel') }}
+            </sw-button>
+        </template>
+    </sw-modal>
+</div>

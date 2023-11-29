@@ -1,0 +1,39 @@
+{% if shopOrder.order.deliveries.first().shippingMethodId == '78d2aa20af38597657a4b48cf02f7dcb' %}
+    {% set collect = true %}
+{% else %}
+    {% set collect = false %}
+{% endif %}
+
+{% if shopOrder.order.deliveries.first().stateMachineState.technicalName != 'shipped' %}
+    <p class="dewa-state-title order-{{ shopOrder.order.stateMachineState.technicalName }}">
+        <span class="fi-rs-shop"></span>
+        {% if shopOrder.order.stateMachineState.technicalName == 'completed' %}
+            {{ "dewa-shop.checkout.orderComplete"|trans }}
+        {% else %}
+            {% if shopOrder.order.stateMachineState.technicalName == 'open' %}
+                {{ "dewa-shop.checkout.orderOpen"|trans }}
+            {% elseif shopOrder.order.stateMachineState.technicalName == 'in_progress' %}
+                {{ "dewa-shop.checkout.orderInProgress"|trans }}
+            {% endif %}
+        {% endif %}
+    </p>
+{% endif %}
+
+{% if shopOrder.order.stateMachineState.technicalName != 'completed' %}
+    <p class="dewa-state-title{% if collect %} collect{% endif%} delivery-{{ shopOrder.order.deliveries.first().stateMachineState.technicalName }}">
+        <span class="fi-rs-package"></span>
+        {% if shopOrder.order.deliveries.first().stateMachineState.technicalName == 'open' %}
+            {% if collect %}
+                {{ "dewa-shop.checkout.collectOpen"|trans }}
+            {% else %}
+                {{ "dewa-shop.checkout.deliveryOpen"|trans }}
+            {% endif %}
+        {% elseif shopOrder.order.deliveries.first().stateMachineState.technicalName == 'shipped' %}
+            {% if collect %}
+                {{ "dewa-shop.checkout.collectComplete"|trans }}
+            {% else %}
+                {{ "dewa-shop.checkout.deliveryComplete"|trans }}
+            {% endif %}
+        {% endif %}
+    </p>
+{% endif %}

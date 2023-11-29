@@ -1,0 +1,17 @@
+<sw-modal class="dewa-dashboard-quick-order"
+          :title="$tc('dewa-shop.cards.quickOrder')"
+          @modal-close="onCloseModal">
+
+
+    <template #modal-footer>
+        <sw-button @click="onCloseModal" size="small">
+            {{ $t('dewa-shop.action.cancel') }}
+        </sw-button>
+
+        <sw-button @click="onSaveQickOrder"
+                   variant="primary"
+                   size="small">
+            {{ $t('dewa-shop.action.save') }}
+        </sw-button>
+    </template>
+</sw-modal>

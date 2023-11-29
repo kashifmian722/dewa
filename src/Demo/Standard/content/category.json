@@ -1,0 +1,250 @@
+[
+    {
+        "id": "{NAVIGATION_CATEGORY_ID}",
+        "cmsPageId": "{ID:CMS_PAGE_HOME}"
+    },
+    {
+        "id": "{ID:CATEGORY_MENU}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "cmsPageId": "{CMS_PAGE_ID}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-speisekarte.jpg|category}",
+        "active": true,
+        "name": "Speisekarte"
+    },
+    {
+        "id": "{ID:CATEGORY_5}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-hamburger.jpg|category}",
+        "active": true,
+        "name": "Burger"
+    },
+    {
+        "id": "{ID:CATEGORY_4}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-pizza.jpg|category}",
+        "active": true,
+        "name": "Pizza"
+    },
+    {
+        "id": "{ID:CATEGORY_6}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-pizza-rolls.jpg|category}",
+        "active": true,
+        "name": "Pizzabrötchen"
+    },
+    {
+        "id": "{ID:CATEGORY_7}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-calzone.jpg|category}",
+        "active": true,
+        "name": "Calzone"
+    },
+    {
+        "id": "{ID:CATEGORY_8}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-pasta.jpg|category}",
+        "active": true,
+        "name": "Pasta"
+    },
+    {
+        "id": "{ID:CATEGORY_9}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-salad.jpg|category}",
+        "active": true,
+        "name": "Salate"
+    },
+    {
+        "id": "{ID:CATEGORY_10}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-schnitzel.jpg|category}",
+        "active": true,
+        "name": "Schnitzel"
+    },
+    {
+        "id": "{ID:CATEGORY_11}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-snacks.jpg|category}",
+        "active": true,
+        "name": "Snacks / Beilagen"
+    },
+    {
+        "id": "{ID:CATEGORY_12}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-alcohol.jpg|category}",
+        "active": true,
+        "name": "Alkoholfreie Getränke"
+    },
+    {
+        "id": "{ID:CATEGORY_13}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-cocktails.jpg|category}",
+        "active": true,
+        "name": "Alkoholhaltige Getränke"
+    },
+    {
+        "id": "{ID:CATEGORY_14}",
+        "parentId": "{ID:CATEGORY_MENU}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-dessert.jpg|category}",
+        "active": true,
+        "name": "Nachtisch"
+    },
+    {
+        "id": "{ID:CATEGORY_ERLEBNISWELTEN}",
+        "afterCategoryId": "{ID:CATEGORY_MENU}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "cmsPageId": "{ID:CMS_PAGE_ERLEBNISWELTEN}",
+        "active": true,
+        "name": "Erlebniswelten"
+    },
+    {
+        "id": "{ID:CATEGORY_ONLINESHOP}",
+        "afterCategoryId": "{ID:CATEGORY_ERLEBNISWELTEN}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "cmsPageId": "{ID:CMS_PAGE_ONLINESHOP}",
+        "mediaId": "{MEDIA_FILE:category/dewa-demo-standard-category-dessert.jpg|category}",
+        "active": true,
+        "name": "Onlineshop"
+    },
+    {
+        "id": "{ID:CATEGORY_DOCUMENTATION}",
+        "afterCategoryId": "{ID:CATEGORY_ONLINESHOP}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "type": "link",
+        "externalLink": "https://docs.deliveryware.de",
+        "linkNewTab": true,
+        "active": true,
+        "name": "Dokumentation"
+    },
+    {
+        "id": "{ID:CATEGORY_FOOTER}",
+        "parentId": null,
+        "active": true,
+        "name": "Footernavigation"
+    },
+    {
+        "id": "{ID:CATEGORY_ABOUT_US}",
+        "parentId": "{ID:CATEGORY_FOOTER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Über Uns"
+    },
+    {
+        "id": "{ID:CATEGORY_17}",
+        "parentId": "{ID:CATEGORY_ABOUT_US}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Das sind wir"
+    },
+    {
+        "id": "{ID:CATEGORY_18}",
+        "parentId": "{ID:CATEGORY_ABOUT_US}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Servicebereich"
+    },
+    {
+        "id": "{ID:CATEGORY_19}",
+        "parentId": "{ID:CATEGORY_ABOUT_US}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Kontakt"
+    },
+
+    {
+        "id": "{ID:CATEGORY_PARTNER}",
+        "parentId": "{ID:CATEGORY_FOOTER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Für Partner"
+    },
+
+    {
+        "id": "{ID:CATEGORY_28}",
+        "parentId": "{ID:CATEGORY_PARTNER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Reseller & Partner"
+    },
+    {
+        "id": "{ID:CATEGORY_29}",
+        "parentId": "{ID:CATEGORY_PARTNER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Affiliate"
+    },
+    {
+        "id": "{ID:CATEGORY_29}",
+        "parentId": "{ID:CATEGORY_PARTNER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Dashboard"
+    },
+    {
+        "id": "{ID:CATEGORY_30}",
+        "parentId": "{ID:CATEGORY_PARTNER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Mehr Informationen"
+    },
+
+
+    {
+        "id": "{ID:CATEGORY_LEGAL}",
+        "afterCategoryId": "{ID:CATEGORY_ABOUT_US}",
+        "parentId": "{ID:CATEGORY_FOOTER}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Rechtliches"
+    },
+    {
+        "id": "{ID:CATEGORY_21}",
+        "parentId": "{ID:CATEGORY_LEGAL}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Impressum"
+    },
+    {
+        "id": "{ID:CATEGORY_22}",
+        "parentId": "{ID:CATEGORY_LEGAL}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "AGB"
+    },
+    {
+        "id": "{ID:CATEGORY_23}",
+        "parentId": "{ID:CATEGORY_LEGAL}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Datenschutz"
+    },
+
+
+
+    {
+        "id": "{ID:CATEGORY_SERVICE}",
+        "parentId": null,
+        "active": true,
+        "name": "Servicenavigation"
+    },
+    {
+        "id": "{ID:CATEGORY_25}",
+        "parentId": "{ID:CATEGORY_SERVICE}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Unsere Events"
+    },
+    {
+        "id": "{ID:CATEGORY_26}",
+        "parentId": "{ID:CATEGORY_SERVICE}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Stellenanzeigen"
+    },
+    {
+        "id": "{ID:CATEGORY_27}",
+        "parentId": "{ID:CATEGORY_SERVICE}",
+        "active": true,
+        "cmsPageId": "{ID:CMS_PAGE_CONTENTPAGE}",
+        "name": "Anfahrt"
+    }
+]

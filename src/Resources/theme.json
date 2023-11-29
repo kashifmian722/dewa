@@ -1,0 +1,1060 @@
+{
+    "name": "DeliveryWare | Restaurant Delivery",
+    "author": "Appflix UG",
+    "previewMedia": "app/storefront/dist/assets/DewaThemePreview.jpg",
+    "style": [
+        "app/storefront/src/scss/overrides.scss",
+        "@Storefront",
+        "app/storefront/src/scss/base.scss",
+        "@Plugins"
+    ],
+    "script": [
+        "@Storefront",
+        "app/storefront/dist/storefront/js/appflix-dewa-shop.js",
+        "@Plugins"
+    ],
+    "views": [
+        "@Storefront",
+        "@AppflixDewaShop",
+        "@AppflixPartnertools",
+        "@Plugins"
+    ],
+    "config": {
+        "tabs": {
+            "tabStatus": {
+                "label": {
+                    "en-GB": "Status Messages",
+                    "de-DE": "Hinweisbenachrichtigungen"
+                }
+            },
+            "tabMedia": {
+                "label": {
+                    "en-GB": "Logo / Media",
+                    "de-DE": "Logo / Media"
+                }
+            },
+            "tabProducts": {
+                "label": {
+                    "en-GB": "Menu presentation",
+                    "de-DE": "Speisekarte"
+                }
+            },
+            "tabHeader": {
+                "label": {
+                    "en-GB": "Header",
+                    "de-DE": "Header"
+                }
+            },
+            "tabFooter": {
+                "label": {
+                    "en-GB": "Footer",
+                    "de-DE": "Footer"
+                }
+            },
+            "tabCustom": {
+                "label": {
+                    "en-GB": "Custom </>",
+                    "de-DE": "Custom </>"
+                },
+                "order": 700
+            }
+        },
+        "blocks": {
+            "blockLayoutColors": {
+                "label": {
+                    "en-GB": "General Layout Settings",
+                    "de-DE": "Allgemeine Layout Einstellungen"
+                }
+            },
+            "blockLayoutStatus": {
+                "label": {
+                    "en-GB": "Status Messages",
+                    "de-DE": "Hinweismeldungen"
+                }
+            },
+            "blockTypography": {
+                "label": {
+                    "en-GB": "General Font Settings",
+                    "de-DE": "Allgemeine Schrifteinstellungen"
+                }
+            },
+
+            "blockLogo": {
+                "label": {
+                    "en-GB": "Logo",
+                    "de-DE": "Logo"
+                }
+            },
+            "blockLogoHeight": {
+                "label": {
+                    "en-GB": "Dimensions of the Logo",
+                    "de-DE": "Abmessungen des Logos"
+                }
+            },
+
+            "blockSharefav": {
+                "label": {
+                    "en-GB": "Share- & Favicon",
+                    "de-DE": "Share- & Favicon"
+                }
+            },
+
+            "blockLayoutCommerce": {
+                "label": {
+                    "en-GB": "General Product Settings",
+                    "de-DE": "Allgemeine Produkteinstellungen"
+                }
+            },
+
+            "blockProductImages": {
+                "label": {
+                    "en-GB": "Product Images",
+                    "de-DE": "Produktbilder"
+                }
+            },
+
+            "blockHeaderLayoutSettings": {
+                "label": {
+                    "en-GB": "Layout Settings",
+                    "de-DE": "Layout Einstellungen"
+                }
+            },
+
+            "blockHeaderFixedElements": {
+                "label": {
+                    "en-GB": "Fixed Elements",
+                    "de-DE": "Fixierte Elemente"
+                }
+            },
+
+            "blockFooterSettings": {
+                "label": {
+                    "en-GB": "General Footer Settings",
+                    "de-DE": "Allgemeine Footer Einstellungen"
+                }
+            },
+            "blockSocials": {
+                "label": {
+                    "en-GB": "Footer Social Media",
+                    "de-DE": "Footer Social Media"
+                }
+            },
+
+            "blockCustomHead": {
+                "label": {
+                    "en-GB": "Custom HTML - <head>",
+                    "de-DE": "Eigenes HTML - <head>"
+                }
+            },
+
+            "blockCustomCss": {
+                "label": {
+                    "en-GB": "Custom CSS",
+                    "de-DE": "Eigenes CSS"
+                }
+            },
+            "blockCustomJs": {
+                "label": {
+                    "en-GB": "Custom Javascript",
+                    "de-DE": "Eigenes Javascript"
+                }
+            }
+        },
+        "sections": {
+            "sectionLayoutColorsAdditional": {
+                "label": {
+                    "en-GB": "Additional Layout Settings",
+                    "de-DE": "Zusätzliche Layout Einstellungen"
+                }
+            },
+            "sectionLayoutColorsBackgroundImage": {
+                "label": {
+                    "en-GB": "Background Image - Settings",
+                    "de-DE": "Hintergrundbild - Einstellungen"
+                }
+            },
+            "sectionTypographyColors": {
+                "label": {
+                    "en-GB": "Color Settings for fonts",
+                    "de-DE": "Farbeinstellungen für Schriften"
+                }
+            },
+            "sectionCustomFonts": {
+                "label": {
+                    "en-GB": "Custom Font import",
+                    "de-DE": "Import individueller Schriftarten"
+                }
+            },
+            "sectionFooterColors": {
+                "label": {
+                    "en-GB": "Footer Colors",
+                    "de-DE": "Footer Farbeinstellungen"
+                }
+            },
+            "sectionCommerceLineThrough": {
+                "label": {
+                    "en-GB": "Stroked prices for Food Items",
+                    "de-DE": "Streichpreise für Speisen"
+                }
+            }
+        },
+        "fields": {
+            "sw-color-brand-primary": {
+                "label": {
+                    "en-GB": "Primary accent color",
+                    "de-DE": "Primäre Akzentfarbe"
+                },
+                "helpText": {
+                    "en-GB": "Set the primary colour for your shop. This is set as the primary accent colour and is also used for the header area, for example.",
+                    "de-DE": "Setzen Sie die Primärfarbe für Ihren Shop. Diese wird als primäre Akzentfarbe gesetzt und beispielsweise auch für den Headerbereich verwendet."
+                },
+                "type": "color",
+                "value": "#d95030",
+                "editable": true,
+                "block": "blockLayoutColors",
+                "order": 200
+            },
+            "sw-color-brand-secondary": {
+                "label": {
+                    "en-GB": "Secondary accent color",
+                    "de-DE": "Sekundäre Akzentfarbe"
+                },
+                "helpText": {
+                    "en-GB": "Define the secondary colour for your shop. This sets some highlights in certain areas.",
+                    "de-DE": "Definieren Sie die Sekundärfarbe für Ihren Shop. Diese setzt in gewissen Bereichen einige Highlights."
+                },
+                "type": "color",
+                "value": "#4b8ae2",
+                "editable": true,
+                "block": "blockLayoutColors",
+                "order": 300
+            },
+
+            "sw-border-color": {
+                "label": {
+                    "en-GB": "General border color",
+                    "de-DE": "Allgemeine Rahmenfarbe"
+                },
+                "helpText": {
+                    "en-GB": "Here you define a general frame colour. Certain areas in the shop are bordered. Select the colour for the border here.",
+                    "de-DE": "Hier definieren Sie eine allgemeine Rahmenfarbe. Gewisse Bereiche im Shop sind umrandet. Wählen Sie hier die Farbe für die Umrandung."
+                },
+                "type": "color",
+                "value": "#e6e6e6",
+                "editable": true,
+                "block": "blockLayoutColors",
+                "section": "sectionLayoutColorsAdditional",
+                "order": 400
+            },
+            "sw-background-color": {
+                "label": {
+                    "en-GB": "Content Background Color",
+                    "de-DE": "Hintergrundfarbe des Inhalts"
+                },
+                "helpText": {
+                    "en-GB": "Set the background colour for your shop. The background colour takes effect between the header and footer areas.",
+                    "de-DE": "Setzen Sie die Hintergrundfarbe für Ihren Shop. Die Hintergrundfarbe wird zwischen Header- und Footerbereich wirksam."
+                },
+                "type": "color",
+                "value": "#ffffff",
+                "editable": true,
+                "block": "blockLayoutColors",
+                "section": "sectionLayoutColorsAdditional",
+                "order": 500
+            },
+
+            "sw-font-family-base": {
+                "label": {
+                    "en-GB": "Fonttype - General Text",
+                    "de-DE": "Schriftart - Allgemeiner Text"
+                },
+                "helpText": {
+                    "en-GB": "In the Custom tab, for example, you can store your Google Fonts code and embed the font here.",
+                    "de-DE": "Im Tab Custom können Sie beispielsweise Ihren Google Fonts Code hinterlegen und die Schriftart hier einbinden."
+                },
+                "type": "fontFamily",
+                "value": "'Nunito', sans-serif",
+                "editable": true,
+                "block": "blockTypography",
+                "order": 100
+            },
+            "sw-font-family-headline": {
+                "label": {
+                    "en-GB": "Fonttype - General Headlines",
+                    "de-DE": "Schriftart - Allgemeine Überschriften"
+                },
+                "helpText": {
+                    "en-GB": "In the Custom tab, for example, you can store your Google Fonts code and embed the font here.",
+                    "de-DE": "Im Tab Custom können Sie beispielsweise Ihren Google Fonts Code hinterlegen und die Schriftart hier einbinden."
+                },
+                "type": "fontFamily",
+                "value": "'Nunito', sans-serif",
+                "editable": true,
+                "block": "blockTypography",
+                "order": 300
+            },
+
+            "sw-text-color": {
+                "label": {
+                    "en-GB": "Text color",
+                    "de-DE": "Textfarbe"
+                },
+                "type": "color",
+                "value": "#4a4a4a",
+                "editable": true,
+                "block": "blockTypography",
+                "section": "sectionTypographyColors",
+                "order": 50
+            },
+            "sw-headline-color": {
+                "label": {
+                    "en-GB": "Headline color",
+                    "de-DE": "Überschriftfarbe"
+                },
+                "type": "color",
+                "value": "#404040",
+                "editable": true,
+                "block": "blockTypography",
+                "section": "sectionTypographyColors",
+                "order": 400
+            },
+
+            "dewa-custom-font": {
+                "label": {
+                    "en-GB": "Transfer fonts from external resources (e.g. Google Fonts)",
+                    "de-DE": "Übergeben Sie Schriftarten von externen Ressourcen (bspw. Google Fonts)"
+                },
+                "custom": {
+                    "componentName": "sw-code-editor"
+                },
+                "type": "text",
+                "scss": false,
+                "editable": true,
+                "block": "blockTypography",
+                "section": "sectionCustomFonts",
+                "order": 600
+            },
+
+
+            "sw-color-success": {
+                "label": {
+                    "en-GB": "Success - Message",
+                    "de-DE": "Erfolgsbenachrichtigung"
+                },
+                "type": "color",
+                "value": "#3cc261",
+                "editable": true,
+                "block": "blockLayoutStatus",
+                "tab": "tabStatus",
+                "order": 900
+            },
+            "sw-color-info": {
+                "label": {
+                    "en-GB": "Information - Message",
+                    "de-DE": "Informationsbenachrichtigung"
+                },
+                "type": "color",
+                "value": "#26b6cf",
+                "editable": true,
+                "block": "blockLayoutStatus",
+                "tab": "tabStatus",
+                "order": 1000
+            },
+            "sw-color-warning": {
+                "label": {
+                    "en-GB": "Hint - Message",
+                    "de-DE": "Hinweisbenachrichtigung"
+                },
+                "type": "color",
+                "value": "#ffbd5d",
+                "editable": true,
+                "block": "blockLayoutStatus",
+                "tab": "tabStatus",
+                "order": 1000
+            },
+            "sw-color-danger": {
+                "label": {
+                    "en-GB": "Error - Message",
+                    "de-DE": "Fehlerbenachrichtigung"
+                },
+                "type": "color",
+                "value": "#e52427",
+                "editable": true,
+                "block": "blockLayoutStatus",
+                "tab": "tabStatus",
+                "order": 1100
+            },
+
+            "dewa-logo-max-height": {
+                "label": {
+                    "en-GB": "Max. Height of the Logo (in px)",
+                    "de-DE": "Maximale Höhe des Logos (in px)"
+                },
+                "helpText": {
+                    "en-GB": "Set the maximum height of the logo for display in your store here. The logo will be uploaded in its original size and limited in height based on the entered value. The width is calculated automatically.",
+                    "de-DE": "Setzen Sie hier die Maximalhöhe des Logos für die Anzeige in Ihrem Shop. Das Logo wird in seiner Ursprungsgröße hochgeladen und auf Basis des eingetragenen Wertes in der Höhe begrenzt. Die Breite berechnet sich automatisch."
+                },
+                "type": "text",
+                "value": "55px",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockLogoHeight",
+                "order": 100
+            },
+
+            "sw-logo-desktop": {
+                "label": {
+                    "en-GB": "Desktop",
+                    "de-DE": "Desktop"
+                },
+                "helpText": {
+                    "en-GB": "Displayed for viewports of above 991px",
+                    "de-DE": "Wird über einem Viewport von 991px angezeigt"
+                },
+                "type": "media",
+                "value": "public/demo-images/demo-logo.png",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockLogo",
+                "order": 100
+            },
+            "sw-logo-tablet": {
+                "label": {
+                    "en-GB": "Tablet",
+                    "de-DE": "Tablet"
+                },
+                "helpText": {
+                    "en-GB": "Displayed between a viewport of 767px to 991px",
+                    "de-DE": "Wird zwischen einem viewport von 767px bis 991px angezeigt"
+                },
+                "type": "media",
+                "value": "public/demo-images/demo-logo.png",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockLogo",
+                "order": 200
+            },
+            "sw-logo-mobile": {
+                "label": {
+                    "en-GB": "Mobile",
+                    "de-DE": "Mobil"
+                },
+                "helpText": {
+                    "en-GB": "Displayed up to a viewport of 767px",
+                    "de-DE": "Wird bis zu einem Viewport von 767px angezeigt"
+                },
+                "type": "media",
+                "value": "public/demo-images/demo-logo.png",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockLogo",
+                "order": 300
+            },
+            "sw-logo-share": {
+                "label": {
+                    "en-GB": "App & share icon",
+                    "de-DE": "App- & Share-Icon"
+                },
+                "type": "media",
+                "value": "public/demo-images/demo-favicon.png",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockSharefav",
+                "order": 400
+            },
+            "sw-logo-favicon": {
+                "label": {
+                    "en-GB": "Favicon",
+                    "de-DE": "Favicon"
+                },
+                "type": "media",
+                "value": "public/demo-images/demo-favicon.png",
+                "editable": true,
+                "tab": "tabMedia",
+                "block": "blockSharefav",
+                "order": 500
+            },
+
+            "sw-color-price": {
+                "label": {
+                    "en-GB": "Price",
+                    "de-DE": "Preis"
+                },
+                "helpText": {
+                    "en-GB": "Set the colour for the prices of your dishes.",
+                    "de-DE": "Setzen Sie die Farbe für die Preise Ihrer Speisen."
+                },
+                "type": "color",
+                "value": "#e96244",
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockLayoutCommerce",
+                "order": 600
+            },
+
+            "dewa-color-price-line-through": {
+                "label": {
+                    "en-GB": "Price (line through)",
+                    "de-DE": "Preis (durchgestrichen)"
+                },
+                "helpText": {
+                    "en-GB": "Set the colour for the strike prices of your Food Items.",
+                    "de-DE": "Setzen Sie die Farbe für die Streichpreise Ihrer Speisen."
+                },
+                "type": "color",
+                "value": "#4a4a4a",
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockLayoutCommerce",
+                "section": "sectionCommerceLineThrough",
+                "order": 700
+            },
+
+            "dewa-color-price-line-through-percentage": {
+                "label": {
+                    "en-GB": "Activate Discount in Percent",
+                    "de-DE": "Rabatt in % anzeigen"
+                },
+                "helpText": {
+                    "en-GB": "Activate a badge next to the strike price, which represents the discount in percent.",
+                    "de-DE": "Aktivieren Sie ein Badge neben dem Streichpreis, welches den Rabatt in Prozent darstellt."
+                },
+                "type": "switch",
+                "scss": false,
+                "value": true,
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockLayoutCommerce",
+                "section": "sectionCommerceLineThrough",
+                "order": 100
+            },
+
+            "sw-color-buy-button": {
+                "label": {
+                    "en-GB": "Buy / Submit Button - Background Color",
+                    "de-DE": "Kaufen / Absenden Button - Hintergrundfarbe"
+                },
+                "helpText": {
+                    "en-GB": "Set the background colour of the 'Add to Cart' button.",
+                    "de-DE": "Setzen Sie die Hintergrundfarbe des 'In den Warenkorb' Buttons."
+                },
+                "type": "color",
+                "value": "#4b8ae2",
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockLayoutCommerce",
+                "order": 700
+            },
+            "sw-color-buy-button-text": {
+                "label": {
+                    "en-GB": "Buy / Submit Button - Text Color",
+                    "de-DE": "Kaufen / Absenden Button - Textfarbe"
+                },
+                "helpText": {
+                    "en-GB": "Set the text colour of the 'Add to Cart' button.",
+                    "de-DE": "Setzen Sie die Textfarbe des 'In den Warenkorb' Buttons."
+                },
+                "type": "color",
+                "value": "#ffffff",
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockLayoutCommerce",
+                "order": 800
+            },
+
+            "dewa-menu-activate-product-images": {
+                "label": {
+                    "en-GB": "Activate Product Images",
+                    "de-DE": "Produktbilder aktivieren"
+                },
+                "helpText": {
+                    "en-GB": "Activate the product images on your menu page.",
+                    "de-DE": "Aktivieren Sie die Produktbilder auf der Speisekarte."
+                },
+                "type": "switch",
+                "scss": false,
+                "value": true,
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockProductImages",
+                "order": 100
+            },
+
+            "dewa-menu-product-images-position": {
+                "label": {
+                    "en-GB": "Image Position",
+                    "de-DE": "Bildposition"
+                },
+                "helpText": {
+                    "en-GB": "Decide where to show the images in the menu.",
+                    "de-DE": "Entscheiden Sie, wo Sie die Produktbilder anzeigen möchten."
+                },
+                "type": "custom",
+                "value": "right",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "right",
+                            "label": {
+                                "en-GB": "Right",
+                                "de-DE": "Rechts"
+                            }
+                        },
+                        {
+                            "value": "left",
+                            "label": {
+                                "en-GB": "Left",
+                                "de-DE": "Links"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "tab": "tabProducts",
+                "block": "blockProductImages",
+                "order": 100
+            },
+
+            "dewa-header-color-scheme": {
+                "label": {
+                    "en-GB": "Select layout of the header",
+                    "de-DE": "Layout vom Header wählen"
+                },
+                "helpText": {
+                    "en-GB": "Define the colour scheme of the header. If you select 'Light background', the background appears white. Otherwise, the primary colour of the shop is selected for the backgorund.",
+                    "de-DE": "Definieren Sie das Farbschema des Headers. Wenn Sie 'Heller Hintergrund' wählen, erscheint der Hintergrund weiß. Ansonsten wird die Primarfarbe des Shops für den Hintergrund gewählt."
+                },
+                "type": "custom",
+                "value": "colorized",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "light",
+                            "label": {
+                                "en-GB": "Light Background",
+                                "de-DE": "Heller Hintergrund"
+                            }
+                        },
+                        {
+                            "value": "colorized",
+                            "label": {
+                                "en-GB": "Colorized Background",
+                                "de-DE": "Gefärbter Hintergrund"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "tab": "tabHeader",
+                "block": "blockHeaderLayoutSettings",
+                "order": 100
+            },
+
+            "dewa-header-fixed-elements": {
+                "label": {
+                    "en-GB": "Select elements of the header to be displayed fixed when scrolling",
+                    "de-DE": "Wählen Sie Elemente des Headers, welche fixiert beim Scrollen angezeigt werden sollen"
+                },
+                "helpText": {
+                    "en-GB": "When the user scrolls through the page, the elements appear fixed on the right-hand side of the page and can thus be selected more quickly.",
+                    "de-DE": "Die Elemente erscheinen, wenn der User durch die Seite Scrollt, fix am rechten Seitenrand und können so schneller ausgewählt werden."
+                },
+                "type": "custom",
+                "value": [
+                    "account",
+                    "cart",
+                    "shopinfo"
+                ],
+                "custom": {
+                    "componentName": "sw-multi-select",
+                    "options": [
+                        {
+                            "value": "account",
+                            "label": {
+                                "en-GB": "My Account / Login",
+                                "de-DE": "Mein Account / Login"
+                            }
+                        },
+                        {
+                            "value": "cart",
+                            "label": {
+                                "en-GB": "Cart",
+                                "de-DE": "Warenkorb"
+                            }
+                        },
+                        {
+                            "value": "shopinfo",
+                            "label": {
+                                "en-GB": "Shop information (e-mail, phone ...)",
+                                "de-DE": "Shopinformationen (E-Mail, Telefon ...)"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "blockHeaderFixedElements",
+                "tab": "tabHeader",
+                "order": 200
+            },
+
+
+            "dewa-footer-activate-contact": {
+                "label": {
+                    "en-GB": "Activate Service Hotline",
+                    "de-DE": "Service Hotline aktivieren"
+                },
+                "helpText": {
+                    "en-GB": "This checkbox enables the Contact Column in the Footer. Edit the Texts in the Admin Snippets of Shopware 6.",
+                    "de-DE": "Diese Checkbox aktiviert die Kontakt Spalte im Footer. Die Texte können Sie in den Admin Snippets von Shopware bearbeiten."
+                },
+                "type": "switch",
+                "scss": false,
+                "value": false,
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "order": 100
+            },
+
+            "dewa-footer-activate-socials": {
+                "label": {
+                    "en-GB": "Activate Social Media",
+                    "de-DE": "Social Media aktivieren"
+                },
+                "helpText": {
+                    "en-GB": "Make sure you have set your Social URLs",
+                    "de-DE": "Stellen Sie sicher, dass Sie die Social URLs gepflegt haben."
+                },
+                "type": "switch",
+                "scss": false,
+                "value": false,
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "order": 100
+            },
+
+            "dewa-footer-activate-payments": {
+                "label": {
+                    "en-GB": "Activate Payment Icons",
+                    "de-DE": "Bezahlmethoden Icons aktivieren"
+                },
+                "helpText": {
+                    "en-GB": "Make sure you have set up your payment methods in the Shopware 6 Administration",
+                    "de-DE": "Stellen Sie sicher, dass Sie die Bezahlmethoden in der Shopware 6 Administration gepflegt haben."
+                },
+                "type": "switch",
+                "scss": false,
+                "value": true,
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "order": 100
+            },
+
+            "dewa-footer-column-amount": {
+                "label": {
+                    "en-GB": "Amount of Category-Columns (Desktop)",
+                    "de-DE": "Anzahl an Kategorie-Spalten (Desktop)"
+                },
+                "type": "custom",
+                "value": "4",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": {
+                                "en-GB": "2",
+                                "de-DE": "2"
+                            }
+                        },
+                        {
+                            "value": "3",
+                            "label": {
+                                "en-GB": "3",
+                                "de-DE": "3"
+                            }
+                        },
+                        {
+                            "value": "4",
+                            "label": {
+                                "en-GB": "4",
+                                "de-DE": "4"
+                            }
+                        },
+                        {
+                            "value": "6",
+                            "label": {
+                                "en-GB": "6",
+                                "de-DE": "6"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "order": 100
+            },
+
+            "dewa-footer-background-color": {
+                "label": {
+                    "en-GB": "Footer Background Color",
+                    "de-DE": "Footer Hintergrundfarbe"
+                },
+                "type": "color",
+                "value": "#d95030",
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "section": "sectionFooterColors",
+                "order": 100
+            },
+
+            "dewa-footer-highlight-color": {
+                "label": {
+                    "en-GB": "Footer Highlight Color",
+                    "de-DE": "Footer Hightlight Farbe"
+                },
+                "type": "color",
+                "value": "#ffffff",
+                "editable": true,
+                "tab": "tabFooter",
+                "block": "blockFooterSettings",
+                "section": "sectionFooterColors",
+                "order": 200
+            },
+
+
+            "dewa-social-facebook": {
+                "label": {
+                    "en-GB": "Facebook URL",
+                    "de-DE": "Facebook URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "type": "text",
+                "scss": false,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 100
+            },
+            "dewa-social-twitter": {
+                "label": {
+                    "en-GB": "Twitter URL",
+                    "de-DE": "Twitter URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "type": "text",
+                "scss": false,
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 200
+            },
+            "dewa-social-instagram": {
+                "label": {
+                    "en-GB": "Instagram URL",
+                    "de-DE": "Instagram URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 300
+            },
+            "dewa-social-pinterest": {
+                "label": {
+                    "en-GB": "Pinterest URL",
+                    "de-DE": "Pinterest URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 400
+            },
+            "dewa-social-youtube": {
+                "label": {
+                    "en-GB": "YouTube URL",
+                    "de-DE": "YouTube URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 500
+            },
+            "dewa-social-linkedin": {
+                "label": {
+                    "en-GB": "LinkedIn URL",
+                    "de-DE": "LinkedIn URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 900
+            },
+            "dewa-social-xing": {
+                "label": {
+                    "en-GB": "Xing URL",
+                    "de-DE": "Xing URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 1000
+            },
+            "dewa-social-appstore": {
+                "label": {
+                    "en-GB": "Appstore URL",
+                    "de-DE": "Appstore Playstore URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 1400
+            },
+            "dewa-social-googleplay": {
+                "label": {
+                    "en-GB": "Google Playstore URL",
+                    "de-DE": "Google Playstore URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 1500
+            },
+            "dewa-social-twitch": {
+                "label": {
+                    "en-GB": "Twitch URL",
+                    "de-DE": "Twitch URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 1600
+            },
+            "dewa-social-whatsapp": {
+                "label": {
+                    "en-GB": "WhatsApp URL",
+                    "de-DE": "WhatsApp URL"
+                },
+                "custom": {
+                    "componentName": "sw-url-field"
+                },
+                "scss": false,
+                "type": "text",
+                "editable": true,
+                "block": "blockSocials",
+                "tab": "tabFooter",
+                "order": 1600
+            },
+
+
+
+            "dewa-custom-head": {
+                "label": {
+                    "en-GB": "Enter HTML",
+                    "de-DE": "HTML eingeben"
+                },
+                "helpText": {
+                    "en-GB": "For example, enter <meta> Tags here. These are loaded in the <head> area of the theme.",
+                    "de-DE": "Geben Sie hier beispielsweise <meta> Tags ein. Diese werden im <head> Bereich des Themes geladen."
+                },
+                "custom": {
+                    "componentName": "sw-code-editor"
+                },
+                "type": "text",
+                "scss": false,
+                "editable": true,
+                "block": "blockCustomHead",
+                "tab": "tabCustom",
+                "order": 100
+            },
+
+            "dewa-custom-css": {
+                "label": {
+                    "en-GB": "Enter CSS",
+                    "de-DE": "CSS eingeben"
+                },
+                "helpText": {
+                    "en-GB": "If possible, do not use comments to avoid errors.",
+                    "de-DE": "Verwenden Sie, wenn möglich, keine Kommentare um Fehler zu vermeiden."
+                },
+                "custom": {
+                    "componentName": "sw-code-editor"
+                },
+                "type": "text",
+                "scss": false,
+                "editable": true,
+                "block": "blockCustomCss",
+                "tab": "tabCustom",
+                "order": 100
+            },
+            "dewa-custom-js": {
+                "label": {
+                    "en-GB": "Enter Javascript",
+                    "de-DE": "Javascript eingeben"
+                },
+                "helpText": {
+                    "en-GB": "You do not need to set the <script> tag. The javascript will be executed in the footer of the theme.",
+                    "de-DE": "Sie müssen den <script> nicht setzen. Das Javascript wird im Footer des Themes ausgeführt."
+                },
+                "custom": {
+                    "componentName": "sw-code-editor"
+                },
+                "type": "text",
+                "scss": false,
+                "editable": true,
+                "block": "blockCustomJs",
+                "tab": "tabCustom",
+                "order": 200
+            }
+        }
+    }
+}

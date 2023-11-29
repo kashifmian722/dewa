@@ -1,0 +1,109 @@
+.footer-minimal{
+    border-top:2px solid darken($dewa-footer-background-color,10%);
+}
+
+.footer-main, .footer-minimal{
+    background-color: $dewa-footer-background-color;
+    color: color-yiq($dewa-footer-background-color);
+    font-size: .8em;
+
+    .alert{
+        padding:.75rem 1.25rem;
+        margin:0;
+
+        &.alert-info{
+            color:color-yiq($sw-color-info);
+        }
+
+        .close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0;
+            color: inherit;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                color: inherit;
+                opacity: 1;
+            }
+
+            &:focus, &:active{
+                outline: none;
+            }
+        }
+    }
+
+    .footer-column{
+        padding-bottom: 0;
+
+        .footer-column-headline{
+            color:$dewa-footer-highlight-color;
+            padding: 15px 0;
+
+            a{
+                color:$dewa-footer-highlight-color;
+
+                &:hover{
+                    color:darken($dewa-footer-highlight-color, 5%);
+                    text-decoration: none;
+                }
+            }
+
+            .footer-column-toggle{
+                transition: ease all .2s;
+
+                .footer-plus-icon{
+                    .icon{
+                        color: color-yiq($dewa-footer-background-color);
+                    }
+                }
+            }
+
+            &.show{
+                .footer-column-toggle{
+                    transform: rotate(45deg);
+
+                    .footer-plus-icon{
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .footer-column-content{
+
+            a{
+                color:color-yiq($dewa-footer-background-color);
+
+                &:hover{
+                    color:$dewa-footer-highlight-color;
+                }
+            }
+
+            .footer-column-content-inner{
+                padding:0;
+
+                @import "inc/socials";
+                @import "inc/payments";
+            }
+        }
+    }
+
+    @import "inc/bottom";
+
+
+}
+
+.footer-main{
+    border-top:3px solid $sw-color-brand-primary;
+    padding:25px 0 0 0;
+}
+
+.footer-minimal{
+    padding:0;
+}

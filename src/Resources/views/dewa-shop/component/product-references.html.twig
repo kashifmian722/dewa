@@ -1,0 +1,39 @@
+{% set price = product.calculatedPrice %}
+{% set customFields = product.customFields %}
+{% set references = [] %}
+
+{% if price.referencePrice is not null %}
+    {% set references = references|merge([
+        "#{price.referencePrice.price|currency}#{"general.star"|trans|sw_sanitize} / #{price.referencePrice.referenceUnit} #{price.referencePrice.unitName}"
+    ]) %}
+{% endif %}
+
+{% if customFields.dw_deposit %}
+    {% set references = references|merge([
+        "#{"dewa-shop.menu.inclDeposit"|trans(customFields)|sw_sanitize}"
+    ]) %}
+{% endif %}
+
+{% if customFields.dw_alcohol_percentage %}
+    {% set references = references|merge([
+        "#{"dewa-shop.menu.alcoholPercentage"|trans(customFields)|sw_sanitize}"
+    ]) %}
+{% endif %}
+
+{% if customFields.dw_min_age %}
+    {% set references = references|merge([
+        "#{"dewa-shop.menu.minAge"|trans(customFields)|sw_sanitize}"
+    ]) %}
+{% endif %}
+
+{% if customFields.dw_caffeine %}
+    {% set references = references|merge([
+        "#{"dewa-shop.menu.caffeine"|trans(customFields)|sw_sanitize}"
+    ]) %}
+{% endif %}
+
+{% if references %}
+    <div class="dewa-unit-price">
+        {{ references|join(' | ') }}
+    </div>
+{% endif %}

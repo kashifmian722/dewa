@@ -1,0 +1,59 @@
+// General
+$dewa-primary-color:$sw-color-brand-primary;
+$dewa-secondary-color:$sw-color-brand-secondary;
+$dewa-general-easing: .2s;
+
+// Scrollbar
+$dewa-scrollbar-width: 12px;
+$dewa-scrollbar-background-color-body: $sw-color-brand-primary;
+$dewa-scrollbar-background-color-items: $sw-color-brand-primary;
+
+// Header
+$dewa-header-logo-max-height: $dewa-logo-max-height;
+
+// Navigation
+$dewa-header-navigation-link-color: color-yiq($sw-color-brand-primary);
+$dewa-header-navigation-link-color-hover: color-yiq($sw-color-brand-primary);
+$dewa-header-navigation-link-background-color: transparent;
+$dewa-header-navigation-link-background-color-hover: lighten($dewa-primary-color,5%);
+$dewa-header-navigation-link-background-color-active: lighten($dewa-primary-color,5%);
+
+// Flyout
+$dewa-flyout-max-width: 250px;
+
+// Modal
+$dewa-modal-background: rgba(0,0,0,.3);
+
+// Header - Actions
+$dewa-header-actions-button-background-color: $dewa-header-navigation-link-background-color-active;
+$dewa-header-actions-button-font-color: $dewa-header-navigation-link-color;
+
+// Nav Tabs
+$dewa-nav-tabs-border-color: transparent;
+$dewa-nav-tabs-tab-background-color: transparent;
+$dewa-nav-tabs-tab-background-color-active: $dewa-secondary-color;
+
+// Footer
+$dewa-footer-icon-width: 40px;
+$dewa-footer-icon-height: 40px;
+
+// Offcanvas
+$dewa-offcanvas-background-color: darken($sw-background-color,3%);
+$dewa-offcanvas-width-base: 100%;
+$dewa-offcanvas-width-sm-up: 50%;
+$dewa-offcanvas-width-lg-up: 30%;
+
+
+// Menu
+$dewa-menu-header-item-spacing: 10px;
+$dewa-menu-general-spacing: 10px;
+
+// Forms
+$dewa-general-form-focus-box-shadow: none;
+
+// Animated Checkmark
+$dewa-animated-checkmark-background-color: #7ac142;
+$dewa-animated-checkmark-stroke-color: #ffffff;
+
+// Higlight color for Backgrounds (e.g. Product Boxes, Filter, Pagination, Sidebar-Navigation Items etc.)
+$dewa-background-highlight-color:darken($sw-background-color, 3%);

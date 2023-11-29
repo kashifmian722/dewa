@@ -1,0 +1,95 @@
+<div class="h3">{{ 'checkout.shippingAddressHeader' | trans }}</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        {% if formViolations.getViolations("/street") is not empty %}
+            {% set violationPath = "/street" %}
+        {% elseif formViolations.getViolations("/#{prefix}/street") is not empty %}
+            {% set violationPath = "/#{prefix}/street" %}
+        {% endif %}
+
+        <input type="text"
+               class="form-control{% if violationPath %} is-invalid{% endif %}"
+               id="{{ prefix }}AddressStreet"
+               placeholder="{{ "address.streetPlaceholder"|trans|striptags }}"
+               name="{{ prefix }}[street]"
+               value="{{ data.get('street') }}"
+               required="required">
+
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    </div>
+    <div class="form-group col-md-6">
+        {% if formViolations.getViolations("/zipcode") is not empty %}
+            {% set violationPath = "/zipcode" %}
+        {% elseif formViolations.getViolations("/#{prefix}/zipcode") is not empty %}
+            {% set violationPath = "/#{prefix}/zipcode" %}
+        {% endif %}
+
+        <input type="text"
+               class="form-control{% if violationPath %} is-invalid{% endif %}"
+               id="{{ prefix }}AddressZipcode"
+               placeholder="{{ "address.zipcodePlaceholder"|trans|striptags }}"
+               name="{{ prefix }}[zipcode]"
+               value="{{ data.get('zipcode') }}"
+               required="required">
+
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    </div>
+    <div class="form-group col-md-6">
+        {% if formViolations.getViolations("/city") is not empty %}
+            {% set violationPath = "/city" %}
+        {% elseif formViolations.getViolations("/#{prefix}/city") is not empty %}
+            {% set violationPath = "/#{prefix}/city" %}
+        {% else %}
+            {% set violationPath = null %}
+        {% endif %}
+
+        <input type="text"
+               class="form-control{% if violationPath %} is-invalid{% endif %}"
+               id="{{ prefix }}AddressCity"
+               placeholder="{{ "address.cityPlaceholder"|trans|striptags }}"
+               name="{{ prefix }}[city]"
+               value="{{ data.get('city') }}"
+               required="required">
+
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    </div>
+    <div class="form-group col-md-6">
+        {% if formViolations.getViolations("/countryId") is not empty %}
+            {% set violationPath = "/countryId" %}
+        {% elseif formViolations.getViolations("/#{prefix}/countryId") is not empty %}
+            {% set violationPath = "/#{prefix}/countryId" %}
+        {% endif %}
+
+        <select class="country-select custom-select{% if violationPath %} is-invalid{% endif %}"
+                id="{{ prefix }}AddressCountry"
+                name="{{ prefix }}[countryId]"
+                required="required"
+                data-initial-country-id="{{ data.get('countryId') }}">
+            {% if not data.get('countryId') %}
+                <option disabled="disabled"
+                        value=""
+                        selected="selected">
+                    {{ "address.countryPlaceholder"|trans|sw_sanitize }}
+                </option>
+            {% endif %}
+            {% for country in page.countries %}
+                <option {% if country.id == data.get('countryId') %}
+                    selected="selected"
+                {% endif %}
+                    value="{{ country.id }}"
+                    {% if feature('FEATURE_NEXT_14114') %}
+                    data-vat-id-required="{{ country.vatIdRequired }}"
+                    {% endif %}>
+                    {{ country.translated.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>

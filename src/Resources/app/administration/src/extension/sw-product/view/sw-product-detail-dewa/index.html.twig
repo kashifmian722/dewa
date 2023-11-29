@@ -1,0 +1,105 @@
+<div class="sw-product-detail-base">
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedOptions')"
+             class="dewa-entity-grid">
+        <dewa-entity-grid entity="dewa_option_product"
+                          :isLoading="isLoading"
+                          :criteria="optionProductCriteria"
+                          :filterColumns="optionProductFilterColumns"
+                          :defaultItem="{ productId: product.id }">
+        </dewa-entity-grid>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.beverages')">
+        <sw-number-field
+            v-model="product.customFields.dw_deposit"
+            :label="$tc('dewa-shop.properties.deposit')"
+        />
+
+        <sw-number-field
+                v-model="product.customFields.dw_caffeine"
+                :label="$tc('dewa-shop.properties.caffeine')"
+        />
+
+        <sw-number-field
+                v-model="product.customFields.dw_min_age"
+                :label="$tc('dewa-shop.properties.minAge')"
+        />
+
+        <sw-number-field
+                v-model="product.customFields.dw_alcohol_percentage"
+                :label="$tc('dewa-shop.properties.alcoholPercentage')"
+        />
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedIngredients')">
+        <sw-entity-many-to-many-select
+                :localMode="true"
+                labelProperty="name"
+                v-model="product.extensions.ingredients">
+        </sw-entity-many-to-many-select>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.bundle')"
+             class="dewa-entity-grid">
+        <dewa-entity-grid entity="dewa_bundle"
+                          :isLoading="isLoading"
+                          :criteria="bundleCriteria"
+                          :filterColumns="bundleFilterColumns"
+                          :defaultItem="{ productId: product.id }">
+        </dewa-entity-grid>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.weekdayConfig')">
+        <sw-alert variant="info">
+            {{ $tc('dewa-shop.notification.weekdayConfig') }}
+        </sw-alert>
+
+        <dewa-weekday-config v-model="product.extensions.dewaProductIndex.weekdayConfig"></dewa-weekday-config>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.stock')"
+             class="dewa-entity-grid">
+        <dewa-entity-grid entity="dewa_stock"
+                          :isLoading="isLoading"
+                          :criteria="stockCriteria"
+                          :filterColumns="stockFilterColumns"
+                          :defaultItem="{ productId: product.id }">
+        </dewa-entity-grid>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedShops')">
+        <sw-alert variant="info">
+            {{ $tc('dewa-shop.notification.linkedShops') }}
+        </sw-alert>
+
+        <sw-entity-many-to-many-select
+                :localMode="true"
+                labelProperty="name"
+                v-model="product.extensions.shops">
+        </sw-entity-many-to-many-select>
+    </sw-card>
+
+    <sw-card v-if="product && product.id"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedBadges')">
+        <sw-entity-many-to-many-select
+                :localMode="true"
+                labelProperty="name"
+                v-model="product.extensions.badges">
+        </sw-entity-many-to-many-select>
+    </sw-card>
+</div>

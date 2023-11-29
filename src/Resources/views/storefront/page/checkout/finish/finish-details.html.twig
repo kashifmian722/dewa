@@ -1,0 +1,86 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/finish-details.html.twig' %}
+
+{% block page_checkout_finish_header %}
+
+    {% if context.dewa %}
+        {% set dewaShopName = context.dewa.shopOrder.shop.name %}
+        {% set shopOrder = context.dewa.shopOrder %}
+
+        <div class="dewa-checkout-finish-checkmark">
+            <svg class="dewa-animated-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+    {% endif %}
+
+    <h1 class="finish-header">
+        {% if page.changedPayment == true %}
+            {{ "checkout.finishUpdateHeader"|trans|sw_sanitize }}
+        {% else %}
+            {{ "checkout.finishHeader"|trans({
+                '%shop%': dewaShopName
+            })|sw_sanitize }}
+        {% endif %}
+    </h1>
+
+
+    {% if context.dewa %}
+        <div class="dewa-state" data-dewa-checkout-finish="{{ path('dewa-shop.checkout-order-state', {'orderId': shopOrder.orderId}) }}"
+             data-location-lat="{{ shopOrder.locationLat }}"
+             data-location-lon="{{ shopOrder.locationLon }}">
+            <div id="dewaStateContent"></div>
+            <div class="dewa-checkout-cd">
+                <div class="dewa-checkout-cd-grid-item">
+                    <div class="dewa-checkout-cd-time">
+                        <div class="dewa-checkout-cd-el"></div>
+                    </div>
+                    <div class="dewa-checkout-cd-title">{{ "dewa-shop.checkout.days"|trans }}</div>
+                </div>
+                <div class="dewa-checkout-cd-grid-item">
+                    <div class="dewa-checkout-cd-time">
+                        <div class="dewa-checkout-cd-el"></div>
+                    </div>
+                    <div class="dewa-checkout-cd-title">{{ "dewa-shop.checkout.hours"|trans }}</div>
+                </div>
+                <div class="dewa-checkout-cd-grid-item">
+                    <div class="dewa-checkout-cd-time">
+                        <div class="dewa-checkout-cd-el"></div>
+                    </div>
+                    <div class="dewa-checkout-cd-title">{{ "dewa-shop.checkout.minutes"|trans }}</div>
+                </div>
+                <div class="dewa-checkout-cd-grid-item">
+                    <div class="dewa-checkout-cd-time">
+                        <div class="dewa-checkout-cd-el"></div>
+                    </div>
+                    <div class="dewa-checkout-cd-title">{{ "dewa-shop.checkout.seconds"|trans }}</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block page_checkout_finish_content %}
+    <div class="finish-content">
+        {% block page_checkout_finish_teaser %}
+            {{ parent() }}
+        {% endblock %}
+
+        {# @depracted tag:6.4.0 #}
+        {% block page_checkout_finish_action %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% set shopEmail = context.dewa.shopOrder.shop.email %}
+        {% set shopPhone = context.dewa.shopOrder.shop.phoneNumber %}
+
+        <div class="dewa-checkout-finish-shopinfo">
+            {% if shopEmail %}
+                <div class="dewa-shop-mail"><span class="fi-rs-envelope"></span> <a href="mailto:{{ shopEmail }}" rel="noopener">{{ shopEmail }}</a></div>
+            {% endif %}
+            {% if shopPhone %}
+                <div class="dewa-shop-phone"><span class="fi-rs-smartphone"></span> <a href="tel:{{ shopPhone }}" rel="noopener">{{ shopPhone }}</a></div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

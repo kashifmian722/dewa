@@ -1,0 +1,15 @@
+{% for product in category.products %}
+    {% if product.extensions.bundles.count() or category.extensions.options.count() or product.extensions.dewaOptions.count() %}
+        {% set hasToggle = true %}
+    {% else %}
+        {% set hasToggle = false %}
+    {% endif %}
+
+    {% if product.extensions.bundles.count() %}
+        {% set isBundle = true %}
+    {% else %}
+        {% set isBundle = false %}
+    {% endif %}
+
+    {% sw_include '@Storefront/dewa-shop/menu/menu-product-item.html.twig' %}
+{% endfor %}

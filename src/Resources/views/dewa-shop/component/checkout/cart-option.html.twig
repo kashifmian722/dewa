@@ -1,0 +1,19 @@
+<div class="dewa-option-container">
+    <div class="dewa-option">
+        {% for item in lineItem.payload.dewa %}
+            {% if item.value is iterable %}
+                <div class="option-row">
+                    <div class="option-title">{{ item.name }}:</div>
+                    <div class="option-items">
+                        {{ item.value | join(', ') }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="option-row">
+                    <div class="option-title">{{ item.name }}:</div>
+                    <div class="option-items">{{ item.value }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.dewa-checkout-aside-column{
+    background-color: $dewa-offcanvas-background-color;
+
+    .sticky-top{
+        z-index: 10;
+    }
+
+    .checkout-aside-container{
+        position: relative;
+        height: 100%;
+        padding-bottom: 30px;
+
+        @import "summary";
+        @import "confirm-product";
+
+        .dewa-confirm-terms{
+            border-top: 2px solid darken($sw-background-color,10%);
+            padding-top:10px;
+        }
+    }
+}

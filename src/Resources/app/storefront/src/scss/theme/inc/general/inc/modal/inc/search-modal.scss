@@ -1,0 +1,124 @@
+#dewaSearchModal {
+    background: rgba(0, 0, 0, .8);
+    padding-right: 0 !important;
+
+    .modal-dialog {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+
+        .modal-content {
+            box-shadow: none;
+            border-radius: 0;
+            overflow: visible;
+            background-color: transparent;
+        }
+    }
+
+    .dewa-search-form {
+
+        .input-group {
+            background-color: $body-bg;
+            border-bottom: 3px solid $primary;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            height: 80px;
+            display: flex;
+            align-items: center;
+
+            .form-control {
+                border: none;
+            }
+
+            .btn {
+                border: none;
+
+                &:hover {
+                    background-color: $light;
+                }
+
+                &[disabled] {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .search-suggest{
+        margin-top:80px;
+
+        .dewa-search-suggest-container{
+            background: transparent;
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+
+            @include media-breakpoint-up(sm){
+                grid-template-columns: repeat(auto-fill,minmax(600px,1fr));
+            }
+
+            grid-gap: 20px;
+            padding: 20px;
+
+            .dewa-search-suggest-product {
+                background: $body-bg;
+                border-radius: $border-radius;
+                padding: 15px 0;
+
+                .row{
+                    margin: 0;
+
+                    .dewa-search-suggest-product-image-container {
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            width:100%;
+                            max-width: 100%;
+                            max-height: 100%;
+                            border-radius: $border-radius;
+                        }
+                    }
+
+                    .dewa-search-suggest-product-link{
+
+                        .dewa-search-suggest-product-name {
+                            font-weight: 700;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            font-size: 1.1em;
+                        }
+
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+
+                    .dewa-search-suggest-product-description {
+                        font-size: .8em;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    .dewa-search-suggest-product-price {
+                        color: $sw-color-price;
+                        margin: 5px 0;
+                    }
+                }
+
+                &:hover{
+                    color:inherit;
+
+                    .dewa-search-suggest-product-name{
+                        color:$sw-color-brand-primary;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{% sw_extends '@Storefront/storefront/page/checkout/address/index.html.twig' %}
+
+{% block page_checkout_main_content %}
+    {% block page_checkout_address %}
+        <div class="dewa-checkout-login-register">
+            {% sw_include '@Storefront/dewa-shop/account/login.html.twig' %}
+        </div>
+    {% endblock %}
+{% endblock %}
+
+
+{% block page_checkout_aside_summary %}
+    {% block page_checkout_address_products %}
+        <div class="confirm-product">
+            {% block page_checkout_confirm_table_container %}
+                <div class="card">
+                    <div class="card-body">
+                        {% block page_checkout_confirm_table_header %}{% endblock %}
+
+                        {% block page_checkout_confirm_table_items %}
+                            {% for lineItem in page.cart.lineItems %}
+                                {% block page_checkout_confirm_table_item %}
+                                    {% sw_include '@Storefront/dewa-shop/component/checkout/dewa-aside-item.html.twig' with {
+                                        area: 'checkout'
+                                    } %}
+                                {% endblock %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    <div class="checkout-aside-summary">
+        {% block page_checkout_summary_header %}{% endblock %}
+
+        {% block page_checkout_summary_list %}
+            <div class="checkout-aside-summary-list-container">
+                {% block page_checkout_summary_list_container %}
+                    {% sw_include '@Storefront/storefront/page/checkout/summary.html.twig' %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

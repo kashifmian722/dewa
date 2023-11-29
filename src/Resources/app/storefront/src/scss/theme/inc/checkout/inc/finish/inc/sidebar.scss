@@ -1,0 +1,11 @@
+@import "../../../../cart/dewa-aside-item";
+
+.dewa-checkout-finish-checkmark-sidebar{
+    display: flex;
+    justify-content: flex-end;
+
+    .dewa-animated-checkmark{
+        width: 30px;
+        height: 30px;
+    }
+}

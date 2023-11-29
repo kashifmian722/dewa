@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/page/checkout/address/register.html.twig' %}
+
+{% block component_account_register_form_action %}
+    {% if dewaRedirectRegister %}
+        <input type="hidden"
+               name="errorRoute"
+               value="{{ dewaRedirectRegister }}"/>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+

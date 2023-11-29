@@ -1,0 +1,42 @@
+[
+  {
+    "id": "{ID:UNIT_L}",
+    "shortCode": "l",
+    "name": "Liter"
+  },
+  {
+    "id": "{ID:UNIT_ML}",
+    "shortCode": "ml",
+    "name": "Milliliter"
+  },
+  {
+    "id": "{ID:UNIT_G}",
+    "shortCode": "g",
+    "name": "Gramm"
+  },
+  {
+    "id": "{ID:UNIT_MG}",
+    "shortCode": "mg",
+    "name": "Milligramm"
+  },
+  {
+    "id": "{ID:UNIT_KG}",
+    "shortCode": "kg",
+    "name": "Kilogramm"
+  },
+  {
+    "id": "{ID:UNIT_PERSON}",
+    "shortCode": "P",
+    "name": "Personen"
+  },
+  {
+    "id": "{ID:UNIT_PIECE}",
+    "shortCode": "S",
+    "name": "Stück"
+  },
+  {
+    "id": "{ID:UNIT_QCM}",
+    "shortCode": "cm²",
+    "name": "Quadratzentimeter"
+  }
+]

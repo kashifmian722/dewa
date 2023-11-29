@@ -1,0 +1,44 @@
+{
+    "name": "appflix/dewa-shop",
+    "description": "DeliveryWare | Easy Food Delivery",
+    "keywords": ["restaurant", "delivery", "theme"],
+    "version": "1.4.26",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Appflix UG",
+            "homepage": "https://www.app-flix.de"
+        }
+    ],
+    "require": {
+        "moorl/foundation": "1.4.*",
+        "shopware/core": "^6.4.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Appflix\\DewaShop\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Appflix\\DewaShop\\AppflixDewaShop",
+        "plugin-icon": "src/Resources/public/icon.png",
+        "copyright": "(c) by Appflix UG",
+        "label": {
+            "en-GB": "DeliveryWare | Easy Food Delivery",
+            "de-DE": "DeliveryWare | Einfache Essenslieferung"
+        },
+        "description": {
+            "de-DE": "\uD83E\uDC12 Dokumentation - www.docs.app-flix.de/deliveryware",
+            "en-GB": "\uD83E\uDC12 Documentation - www.docs.app-flix.de/deliveryware"
+        },
+        "manufacturerLink": {
+            "en-GB": "https://www.deliveryware.de",
+            "de-DE": "https://www.deliveryware.de"
+        },
+        "supportLink": {
+            "en-GB": "https://www.deliveryware.de",
+            "de-DE": "https://www.deliveryware.de"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+.is-ctl-product{
+    .product-detail{
+        background-color: $dewa-background-highlight-color;
+        padding: 25px;
+        margin-bottom: 40px;
+        border-radius: $border-radius;
+
+        thead.product-block-prices-head, .product-detail-properties-container .properties-row{
+            background-color: darken($dewa-background-highlight-color,3%);
+        }
+
+        .product-detail-tab-navigation-list{
+
+            .nav-link{
+                color:$sw-text-color;
+
+                &.active, &:hover, &:focus, &:active{
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .product-detail-buy{
+            select{
+                background-color: #fff;
+                color:color-yiq(#fff);
+            }
+
+            .product-wishlist-action, .product-wishlist-action svg{
+                color:$sw-text-color;
+            }
+        }
+    }
+}

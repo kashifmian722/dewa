@@ -1,0 +1,48 @@
+[
+  {
+    "id": "{SHIPPING_METHOD_DELIVERY_ID}",
+    "availabilityRuleId": "{RULE_ID}",
+    "deliveryTimeId": "{DELIVERY_TIME_ID}",
+    "taxType": "auto",
+    "name": "Lieferung",
+    "description": "Kaufen und liefern lassen",
+    "salesChannels": [{"id": "{SALES_CHANNEL_ID}"}],
+    "prices": [
+      {
+        "calculation": 1,
+        "quantityStart": 0,
+        "currencyPrice": {
+          "c{CURRENCY_ID}": {
+            "net": 3,
+            "gross": 3,
+            "linked": false,
+            "currencyId": "{CURRENCY_ID}"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "{SHIPPING_METHOD_COLLECT_ID}",
+    "availabilityRuleId": "{RULE_ID}",
+    "deliveryTimeId": "{DELIVERY_TIME_ID}",
+    "taxType": "auto",
+    "name": "Selbstabholung",
+    "description": "Kaufen und abholen",
+    "salesChannels": [{"id": "{SALES_CHANNEL_ID}"}],
+    "prices": [
+      {
+        "calculation": 1,
+        "quantityStart": 0,
+        "currencyPrice": {
+          "c{CURRENCY_ID}": {
+            "net": 0,
+            "gross": 0,
+            "linked": false,
+            "currencyId": "{CURRENCY_ID}"
+          }
+        }
+      }
+    ]
+  }
+]

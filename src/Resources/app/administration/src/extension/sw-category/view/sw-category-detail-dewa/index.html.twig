@@ -1,0 +1,25 @@
+<div class="sw-category-detail-base">
+    <sw-card v-if="category && !category._isNew"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedOptions')"
+             class="dewa-entity-grid">
+        <dewa-entity-grid entity="dewa_option_category"
+                          :isLoading="isLoading"
+                          :criteria="optionCategoryCriteria"
+                          :filterColumns="optionCategoryFilterColumns"
+                          :defaultItem="{ categoryId: category.id }">
+        </dewa-entity-grid>
+    </sw-card>
+
+    <sw-card v-if="category && !category._isNew"
+             :isLoading="isLoading"
+             :title="$tc('dewa-shop.cards.linkedShops')"
+             class="dewa-entity-grid">
+        <dewa-entity-grid entity="dewa_shop"
+                          :isLoading="isLoading"
+                          :criteria="shopCriteria"
+                          :filterColumns="shopFilterColumns"
+                          :defaultItem="{ categoryId: category.id }">
+        </dewa-entity-grid>
+    </sw-card>
+</div>

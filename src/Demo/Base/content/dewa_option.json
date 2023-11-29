@@ -1,0 +1,277 @@
+[
+  {
+    "name": "Größe (Pizza)",
+    "type": "single",
+    "referenceUnit": 100,
+    "unitId": "{ID:UNIT_QCM}",
+    "items": [
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Mini, Ø 22cm", "purchaseUnit": 380.13},
+      {"price": 0, "priceFactor": 1.5, "priority": 800, "name": "Mittel, Ø 28cm", "purchaseUnit": 615.75},
+      {"price": 0, "priceFactor": 1.5, "priority": 700, "name": "Mittel, Ø 30cm", "purchaseUnit": 706.86},
+      {"price": 0, "priceFactor": 2.3, "priority": 600, "name": "Maxi, Ø 40cm", "purchaseUnit": 1256.64},
+      {"price": 0, "priceFactor": 2.3, "priority": 500, "name": "Maxi, Ø 50cm", "purchaseUnit": 1963.5},
+      {"price": 0, "priceFactor": 3.4, "priority": 400, "name": "Ø 60cm", "purchaseUnit": 2827.43}
+    ]
+  },
+  {
+    "name": "Größe (Chicken Nuggets)",
+    "type": "single",
+    "referenceUnit": 100,
+    "unitId": "{ID:UNIT_PIECE}",
+    "items": [
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "6 Stück", "purchaseUnit": 6},
+      {"price": 0, "priceFactor": 1.5, "priority": 800, "name": "10 Stück", "purchaseUnit": 10}
+    ]
+  },
+  {
+    "name": "Teigvariante (Pizza)",
+    "type": "radio",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 900, "name": "Weizen"},
+      {"price": 1, "priceFactor": 0, "priority": 800, "name": "Dinkel"}
+    ]
+  },
+  {
+    "name": "Pizzasoße (Pizza)",
+    "type": "radio",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 900, "name": "Tomatensoße"},
+      {"price": 1.5, "priceFactor": 0, "priority": 800, "name": "Bolognese"},
+      {"price": 1, "priceFactor": 0, "priority": 700, "name": "BBQ Soße"},
+      {"price": 1, "priceFactor": 0, "priority": 600, "name": "Créme Fraiche"}
+    ]
+  },
+  {
+    "name": "Zutaten (Pizza)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Käse"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Ananas"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Dönerfleisch"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Champignons"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Hähnchenstreifen"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Oliven"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Rindersalami"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Salami"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Schinken"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Thunfisch"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Zwiebeln"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Spinat"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Artischocken"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Brokkoli"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Knoblauch"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Sucuc"}
+    ]
+  },
+  {
+    "name": "Vegetarische Zutaten (Pizza)",
+    "type": "checkbox",
+    "items": [
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Ananas"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Artischocken"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Aubergine gegrillt"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Basilikum"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Bohnen"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Brokkoli"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Champignons"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Doppelt Gouda"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Ei"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Erbsen"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Feta"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Frische Champignons"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Frische Paprika"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Gorgonzola"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Jalapeños"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Kapern"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Knoblauch"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Mais"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Mozzarella"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Oliven"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Paprika"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Parmesan"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Peperoni"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Röstzwiebeln"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Ruccola"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Spinat"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Tomatenscheiben"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Zucchini gegrillt"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Zwiebel Rot"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Zwiebel Weiß"}
+    ]
+  },
+  {
+    "name": "Fleisch Zutaten (Pizza)",
+    "type": "checkbox",
+    "items": [
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Gyros"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Hackfleisch"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Hähnchenstreifen"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Pikante Salami"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Rindersalami"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Salami"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Schinken"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Speckwürfel"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Sucuc"}
+    ]
+  },
+  {
+    "name": "Fisch Zutaten (Pizza)",
+    "type": "checkbox",
+    "items": [
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Krabben"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Muscheln"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Räucherlachs"},
+      {"price": 1.5, "priceFactor": 0, "priority": 0, "name": "Sardellen"},
+      {"price": 1, "priceFactor": 0, "priority": 0, "name": "Thunfisch"}
+    ]
+  },
+  {
+    "name": "Kostenlose Zutaten (Pizza)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Balsamico Créme"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Chili"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Curry Gewürz"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Oregano"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Tabasco"}
+    ]
+  },
+  {
+    "name": "Kommentar",
+    "type": "textarea"
+  },
+  {
+    "name": "Beilage (Exklusive)",
+    "type": "checkbox",
+    "items": [
+      {"price": 2.5, "priceFactor": 0, "priority": 0, "name": "Pommes Frites"},
+      {"price": 3.5, "priceFactor": 0, "priority": 0, "name": "Bratkartoffeln"},
+      {"price": 3, "priceFactor": 0, "priority": 0, "name": "Reis"},
+      {"price": 3, "priceFactor": 0, "priority": 0, "name": "Gemischter Salat"}
+    ]
+  },
+    {
+    "name": "Beilage (Inklusive)",
+    "type": "radio",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Pommes Frites"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Bratkartoffeln"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Reis"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Gemischter Salat"}
+    ]
+  },
+  {
+    "name": "Getränk (Exklusive)",
+    "type": "checkbox",
+    "items": [
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Cola"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Cola Light"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Cola Zero"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Fanta"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Sprite"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Sprite Zero"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Spezi"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Apfelschorle"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Ayran"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Uludag"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Eistee Pfirsich"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Eistee Zitrone"},
+      {"price": 2, "priceFactor": 0, "priority": 0, "name": "Multi Vitamin"}
+    ]
+  },
+  {
+    "name": "Getränk (Inklusive)",
+    "type": "radio",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Cola"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Cola Light"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Cola Zero"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Fanta"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Sprite"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Sprite Zero"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Spezi"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Apfelschorle"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Ayran"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Uludag"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Eistee Pfirsich"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Eistee Zitrone"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Multi Vitamin"}
+    ]
+  },
+  {
+    "name": "Dip (Pommes)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Curry"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Süß Sauer"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Chilli"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Ketchup"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Sour Cream"},
+      {"price": 0.5, "priceFactor": 0, "priority": 0, "name": "Mayonnaise"}
+    ]
+  },
+  {
+    "name": "Größe (Klein/Groß)",
+    "type": "single",
+    "referenceUnit": 100,
+    "unitId": "{ID:UNIT_G}",
+    "items": [
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Klein", "purchaseUnit": 80},
+      {"price": 0, "priceFactor": 1.5, "priority": 800, "name": "Groß", "purchaseUnit": 160}
+    ]
+  },
+  {
+    "name": "Größe (Milchshake)",
+    "type": "single",
+    "referenceUnit": 1,
+    "unitId": "{ID:UNIT_L}",
+    "items": [
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Klein (330ml)", "purchaseUnit": 0.33},
+      {"price": 0, "priceFactor": 1.2, "priority": 800, "name": "Groß (500ml)", "purchaseUnit": 0.5}
+    ]
+  },
+  {
+    "name": "Sorte (Milchshake)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Schoko"},
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Vanille"},
+      {"price": 0, "priceFactor": 1, "priority": 900, "name": "Erdbeere"},
+      {"price": 1, "priceFactor": 1, "priority": 0, "name": "Sahne"},
+      {"price": 1, "priceFactor": 1, "priority": 0, "name": "Smarties"}
+    ]
+  },
+  {
+    "name": "Soße (Döner/Lahmacun/Salat)",
+    "type": "radio",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 900, "name": "Joghurtdressing"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Kräutersoße"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Knoblauchsoße"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Scharfe Soße"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Avocado Soße"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Zaziki Soße"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Cocktailsoße"},
+      {"price": 0, "priceFactor": 0, "priority": 0, "name": "Ohne Soße"}
+    ]
+  },
+  {
+    "name": "Extra (Döner/Lahmacun)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0.5, "priceFactor": 0, "priority": 100, "name": "Extra Schafskäse"},
+      {"price": 0.5, "priceFactor": 0, "priority": 100, "name": "Extra Soße"}
+    ]
+  },
+  {
+    "name": "Sonderwunsch (Döner/Lahmacun)",
+    "type": "checkbox",
+    "items": [
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Ohne Eisbergsalat"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Ohne Gurken"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Ohne Krautsalat"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Ohne Tomaten"},
+      {"price": 0, "priceFactor": 0, "priority": 100, "name": "Ohne Zwiebeln"}
+    ]
+  }
+]

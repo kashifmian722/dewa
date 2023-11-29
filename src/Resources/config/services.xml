@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="entities.xml"/>
+        <import resource="commands.xml"/>
+        <import resource="subscribers.xml"/>
+        <import resource="controllers.xml"/>
+        <import resource="processors.xml"/>
+        <import resource="indexer.xml"/>
+        <import resource="data.xml"/>
+        <import resource="sheduled-tasks.xml"/>
+    </imports>
+
+    <services>
+        <service id="Appflix\DewaShop\Core\Service\DewaShopService" public="true">
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack"/>
+            <argument type="service" id="session"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\PrintService"/>
+            <argument type="service" id="translator"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\SearchPortalService" public="true">
+            <argument type="service" id="Shopware\Core\Framework\Log\LoggerFactory"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\PrintService" public="true">
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\CartValidatorService" public="true">
+            <argument type="service" id="Appflix\DewaShop\Core\Service\DewaShopService"/>
+            <argument type="service" id="MoorlFoundation\Core\Service\LocationService"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\StockService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\System\Currency\CurrencyFormatter"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\StockService" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\ProductWeekdayService" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\InvoiceService">
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument id="Shopware\Core\Checkout\Document\DocumentService" type="service"/>
+            <argument id="Shopware\Core\System\NumberRange\ValueGenerator\NumberRangeValueGeneratorInterface" type="service"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Service\PublicMediaService" public="true">
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileLoader"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileFetcher"/>
+        </service>
+
+        <service id="Twig\Extension\StringLoaderExtension">
+            <tag name="twig.extension"/>
+        </service>
+    </services>
+</container>

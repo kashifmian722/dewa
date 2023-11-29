@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-wishlist.html.twig' %}
+
+{% block component_product_box_manufacturer %}
+    <div class="product-description">
+        {{ product.translated.description|striptags|raw }}
+    </div>
+{% endblock %}
+
+{% block component_product_box_delivery_time %}{% endblock %}

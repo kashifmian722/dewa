@@ -1,0 +1,69 @@
+&.btn-dewa{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: inherit;
+    padding:0;
+    min-width: 140px;
+    height:37px;
+    position: relative;
+    border:none;
+    transition: none;
+
+    .dewa-menu-btn-label{
+        padding: 5px 10px;
+    }
+
+
+    .dewa-button-append{
+        display:inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 40px;
+        background-color: darken($sw-color-buy-button, 10%);
+
+        .loader{
+            color:color-yiq($sw-color-buy-button) !important;
+            width: 20px;
+            height: 20px;
+            display: none;
+        }
+
+        span{
+            display: inline-flex;
+            align-items: center;
+        }
+    }
+
+    &:active, &:focus{
+        box-shadow: $dewa-general-form-focus-box-shadow !important;
+    }
+
+    &.dewa-is-loading{
+        .loader{
+            display: block;
+        }
+
+        span{
+            display: none;
+        }
+    }
+
+    &.active{
+        background-color: darken($sw-background-color, 5%) !important;
+        color: color-yiq(darken($sw-background-color, 5%)) !important;
+
+        .dewa-button-append{
+            background-color: darken($sw-background-color, 10%);
+
+            .loader{
+                color: color-yiq(darken($sw-background-color, 5%)) !important;
+            }
+
+            span{
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

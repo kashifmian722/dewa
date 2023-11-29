@@ -1,0 +1,65 @@
+<sw-page class="dewa-ingredient-detail">
+    <template slot="smart-bar-header" v-if="item">
+        <h2>{{ item.name }}</h2>
+    </template>
+
+    <template slot="smart-bar-actions">
+        <sw-button :routerLink="{ name: 'dewa.ingredient.list' }">
+            {{ $tc('dewa-shop.action.cancel') }}
+        </sw-button>
+
+        <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+            {{ $tc('dewa-shop.action.save') }}
+        </sw-button-process>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch
+                slot="language-switch"
+                :disabled="item && item._isNew"
+                @on-change="onChangeLanguage">
+        </sw-language-switch>
+    </template>
+
+    <template slot="content">
+        <sw-card-view>
+            <sw-card v-if="item" :isLoading="isLoading" :title="$tc('dewa-shop.cards.general')">
+                <sw-field :label="$tc('dewa-shop.properties.name')"
+                          v-model="item.name"
+                          required
+                          validation="required"
+                          :error="itemNameError"></sw-field>
+                <sw-field :label="$tc('dewa-shop.properties.description')"
+                          v-model="item.description"
+                          required
+                          validation="required"
+                          :error="itemDescriptionError"></sw-field>
+            </sw-card>
+
+            <sw-card v-if="item && !item._isNew"
+                     :isLoading="isLoading"
+                     :title="$tc('dewa-shop.cards.linkedProducts')">
+                <sw-entity-many-to-many-select
+                        :localMode="true"
+                        labelProperty="name"
+                        v-model="item.products">
+                </sw-entity-many-to-many-select>
+            </sw-card>
+
+            <sw-card v-if="item && !item._isNew"
+                     :isLoading="isLoading"
+                     :title="$tc('dewa-shop.cards.linkedOptionItems')">
+                <sw-entity-many-to-many-select
+                        :localMode="true"
+                        labelProperty="name"
+                        v-model="item.optionItems">
+                </sw-entity-many-to-many-select>
+            </sw-card>
+        </sw-card-view>
+    </template>
+</sw-page>

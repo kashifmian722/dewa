@@ -1,0 +1,27 @@
+.sw-tabs__content{
+    margin: 60px 0 35px 0;
+
+    .sw-tabs-item{
+        border-top-right-radius: $dewa-admin-config-border-radius;
+        border-top-left-radius: $dewa-admin-config-border-radius;
+        margin-right: 8px;
+        font-weight: 700;
+
+        &:hover{
+            background-color: darken($dewa-admin-config-general-background,5%);
+        }
+
+        &.sw-tabs-item--active{
+            background-color: $dewa-admin-config-highlight-color;
+            color:#fff;
+
+            &:hover{
+                background-color: $dewa-admin-config-highlight-color;
+            }
+        }
+    }
+
+    .sw-tabs__slider{
+        background-color: $dewa-admin-config-highlight-color;
+    }
+}

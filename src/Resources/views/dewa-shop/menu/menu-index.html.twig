@@ -1,0 +1,89 @@
+{% block dewa_dewa_custom_menu_index %}
+    {% set catMedia = page.header.navigation.active.media %}
+    {% set menu = page.cmsPage %}
+    {% set dewaCategoryMediaId = item.category.mediaId %}
+    {% set dewaBadges = page.cmsPage.extensions.badges %}
+
+    {% if catMedia.url %}
+        <div class="dewa-menu-category-image" style="background-image:url({{ catMedia.url }})"></div>
+    {% endif %}
+
+    <div data-dewa-menu-page="true">
+        <div id="menuNavbar" class="dewa-menu-navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="{% if dewaBadges.elements %}col-md-10{% else %}col-12{% endif %}">
+                        <div class="dewa-menu-navigation-inner">
+                            <div class="dewa-menu-navigation-slider-container">
+                                <div class="dewa-menu-navigation-slider">
+                                    {% for category in menu.categories %}
+                                        {% if category.active %}
+                                            {% if loop.index == 1 %}
+                                                {% set defaultActive = 'current' %}
+                                            {% else %}
+                                                {% set defaultActive = '' %}
+                                            {% endif %}
+
+                                            <div class="{{ defaultActive }}">
+                                                <div class="nav-item">
+                                                    <a class="dewa-menu nav-link" href="#{{ category.translated.name | lower | slugify }}">
+                                                        {{ category.translated.name }}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="menu-slider-controls">
+                                    <button class="base-slider-controls-prev menu-slider-controls-prev">
+                                        <span class="fi-rs-angle-left"></span>
+                                    </button>
+
+                                    <button class="base-slider-controls-next menu-slider-controls-next">
+                                        <span class="fi-rs-angle-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if dewaBadges.elements %}
+                        <div class="col-md-2">
+                            {% sw_include '@Storefront/dewa-shop/menu/menu-badge-filter.html.twig' with {
+                                badges: dewaBadges
+                            } %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div id="dewaMenuContent" class="dewa-menu-content">
+            <div class="container">
+                {% for category in menu.categories %}
+                    {% if category.active %}
+                        {% set badgeIds = [] %}
+                        {% for product in category.products %}
+                            {% set badgeIds = product.extensions.badges.getIds() | merge(badgeIds) %}
+                        {% endfor %}
+
+                        <div id="{{ category.translated.name | lower | slugify }}"
+                             data-dewa-product-badges="{{ badgeIds | join("|") }}"
+                             class="dewa-menu-category">
+                            <div class="dewa-category-title">
+                                {{ category.translated.name }}
+                            </div>
+                            {% if category.media %}
+                                <div class="dewa-menu-category-image" style="background-image:url({{ category.media.url }})"></div>
+                            {% endif %}
+
+                            <div class="dewa-menu-product-items">
+                                {% sw_include '@Storefront/dewa-shop/menu/menu-product-items.html.twig' %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

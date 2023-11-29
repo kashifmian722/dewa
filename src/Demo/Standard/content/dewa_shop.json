@@ -1,0 +1,123 @@
+[
+    {
+        "id": "{ID:SHOP_1}",
+        "description": "{LOREM_IPSUM_50}",
+        "shopCategories": [
+            "german",
+            "snack_bar"
+        ],
+        "mediaId": "{MEDIA_FILE:icon.png|cms_page}",
+        "active": true,
+        "name": "DeliveryWare Hamburg",
+        "email": "info@deliveryware.de",
+        "phoneNumber": "01 23 4 / 56 78 9",
+        "firstName": "Max",
+        "lastName": "Mustermann",
+        "street": "Bergstraße",
+        "streetNumber": "17",
+        "zipcode": "20095",
+        "city": "Hamburg",
+        "locationLat": 53.5514,
+        "locationLon": 9.99446,
+        "deliverers": [
+            {
+                "id": "{ID:DELIVERER_1}",
+                "active": true,
+                "name": "Bringdienst",
+                "trackingCode": "HH0001"
+            }
+        ],
+        "printers": [
+            {
+                "id": "{ID:PRINTER_1}",
+                "active": true,
+                "name": "Küche",
+                "mac": "00:00:00:00:00:00"
+            }
+        ]
+    },
+    {
+        "id": "{ID:SHOP_2}",
+        "description": "{LOREM_IPSUM_50}",
+        "shopCategories": [
+            "german",
+            "snack_bar"
+        ],
+        "mediaId": "{MEDIA_FILE:icon.png|cms_page}",
+        "active": true,
+        "name": "DeliveryWare Paderborn",
+        "email": "info@deliveryware.de",
+        "phoneNumber": "01 23 4 / 56 78 9",
+        "firstName": "Max",
+        "lastName": "Mustermann",
+        "street": "Markt",
+        "streetNumber": "9",
+        "zipcode": "33098",
+        "city": "Paderborn",
+        "locationLat": 51.7182,
+        "locationLon": 8.75489,
+        "deliverers": [
+            {
+                "id": "{ID:DELIVERER_2}",
+                "active": true,
+                "name": "Bringdienst",
+                "trackingCode": "PB0001"
+            }
+        ],
+        "printers": [
+            {
+                "id": "{ID:PRINTER_2}",
+                "active": true,
+                "name": "Küche",
+                "mac": "00:00:00:00:00:00"
+            }
+        ]
+    },
+    {
+        "id": "{ID:SHOP_3}",
+        "description": "{LOREM_IPSUM_50}",
+        "shopCategories": [
+            "spanish",
+            "indian"
+        ],
+        "mediaId": "{MEDIA_FILE:icon.png|cms_page}",
+        "active": true,
+        "isDefault": true,
+        "name": "DeliveryWare Schöppingen",
+        "email": "info@deliveryware.de",
+        "phoneNumber": "01 23 4 / 56 78 9",
+        "firstName": "Max",
+        "lastName": "Mustermann",
+        "street": "Ebbinghoff",
+        "streetNumber": "10",
+        "zipcode": "48624",
+        "city": "Schöppingen",
+        "deliveryType": "area",
+        "shopAreas": [
+            {
+                "id": "{ID:SHOP_AREA_48624}",
+                "zipcode": "48624"
+            },
+            {
+                "id": "{ID:SHOP_AREA_48629}",
+                "zipcode": "48629"
+            }
+        ],
+        "deliverers": [
+            {
+                "id": "{ID:DELIVERER_3}",
+                "active": true,
+                "name": "Bringdienst",
+                "trackingCode": "SW0001"
+            }
+        ],
+        "printers": [
+            {
+                "id": "{ID:PRINTER_3}",
+                "active": true,
+                "name": "Küche",
+                "mac": "00:11:62:1C:0D:AB"
+            }
+        ]
+    }
+]

@@ -1,0 +1,14 @@
+@import "~scss/variables";
+
+.dewa-shop-turnover {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+
+  .dewa-shop-turnover__sidebar {
+    padding: 40px 0;
+  }
+
+  .dewa-shop-turnover__content {
+    position: relative;
+  }
+}

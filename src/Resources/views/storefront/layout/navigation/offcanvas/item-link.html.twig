@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' %}
+
+{% block layout_navigation_offcanvas_navigation_categories_list_category_item_link %}
+    {% if not item.category.cmsPageId and item.category.type != 'link' %}
+        <a class="navigation-offcanvas-link nav-item nav-link"
+           href="{{ seoUrl('frontend.navigation.page', { navigationId: item.category.parentId })~'#'~name|lower|slugify }}"
+           itemprop="url"
+           title="{{ name }}">
+            <span itemprop="name">{{ name }}</span>
+        </a>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

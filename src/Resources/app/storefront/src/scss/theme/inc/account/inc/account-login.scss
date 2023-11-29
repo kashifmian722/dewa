@@ -1,0 +1,80 @@
+.dewa-checkout-login-register{
+    padding: 25px;
+    border-radius: $border-radius*3;
+    background-color: darken($sw-background-color, 5%);
+}
+
+.dewa-account-login-steps {
+    padding:20px;
+
+    @include media-breakpoint-up(sm){
+        padding: 40px;
+    }
+
+    border-radius: $border-radius;
+    background-color: $sw-background-color;
+    width: 100%;
+
+    .dewa-account-login-steps-headline {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        font-size: 1.3em;
+        font-weight: 600;
+        border: none;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .dewa-account-login-step {
+        .custom-select,
+        .form-control,
+        .btn {
+              height: 48px;
+              font-size: 1.1em;
+            }
+
+        .login-password-recover{
+            font-size: .9em;
+
+            a{
+                &:hover{
+                    text-decoration: none;
+                    color:$sw-color-brand-primary;
+                }
+            }
+        }
+    }
+
+    .card {
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+.dewa-tab-navigation{
+    margin-bottom:30px;
+
+    .nav-link{
+        color:$sw-text-color;
+        border:none;
+        border-bottom:2px solid transparent;
+        position: relative;
+        bottom:-1px;
+
+        &.active{
+            background-color: transparent;
+            border-bottom:2px solid $sw-color-brand-primary;
+        }
+
+        &:not(.active):hover{
+            border-color:transparent;
+        }
+    }
+}

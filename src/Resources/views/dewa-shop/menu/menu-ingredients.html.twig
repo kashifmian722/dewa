@@ -1,0 +1,20 @@
+{% if entity.extensions.ingredients %}
+    {% set ingredients = entity.extensions.ingredients %}
+{% else %}
+    {% set ingredients = entity.ingredients %}
+{% endif %}
+
+{% if ingredients and ingredients.count > 0 %}
+    <div class="dewa-ingredient-container">
+        {% for ingredient in ingredients %}
+            <div class="ingredient">
+                <div class="ingredient-headline">{{ ingredient.translated.name }}</div>
+                <p>
+                    {{ ingredient.translated.description }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>{{ "dewa-shop.menu.ingredientsNotConfigured"|trans }}</p>
+{% endif %}

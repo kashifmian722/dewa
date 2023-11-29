@@ -1,0 +1,61 @@
+{% set hasToggle = product.extensions.dewaProductIndex.productConfigurator %}
+
+<div class="dewa-product-image">
+    {% sw_thumbnails 'product-image-thumbnails' with {
+        media: product.cover.media,
+        sizes: {
+            'xs': '501px',
+            'sm': '315px',
+            'md': '427px',
+            'lg': '333px',
+            'xl': '284px'
+        },
+        attributes: {
+            'alt': (product.cover.media.translated.alt ?: product.translated.name),
+            'title': (product.cover.media.translated.title ?: product.translated.name)
+        }
+    } %}
+</div>
+<div class="dewa-product-content">
+    <div class="h3 dewa-product-title">
+        <span class="dewa-product-number text-muted small">{{ product.productNumber }}</span>
+
+        {{ product.translated.name }}
+
+        {% if product.extensions.dewaProductIndex.productIngredient %}
+            <a href="javascript:" aria-label="{{ 'dewa-shop.menu.ingredients' |trans }}" data-dewa-modal="{{ path('dewa-shop.menu-ingredients', {'entityName': 'product', 'id': product.id}) }}" class="dewa-product-info-popup">
+                <span class="fi-rs-info"></span>
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="dewa-product-content">
+        <div class="dewa-product-description">
+            {{ product.translated.description|raw }}
+        </div>
+
+        <div class="dewa-product-price-action-container">
+            <div class="dewa-product-price">
+                {% if hasToggle %}
+                    {{ "dewa-shop.menu.from"|trans }}
+                {% endif %}
+
+                {{ product.calculatedPrice.totalPrice|currency }}*
+
+                {% if product.calculatedPrice.listPrice and product.calculatedPrice.listPrice.price > product.calculatedPrice.totalPrice %}
+                    <span class="list-price-price dewa-list-price-stroke">{{ product.calculatedPrice.listPrice.price|currency }}</span>
+                    {% if theme_config('dewa-color-price-line-through-percentage') and product.calculatedPrice.listPrice.price > product.calculatedPrice.totalPrice %}
+                        <span class="list-price-percentage badge badge-danger">-{{ product.calculatedPrice.listPrice.percentage | round }} %</span>
+                    {% endif %}
+                {% endif %}
+
+
+                {% if product.referenceUnit and product.unit %}
+                    <div class="dewa-unit-price">{{ product.calculatedPrice.unitPrice|currency }}/{{ product.referenceUnit }} {{ product.unit.name }}</div>
+                {% endif %}
+            </div>
+
+            {% sw_include '@Storefront/dewa-shop/component/dewa-product-action.html.twig' %}
+        </div>
+    </div>
+</div>

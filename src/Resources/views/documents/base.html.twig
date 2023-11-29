@@ -1,0 +1,48 @@
+{% sw_extends '@Storefront/documents/base.html.twig' %}
+
+{% block document_line_item_table_row_label %}
+    <td class="line-item-breakable">
+        {% if level > 0 %}
+            {% for i in 1..level %}
+                <span class="wrapper-wrapper">
+                                    <span class="label-wrapper level-{{ i }}"></span>
+                                </span>
+            {% endfor %}
+        {% endif %}
+
+        <span class="line-item-label level-{{ level }}">{{ lineItem.label }}</span>
+        {% if lineItem.payload.options|length >= 1 %}
+            <br/>
+            {% for option in lineItem.payload.options %}
+                {{ option.group }}: {{ option.option }}
+                {% if lineItem.payload.options|last != option %}
+                    {{ " | " }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if lineItem.payload.features|length >=1 %}
+            <br/>
+            {% for feature in lineItem.payload.features %}
+                {% if feature.type == 'referencePrice' %}
+                    {{ feature.value.purchaseUnit|sw_sanitize }} {{ feature.value.unitName|sw_sanitize }}
+                    ({{ feature.value.price|currency(currencyIsoCode) }}{{ "general.star"|trans }} / {{ feature.value.referenceUnit|sw_sanitize }} {{ feature.value.unitName|sw_sanitize }})
+                    {% if lineItem.payload.features|last != feature %}
+                        {{ " | " }}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if lineItem.payload.dewa|length >=1 %}
+            {% for item in lineItem.payload.dewa %}
+                <br/>
+                {% if item.value is iterable %}
+                    {{ item.name }}: {{ item.value | join(', ') }}
+                {% else %}
+                    {{ item.name }}: {{ item.value }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </td>
+{% endblock %}

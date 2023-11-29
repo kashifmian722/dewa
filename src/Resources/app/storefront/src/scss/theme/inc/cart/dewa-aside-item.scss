@@ -1,0 +1,50 @@
+.dewa-aside-item{
+    padding:15px 0;
+    border-bottom: 1px solid darken($dewa-offcanvas-background-color,10%);
+
+    .dewa-aside-item-info{
+        display:grid;
+        grid-template-columns:3fr 1fr 2fr 1fr;
+
+        .grid-item{
+            align-self:center;
+
+            &.dewa-aside-item-title{
+                font-weight: 700;
+            }
+
+            &.dewa-aside-item-link-price{
+                justify-self:center;
+            }
+
+            .cart-item-remove{
+                position: static;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .dewa-aside-item-remove-button{
+                display: flex;
+                align-items: center;
+                padding: 7px;
+                font-size: .7em;
+            }
+
+            select{
+                padding: 5px;
+                height: 40px;
+                font-size: .9em;
+            }
+        }
+    }
+
+    &:last-child{
+        border-bottom:0;
+    }
+
+    &.dewa-aside-item-promotion{
+        .dewa-aside-item-info{
+            grid-template-columns:3fr 1fr 1fr;
+        }
+    }
+}

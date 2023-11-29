@@ -1,0 +1,20 @@
+.offcanvas-close{
+    margin: 0 0 10px 0;
+    background-color: $sw-color-brand-primary;
+    color: color-yiq($sw-color-brand-primary);
+    border:none;
+
+    &:hover, &:active, &:focus{
+        background-color: darken($sw-color-brand-primary, 5%) !important;
+    }
+
+    .icon{
+        color: color-yiq($sw-color-brand-primary);
+        width: 15px;
+        height: 15px;
+
+        svg{
+            top: 1px;
+        }
+    }
+}

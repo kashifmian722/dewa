@@ -1,0 +1,22 @@
+<ul class="dewa-weekday-config">
+    <li class="day" v-for="(dayItem, dayIndex) in value">
+        <div class="dewa-weekday-config-title">
+            {{ $tc('dewa-shop.days.' + dayItem.day) }}
+        </div>
+
+        <sw-field type="switch"
+                  bordered
+                  :label="$tc('dewa-shop.properties.active')"
+                  v-model="dayItem.active">
+        </sw-field>
+
+        <sw-field :label="$tc('dewa-shop.properties.discountType')"
+                  v-model="dayItem.discountType">
+        </sw-field>
+
+        <sw-field type="number"
+                  :label="$tc('dewa-shop.properties.discountValue')"
+                  v-model="dayItem.discountValue">
+        </sw-field>
+    </li>
+</ul>

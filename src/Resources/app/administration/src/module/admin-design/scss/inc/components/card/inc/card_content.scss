@@ -1,0 +1,40 @@
+.sw-card__content{
+    border:none;
+
+    .sw-card-section{
+        background-color: $dewa-admin-config-background-card;
+        padding: 20px;
+        border-bottom-right-radius: $dewa-admin-config-border-radius;
+        border-bottom-left-radius: $dewa-admin-config-border-radius;
+
+        .sw-theme-manager-detail__content--section_title{
+            padding:5px;
+            border-bottom:4px solid darken($dewa-admin-config-background-card,7%);
+            font-size: .9em;
+            font-weight: 700;
+        }
+
+        .sw-block-field__block{
+            border-radius: $dewa-admin-config-border-radius;
+        }
+
+        .sw-theme-manager-detail__content--section_field{
+
+            .sw-field--checkbox{
+                display:flex;
+
+                .sw-field__checkbox-state{
+                    border-radius: $dewa-admin-config-border-radius;
+                }
+
+                .sw-help-text{
+                    margin-left:10px;
+                }
+            }
+        }
+    }
+
+    .dewa-app-button-container{
+        margin-top:20px;
+    }
+}

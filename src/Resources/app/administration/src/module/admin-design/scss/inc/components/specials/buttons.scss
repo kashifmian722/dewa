@@ -1,0 +1,16 @@
+.sw-button{
+
+    &.sw-button--dewa{
+        background: $dewa-admin-config-highlight-color;
+        color: #fff;
+        border: 0;
+
+        .sw-icon{
+            color:inherit;
+        }
+
+        &:hover{
+            background: darken($dewa-admin-config-highlight-color, 5%);
+        }
+    }
+}

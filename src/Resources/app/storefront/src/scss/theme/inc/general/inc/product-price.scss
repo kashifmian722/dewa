@@ -1,0 +1,19 @@
+.dewa-unit-price {
+  font-size: 12px;
+  color: lighten($sw-text-color, 20%);
+  font-weight: 400;
+  padding: 0 30px;
+  display: inline;
+
+  &:before {
+   content: "(";
+  }
+
+  &:after {
+    content: ")";
+  }
+
+  &:empty {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="dewa-opening-hours">
+    <div class="container-fluid">
+        {% for dayItem in openingHours.openingHours %}
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <div>{{ "dewa-shop.days.#{dayItem.day}"|trans }}:</div>
+                </div>
+                <div class="col-12 col-md-7">
+                    {% if not dayItem.times %}
+                        <span class="dewa-opening-hours-range closed">
+                            {{ dayItem.info ? dayItem.info|trans : "dewa-shop.days.closed"|trans }}
+                        </span>
+                    {% else %}
+                        {% for time in dayItem.times %}
+                            {% if time.from %}
+                                <span class="dewa-opening-hours-range">
+                                    {{ time.from|slice(0, 5) }}-{{ time.until|slice(0, 5) }}
+                                </span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

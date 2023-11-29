@@ -1,0 +1,25 @@
+.account-aside-header{
+    padding:10px 0;
+    border-bottom: 1px solid darken($dewa-offcanvas-background-color,10%);
+    margin-bottom:10px;
+}
+
+.account-aside-list-group{
+
+    .list-group-item{
+        background:transparent;
+        padding:10px 0;
+        border-bottom: 1px solid darken($dewa-offcanvas-background-color,10%);
+        margin-bottom:10px;
+    }
+}
+
+.account-aside-footer{
+    border:0;
+    margin: 0;
+    padding:0;
+
+    .account-aside-btn{
+        padding: 3px 5px;
+    }
+}

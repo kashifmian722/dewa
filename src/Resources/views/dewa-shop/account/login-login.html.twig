@@ -1,0 +1,48 @@
+<form class="login-form"
+      action="{{ path('frontend.account.login') }}"
+      method="post"
+      data-form-csrf-handler="true"
+      data-form-validation="true">
+    {{ sw_csrf('frontend.account.login') }}
+
+    <input type="hidden"
+           name="redirectTo"
+           value="{{ redirectTo }}">
+
+    <input type="hidden"
+           name="redirectParameters"
+           value="{{ redirectParameters }}">
+
+    <input type="email"
+           class="d-none"
+           id="loginMail"
+           name="username"
+           required="required">
+
+    <div class="form-group">
+
+        <div class="row form-row">
+            <div class="col-sm-8 mb-2 mb-sm-0">
+                <input type="password"
+                       class="form-control{% if loginError %} is-invalid{% endif %}"
+                       id="loginPassword"
+                       placeholder="{{ "account.loginPasswordPlaceholder"|trans|striptags }}"
+                       name="password"
+                       required="required">
+            </div>
+
+            <div class="col-sm-4">
+                <button type="submit"
+                        class="btn btn-block btn-primary">
+                    {{ "account.loginSubmit"|trans|sw_sanitize }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-password-recover">
+        <a href="{{ seoUrl('frontend.account.recover.page') }}">
+            {{ 'account.loginPasswordRecover'|trans }}
+        </a>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_container %}
+    {% if app.request.get('default') %}
+        {{ parent() }}
+    {% else %}
+        <div class="dewa-search-suggest-container">
+            {% block layout_search_suggest_results %}
+                {% if app.request.get('default') %}
+                    {{ parent() }}
+                {% else %}
+                    {% if page.dewa_search_result.count() > 0 %}
+                        {% for dewaProduct in page.dewa_search_result %}
+                            {% set menuCategory = dewaProduct.categories.first() %}
+                            <div class="dewa-search-suggest-product dewa-menu-product js-result">
+                                {% sw_include '@Storefront/dewa-shop/header/search/dewa-search-suggest-item.html.twig' with {
+                                    product: dewaProduct,
+                                    menuLink: seoUrl('frontend.navigation.page', { navigationId: menuCategory.parentId })
+                                } %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% for product in page.searchResult %}
+                        <div class="dewa-search-suggest-product dewa-menu-product js-result">
+                            {% sw_include '@Storefront/dewa-shop/header/search/dewa-search-suggest-item.html.twig' with {
+                                menuLink: seoUrl('frontend.detail.page', {'productId': product.id})
+                            } %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block layout_search_suggest_result_total %}
+    {% if app.request.get('default') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

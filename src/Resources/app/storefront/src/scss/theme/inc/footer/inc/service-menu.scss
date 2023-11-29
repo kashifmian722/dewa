@@ -1,0 +1,19 @@
+.dewa-footer-service-menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px 0 45px 0;
+
+    .footer-service-menu-item{
+
+        .footer-service-menu-link{
+            padding:7px 0;
+            color:color-yiq($dewa-footer-background-color);
+
+            &:hover{
+                color:$dewa-footer-highlight-color;
+                text-decoration: none;
+            }
+        }
+    }
+}

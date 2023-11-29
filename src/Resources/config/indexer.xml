@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Appflix\DewaShop\Core\Content\Shop\DataAbstractionLayer\ShopIndexer">
+            <argument type="service" id="dewa_shop.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+            <argument type="service" id="MoorlFoundation\Core\Service\LocationService"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\SearchPortalService"/>
+
+            <tag name="shopware.entity_indexer"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Content\Shop\Aggregate\ShopOrder\DataAbstractionLayer\ShopOrderIndexer">
+            <argument type="service" id="dewa_shop_order.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+            <argument type="service" id="MoorlFoundation\Core\Service\LocationService"/>
+
+            <tag name="shopware.entity_indexer"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Content\Product\DataAbstractionLayer\ProductIndexer">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+
+            <tag name="shopware.entity_indexer"/>
+        </service>
+    </services>
+</container>

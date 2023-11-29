@@ -1,0 +1,79 @@
+&.navigation-offcanvas{
+
+    .offcanvas-close{
+        margin:0;
+        border-bottom:lighten($dewa-primary-color, 5%);
+    }
+
+    .navigation-offcanvas-actions{
+        padding: 10px 1rem;
+        background-color:$dewa-primary-color;
+
+        .top-bar-nav-item{
+            padding:0;
+
+            .header-actions-btn{
+                background-color: $dewa-header-actions-button-background-color;
+                color: $dewa-header-actions-button-font-color;
+                display: flex;
+                align-items: center;
+                height: 40px;
+
+                .language-flag{
+                    height: 20px;
+                    width: 26px;
+                    margin:0;
+                }
+            }
+
+            .languages-menu{
+
+                .dropdown-menu{
+                    will-change: unset !important;
+                    transform: none !important;
+                    top:100% !important;
+                    min-width: unset;
+                    background-color: $dewa-primary-color;
+                    border: none;
+                    left: -12px !important;
+
+                    .dropdown-item{
+                        padding: 0;
+                        width: auto;
+                        margin: 5px 10px;
+                        border-radius: $border-radius;
+                        transition: ease all $dewa-general-easing;
+
+                        &.item-checked{
+                            background-color: $dewa-header-actions-button-background-color;
+                        }
+
+                        .top-bar-list-label{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 15px;
+                        }
+
+                        .language-flag{
+                            margin:0;
+                            height: 20px;
+                            width: 26px;
+                        }
+
+                        &:hover{
+                            background-color:lighten($dewa-header-actions-button-background-color,5%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation-offcanvas-headline{
+        border-top:lighten($dewa-primary-color, 5%);
+        background-color:$dewa-primary-color;
+        color:color-yiq($dewa-primary-color);
+        padding: 5px 1rem;
+    }
+}

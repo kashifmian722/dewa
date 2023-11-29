@@ -1,0 +1,47 @@
+[
+  {
+    "id": "{ID:BADGE_1}",
+    "svgIconId": "{MD5:035-salad.svg}",
+    "name": "Vegan",
+    "backgroundColor": "#5a9834",
+    "iconColor": "#ffffff",
+    "products": [
+      {"id": "{ID:PRODUCT_002}"},
+      {"id": "{ID:PRODUCT_005}"},
+      {"id": "{ID:PRODUCT_009}"},
+      {"id": "{ID:PRODUCT_012}"}
+    ]
+  },
+  {
+    "id": "{ID:BADGE_2}",
+    "svgIconId": "{MD5:049-chili sauce.svg}",
+    "name": "Scharf",
+    "backgroundColor": "#b91818",
+    "iconColor": "#ffffff",
+    "products": [
+      {"id": "{ID:PRODUCT_003}"}
+    ]
+  },
+  {
+    "id": "{ID:BADGE_3}",
+    "svgIconId": "{MD5:036-spatula.svg}",
+    "name": "Spezialität des Hauses",
+    "backgroundColor": "#a22d16",
+    "iconColor": "#ffffff",
+    "products": [
+      {"id": "{ID:PRODUCT_010}"}
+    ]
+  },
+  {
+    "id": "{ID:BADGE_4}",
+    "svgIconId": "{MD5:020-burger.svg}",
+    "name": "Halal",
+    "backgroundColor": "#4538cc",
+    "iconColor": "#ffffff",
+    "products": [
+      {"id": "{ID:PRODUCT_004}"},
+      {"id": "{ID:PRODUCT_010}"},
+      {"id": "{ID:PRODUCT_011}"}
+    ]
+  }
+]

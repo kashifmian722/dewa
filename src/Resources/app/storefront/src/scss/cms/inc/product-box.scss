@@ -1,0 +1,26 @@
+.product-box{
+    background-color: $dewa-background-highlight-color;
+    border:none;
+
+    .product-name{
+        font-weight: 700;
+        font-size: 1.1em;
+        line-height: 1.2em;
+    }
+
+    .product-variant-characteristics{
+        .product-variant-characteristics-text{
+            height: auto;
+            font-size: .7em;
+        }
+    }
+
+    .product-price-wrapper, .product-price{
+        font-size: 1em;
+        font-weight: 700;
+    }
+
+    .product-cheapest-price{
+        font-size: .8em;
+    }
+}

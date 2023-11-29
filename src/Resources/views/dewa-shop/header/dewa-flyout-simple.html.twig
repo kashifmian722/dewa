@@ -1,0 +1,36 @@
+{% block dewa_navigation_flyout_simple %}
+    {% set flyoutTrigger = treeItem.category.id %}
+    {% set activeId = page.header.navigation.active.id %}
+
+    <div class="navigation-flyout simple" data-flyout-menu-id="{{ flyoutTrigger }}">
+        {% for mainCategory in page.header.navigation.tree %}
+            {% for subCategory in mainCategory.children %}
+                {% if subCategory.category.parentId == flyoutTrigger %}
+                    {% if mainCategory.dewa_menu %}
+                        {% set dewaMenu = 'dewa-menu' %}
+                        {% set link = seoUrl('frontend.navigation.page', { navigationId: subCategory.category.parentId })~'#'~subCategory.category.translated.name | lower | slugify %}
+                    {% else %}
+                        {% set link = subCategory.category.externalLink %}
+                    {% endif %}
+
+                    {% set id = subCategory.category.id %}
+                    {% set name = subCategory.category.translated.name %}
+
+                    {% if subCategory.category.type == 'folder' %}
+                        <div class="nav-item nav-link navigation-flyout-link"
+                             title="{{ name }}">
+                            <span itemprop="name">{{ name }}</span>
+                        </div>
+                    {% else %}
+                        <a class="nav-item {{ dewaMenu }} nav-link navigation-flyout-link {% if id is same as(activeId) %} active{% endif %}"
+                           href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                           itemprop="url"
+                           title="{{ name }}">
+                            <span itemprop="name">{{ name }}</span>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

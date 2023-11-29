@@ -1,0 +1,147 @@
+{
+    "dewa-shop": {
+        "tableRegistration": {
+            "firstName": "Enter Name *",
+            "email": "Enter E-Mail *",
+            "shop": "Select Store *",
+            "seats": "Seat amount *",
+            "time": "Select Date *",
+            "success": "Your table registration has been sent.",
+            "submitText": "Book a table"
+        },
+        "account": {
+            "register": "Register",
+            "loginCheckMailDescription": "Your email address",
+            "next": "Next",
+            "back": "Back",
+            "loginMessage": "Hello %firstname%, welcome back!",
+            "initialPasswordMessage": "Hello %firstname%, we have send you an email with your password.",
+            "registerMessage": "We have not found your email address (%email%), please complete the following data to finish your registration.",
+            "login": "Login / Register",
+            "forward": "Continue"
+        },
+        "menu": {
+            "caffeine": "Contains caffeine (dw_caffeine mg / 100 ml)",
+            "deposit": "plus %price% deposit",
+            "inclDeposit": "incl. dw_deposit deposit",
+            "minAge": "delivery to persons over dw_min_age",
+            "alcoholPercentage": "dw_alcohol_percentage% vol",
+            "depositShort": "Deposit",
+            "menu": "Menu",
+            "from": "from",
+            "addToCart": "Add to Cart",
+            "configure": "Configure",
+            "ingredients": "Ingredients",
+            "ingredientsNotConfigured": "Ingredients for this Item is not configured yet.",
+            "availableAt": "Exclusive by",
+            "notAvailable": "Currently not available"
+        },
+        "checkout": {
+            "until": "-",
+            "noShopFound": "Sorry, no store was found for your search.",
+            "shopSearchPlaceholder": "Enter your address, postal code or city here...",
+            "shopSelection": "Select Store",
+            "saveSelection": "Save Selection",
+            "desiredTime": "Desired Delivery Time / Collection Time",
+            "comment": "Make a Comment",
+            "collect": "Collect",
+            "delivery": "Delivery",
+            "available": "available",
+            "notAvailable": "not available",
+            "distance": "Distance",
+            "minDatetime": "Minimum",
+            "days": "Days",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds",
+            "desiredTimeOptionMinutes": "in %minutes% Minutes",
+            "desiredTimeOptionDays": "in %days% Days",
+            "desiredTimeNow": "As fast as possible",
+            "orderOpen": "Order open",
+            "orderInProgress": "Order in progress",
+            "orderComplete": "Order Completed",
+            "collectOpen": "Collect open",
+            "collectComplete": "Ready to collect",
+            "deliveryOpen": "Delivery open",
+            "deliveryComplete": "Is in delivery",
+            "phoneNumber": "Phone number"
+        },
+        "footer": {
+            "social": {
+                "headline": "Social Media",
+                "noSocials": {
+                    "headline": "No social URLs found",
+                    "content": "Make sure that you have stored the social URLs in the theme settings."
+                }
+            },
+            "payments": {
+                "headline": "Payment Methods"
+            }
+        },
+        "days": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday",
+            "closed": "Closed"
+        },
+        "slip": {
+            "taxAdviser": "Tax adviser summary",
+            "orderNumber": "Order number",
+            "deliveryCosts": "Delivery costs",
+            "thisIsNoInvoice": "This is not an invoice",
+            "paid": "Already paid",
+            "notPaid": "Not paid yet",
+            "totalCosts": "Total",
+            "vatAbbr": "Tax.",
+            "totalGross": "Gross incl."
+        },
+        "openingHours": "Opening Hours",
+        "deliveryHours": "Delivery Hours",
+        "contact": "Contact",
+        "address": "Address",
+        "email": "E-Mail",
+        "phone": "Phone",
+        "fax": "Fax",
+        "shopInfo": "Store Information"
+    },
+
+    "checkout": {
+        "dewa-wrong-shipping-method": "Your selected shipping method %name% is not available for food orders.",
+        "dewa-order-min-value": "You haven't reached the minimum order value for %name% of %minOrderValue%. Value left: %orderValueLeft%.",
+        "dewa-mixed-cart": "You can't order food and other products at once. Please clean-up your cart.",
+        "dewa-shop-not-available": "A store must be selected for this shipping method. Either there is no store nearby or the store operator has not configured a store.",
+        "dewa-collect-closed": "%name% for %shop% is not available on %desiredTime%. Please fill your desired %name%-time and try again.",
+        "dewa-delivery-closed": "%name% for %shop% is not available on %desiredTime%. Please fill your desired %name%-time and try again.",
+        "dewa-delivery-out-of-range": "Delivery for %name% is out of range (%detail%). Please select other store.",
+        "dewa-phone-number-not-confirmed": "Please confirm your phone number.",
+        "dewa-no-shop-selected": "No store selected.",
+        "dewa-shop-closed": "%name% ist actually closed."
+    },
+    "header": {
+        "searchPlaceholder": "Search ..."
+    },
+    "footer": {
+        "serviceHotlineHeadline": "About us",
+        "serviceHotline": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+    },
+    "account":{
+        "personalFirstNamePlaceholder": "Firstname *",
+        "personalLastNamePlaceholder": "Lastname *",
+        "personalMailPlaceholder": "E-Mail Address *",
+        "personalPhonePlaceholder": "Phone Number *",
+        "personalPasswordPlaceholder": "Password *",
+        "personalPasswordConfirmationPlaceholder": "Password Confirm *",
+        "newsletterSettings": "Yes, I would like to subscribe to the free newsletter. (I may unsubscribe at any time.)"
+    },
+    "address": {
+        "phoneNumberPlaceholder": "Phone Number *",
+        "streetPlaceholder": "Street Address *",
+        "zipcodePlaceholder": "Postal Code *",
+        "cityPlaceholder": "City *",
+        "countryPlaceholder": "Country *"
+    }
+}

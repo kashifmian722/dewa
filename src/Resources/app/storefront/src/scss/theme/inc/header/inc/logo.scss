@@ -1,0 +1,29 @@
+.header-logo-col{
+    padding-bottom: 0;
+    margin:0 0 20px 0;
+
+    @include media-breakpoint-up(md){
+        margin:10px 0;
+    }
+
+    .header-logo-main{
+
+        .header-logo-main-link{
+            display: block;
+
+            .header-logo-picture{
+                margin:0 auto;
+
+                @include media-breakpoint-up(md){
+                    margin:0;
+                }
+
+                display: block;
+
+                img{
+                    max-height: $dewa-header-logo-max-height;
+                }
+            }
+        }
+    }
+}

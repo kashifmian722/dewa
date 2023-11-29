@@ -1,0 +1,150 @@
+{# Check if bundle #}
+{% set isBundle = product.extensions.bundles.count() > 0 %}
+
+{% set basePrice = product.calculatedPrice.unitPrice %}
+{% set bundleBasePrice = 0 %}
+
+{# Get from price #}
+{% if isBundle %}
+    {# DANGER ZONE #}
+    {% for bundle in product.extensions.bundles %}
+        {% if bundle.accessoryProduct %}
+            {% set bundleBasePrice = bundleBasePrice + bundle.accessoryProduct.calculatedPrice.unitPrice %}
+        {% elseif bundle.accessoryProducts %}
+            {% set cheapestStreamBasePrice = bundle.accessoryProducts.first().calculatedPrice.unitPrice %}
+            {% for accessoryProduct in bundle.accessoryProducts %}
+                {% if accessoryProduct.calculatedPrice.unitPrice < cheapestStreamBasePrice %}
+                    {% set cheapestStreamBasePrice = accessoryProduct.calculatedPrice.unitPrice %}
+                {% endif %}
+            {% endfor %}
+            {#% set bundleBasePrice = bundleBasePrice + cheapestStreamBasePrice %#}
+        {% endif %}
+    {% endfor %}
+
+    {% set basePrice = bundleBasePrice %}
+{% endif %}
+
+<div class="modal-dialog {{ modal.size ? "modal-#{modal.size}" : "" }} {{ modal.centered ? "modal-dialog-centered" : "" }}"
+     role="document">
+    <form method="post"
+          data-dewa-menu-buy-form
+          data-base-price="{{ basePrice }}"
+          data-price-precision="{{ config('AppflixDewaShop.config.pricePrecision') }}"
+          data-currency="{{ context.currency.isoCode }}"
+          data-unit-name="{{ product.unit.shortCode }}"
+          data-reference-unit="{{ product.referenceUnit }}"
+          data-purchase-unit="{{ product.purchaseUnit }}"
+          class="dewa-menu-buy-form modal-content"
+          action="{{ path('dewa-shop.add-to-cart') }}"
+          data-add-to-cart="true">
+        {{ sw_csrf('dewa-shop.add-to-cart') }}
+
+        <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+
+        {% set namePrefix = "lineItems[#{product.id}]" %}
+        {% if not isBundle %}
+            <input type="hidden" name="{{ namePrefix }}[id]" value="{{ product.id }}">
+            <input type="hidden" name="{{ namePrefix }}[quantity]" value="1">
+        {% endif %}
+
+        <div class="modal-header">
+            <div class="modal-title h4">
+                {{ product.translated.name }}
+            </div>
+
+            <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">{% sw_icon 'x' %}</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            {% if isBundle %}
+                {# DANGER ZONE #}
+                {% for bundle in product.extensions.bundles %}
+                    {% if not loop.first %}<hr>{% endif %}
+
+                    {% if bundle.accessoryProduct %}
+                        {% set product = bundle.accessoryProduct %}
+                        {% set namePrefix = "lineItems[#{product.id}]" %}
+                        <input type="hidden" name="{{ namePrefix }}[id]" value="{{ product.id }}">
+                        <input type="hidden" name="{{ namePrefix }}[quantity]" value="1">
+
+                        <div class="h4">
+                            {{ product.translated.name }}: {{ product.calculatedPrice.unitPrice|currency }}
+                        </div>
+
+                        {% sw_include '@Storefront/dewa-shop/menu/menu-buy-form-body.html.twig' with {
+                            options: product.extensions.options
+                        } %}
+                    {% elseif bundle.accessoryProducts %}
+                        <div class="form-group" data-option="{{ bundle.id }}">
+                            <label class="h4">
+                                {{ bundle.accessoryStream.translated.name }}
+                            </label>
+
+                            <div class="dewa-option-multi-list">
+                                {% set namePrefix = "lineItems[#{bundle.id}]" %}
+                                <input type="hidden" name="{{ namePrefix }}[quantity]" value="1">
+
+                                {% for accessoryProduct in bundle.accessoryProducts %}
+                                    {% set product = accessoryProduct %}
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio"
+                                               id="{{ bundle.id }}{{ product.id }}"
+                                               class="custom-control-input"
+                                               name="{{ namePrefix }}[id]"
+                                               value="{{ product.id }}"
+                                               data-id="{{ product.id }}"
+                                               data-name="{{ product.translated.name }}"
+                                               data-price="{{ product.calculatedPrice.unitPrice }}"
+                                               data-price-factor="0"
+                                               {% if loop.first %}checked="checked"{% endif %}>
+                                        <label class="custom-control-label"
+                                               for="{{ bundle.id }}{{ product.id }}">
+                                            {{ product.translated.name }}: <span data-item-price>{{ product.calculatedPrice.unitPrice|currency }}</span>
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {# OK ZONE #}
+                {% sw_include '@Storefront/dewa-shop/menu/menu-buy-form-body.html.twig' with {
+                    options: product.extensions.options
+                } %}
+            {% endif %}
+        </div>
+
+        <div class="modal-footer text-right">
+            <span data-unit-price class="dewa-unit-price"></span>
+
+            {% if not product.extensions.bundles.count() %}
+                {% set options = product.extensions.options %}
+                {% for option in options %}
+                    {% if option.option.type == 'deposit' %}
+                        <input type="hidden"
+                               name="configurator[{{ option.id }}][]"
+                               value="{{ option.option.referenceUnit|currency }}"
+                               data-option="{{ option.id }}"
+                               data-deposit-price="{{ option.option.referenceUnit }}">
+                        <span class="dewa-unit-price">{{ "dewa-shop.menu.deposit"|trans({'%price%':option.option.referenceUnit|currency}) }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <button type="submit" class="btn btn-buy btn-dewa">
+                <div class="dewa-menu-btn-label">
+                    <span data-calculated-price></span>
+                    {{ "dewa-shop.menu.addToCart"|trans }}
+                </div>
+
+                <div class="dewa-button-append">
+                    <span class="fi-rs-shopping-cart-add"></span>
+                </div>
+            </button>
+        </div>
+    </form>
+</div>

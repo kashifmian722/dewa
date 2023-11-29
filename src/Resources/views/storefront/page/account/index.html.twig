@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/page/account/index.html.twig' %}
+
+{% block page_account_overview_profile_actions %}
+    <div class="card-actions">
+        <a href="{{ path('frontend.account.profile.page') }}"
+           title="{{ "account.overviewChangeProfile"|trans|striptags }}"
+           class="dewa-checkout-change-btn">
+            <span class="fi-rs-edit"></span>
+        </a>
+    </div>
+{% endblock %}
+
+{% block page_account_overview_payment_actions %}
+    <div class="card-actions">
+        <a href="{{ path('frontend.account.payment.page') }}"
+           title="{{ "account.overviewChangePayment"|trans|striptags }}"
+           class="dewa-checkout-change-btn">
+            <span class="fi-rs-edit"></span>
+        </a>
+    </div>
+{% endblock %}

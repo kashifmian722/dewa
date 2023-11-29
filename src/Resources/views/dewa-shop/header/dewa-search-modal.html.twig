@@ -1,0 +1,36 @@
+<div class="modal fade" id="dewaSearchModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ path('frontend.search.page') }}"
+                  method="get"
+                  data-search-form="true"
+                  data-url="{{ path('frontend.search.suggest') }}?search="
+                  class="dewa-search-form">
+                <div class="input-group">
+                    <input type="search"
+                           name="search"
+                           class="form-control"
+                           autocomplete="off"
+                           autocapitalize="off"
+                           placeholder="{{ "header.searchPlaceholder"|trans|striptags }}"
+                           aria-label="{{ "header.searchPlaceholder"|trans|striptags }}"
+                           {% if page.searchTerm %}
+                            value="{{ page.searchTerm }}"
+                           {% endif %}>
+
+                    <div class="input-group-append">
+                        <button type="submit"
+                                class="btn"
+                                aria-label="{{ "header.searchButton"|trans|striptags }}">
+                            {% sw_icon 'search' %}
+                        </button>
+
+                        <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                            {% sw_icon 'x' %}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

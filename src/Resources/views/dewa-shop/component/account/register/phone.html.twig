@@ -1,0 +1,17 @@
+{% if formViolations.getViolations("/phoneNumber") is not empty %}
+    {% set violationPath = "/phoneNumber" %}
+{% elseif formViolations.getViolations("/#{prefix}/phoneNumber") is not empty %}
+    {% set violationPath = "/#{prefix}/phoneNumber" %}
+{% endif %}
+
+<input type="text"
+       class="form-control"
+       id="{{ prefix }}AddressPhoneNumber"
+       placeholder="{{ "address.phoneNumberPlaceholder"|trans|striptags }}"
+       name="{{ prefix }}[phoneNumber]"
+       value="{{ data.get('phoneNumber') }}"
+    {{ config('core.loginRegistration.phoneNumberFieldRequired') ? 'required="true"' }}>
+
+{% if violationPath %}
+    {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+{% endif %}

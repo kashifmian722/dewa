@@ -1,0 +1,66 @@
+.product-box{
+
+    .card-body{
+        padding:10px;
+
+        .product-badges{
+
+        }
+
+        .product-image-wrapper{
+
+        }
+
+        .product-wishlist{
+
+        }
+
+        .product-info{
+
+            .product-rating{
+                margin-bottom: 0;
+                height: auto;
+            }
+
+            .product-name{
+                height: auto;
+                margin-top: 10px;
+            }
+
+            .product-variant-characteristics{
+                min-height: unset;
+
+                .product-variant-characteristics-text{
+
+                }
+            }
+
+            .product-description{
+
+            }
+
+            .product-price-info{
+
+                .product-price-unit{
+                    margin:0;
+                    height:auto;
+                }
+
+                .product-price-wrapper{
+
+                    .product-cheapest-price{
+                        min-height: unset;
+                    }
+
+                    .product-price{
+
+                    }
+                }
+            }
+
+            .product-action{
+
+            }
+        }
+    }
+}

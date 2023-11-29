@@ -1,0 +1,10 @@
+[
+    {
+        "id": "{CMS_PAGE_ID}",
+        "type": "product_list",
+        "entity": "dewa_menu",
+        "locked": true,
+        "name": "DeliveryWare - Speisekarte",
+        "previewMediaId": "{MEDIA_FILE:DewaThemePreview.jpg|theme}"
+    }
+]

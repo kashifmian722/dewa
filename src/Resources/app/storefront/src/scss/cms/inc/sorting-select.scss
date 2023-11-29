@@ -1,0 +1,14 @@
+.sorting[data-listing-sorting=true]{
+    select{
+        font-size: .9em;
+        background-color: $dewa-background-highlight-color;
+        border:none;
+
+        &:hover, &:active, &:focus{
+            background-color: $dewa-primary-color;
+            color:color-yiq($dewa-primary-color);
+            border-color: $dewa-primary-color;
+            box-shadow: none;
+        }
+    }
+}

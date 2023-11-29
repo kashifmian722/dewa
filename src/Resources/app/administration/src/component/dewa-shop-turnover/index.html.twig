@@ -1,0 +1,57 @@
+<div class="dewa-shop-turnover">
+    <div class="dewa-shop-turnover__sidebar">
+        <sw-tabs class="sw-blog__tabs"
+                 :defaultItem="defaultFilter"
+                 :isVertical="true"
+                 :small="false"
+                 @new-item-active="onChangeTab">
+            <template #default="{ active }">
+                <sw-tabs-item :title="$tc('dewa-shop.cards.days')"
+                              :activeTab="active"
+                              name="day">
+                    {{ $tc('dewa-shop.cards.days') }}
+                </sw-tabs-item>
+
+                <sw-tabs-item :title="$tc('dewa-shop.cards.months')"
+                              :activeTab="active"
+                              name="month">
+                    {{ $tc('dewa-shop.cards.months') }}
+                </sw-tabs-item>
+            </template>
+        </sw-tabs>
+    </div>
+
+    <div class="dewa-shop-turnover__content">
+        <sw-data-grid
+                :columns="columns"
+                :dataSource="items"
+                :isLoading="isLoading"
+                :allowInlineEdit="false"
+                :allowEdit="false"
+                :allowDelete="false"
+                :showActions="true"
+                :showSelection="false"
+                :showSettings="true"
+                @column-sort="onColumnSort"
+                :sortBy="sortBy"
+                :sortDirection="sortDirection"
+                allowColumnEdit
+                fullPage>
+            <template #actions="{ item }">
+                <sw-context-menu-item @click="onPrintTurnover(item.key)">
+                    {{ $tc('dewa-shop.action.print') }}
+                </sw-context-menu-item>
+            </template>
+
+            <template #pagination>
+                <sw-pagination
+                        :page="page"
+                        :total="total"
+                        :limit="limit"
+                        @page-change="paginate"
+                />
+            </template>
+        </sw-data-grid>
+    </div>
+</div>
+

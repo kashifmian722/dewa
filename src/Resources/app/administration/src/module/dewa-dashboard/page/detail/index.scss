@@ -1,0 +1,101 @@
+@import "~scss/variables";
+
+.dewa-dashboard-modal {
+    button {
+        margin-bottom: 20px;
+    }
+}
+
+.dewa-dashboard-detail {
+    .smart-bar__actions {
+        .sw-field--default {
+            margin: 0;
+            margin-left: 8px;
+            text-align: left;
+        }
+        .sw-field--small {
+            margin: 0;
+            margin-left: 8px;
+            text-align: left;
+        }
+    }
+
+    .sw-page__head-area {
+        border-color: $color-gray-100;
+    }
+
+    .sw-page__back-btn-container {
+        grid-row: 1;
+    }
+
+    .smart-bar__content {
+        min-height: 40px;
+        padding: 5px 0;
+    }
+
+    .dewa-price {
+        font-weight: 600;
+        text-align: right;
+    }
+}
+
+.dewa-dashboard-content {
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+    "a b c d"
+    "a b e e";
+    grid-template-columns: repeat(4, minmax(340px, 1fr));
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2px;
+
+    .item-a {
+        grid-area: a;
+        background: $color-emerald-100;
+        background: linear-gradient(90deg, $color-emerald-100 0%, $color-emerald-200 100%);
+        .dewa-order-headline.active {
+            background: $color-emerald-800;
+        }
+    }
+    .item-b {
+        grid-area: b;
+        background: $color-pumpkin-spice-100;
+        background: linear-gradient(90deg, $color-pumpkin-spice-100 0%, $color-pumpkin-spice-200 100%);
+        .dewa-order-headline.active {
+            background: $color-pumpkin-spice-800;
+        }
+    }
+    .item-c {
+        grid-area: c;
+        background: $color-module-blue-100;
+        background: linear-gradient(90deg, $color-module-blue-100 0%, $color-module-blue-200 100%);
+        .dewa-order-headline.active {
+            background: $color-module-blue-800;
+        }
+    }
+    .item-d {
+        grid-area: d;
+        background: $color-module-purple-100;
+        background: linear-gradient(90deg, $color-module-purple-100 0%, $color-module-purple-200 100%);
+        .dewa-order-headline.active {
+            background: $color-module-purple-800;
+        }
+    }
+    .item-e {
+        grid-area: e;
+    }
+
+    background: $color-white;
+
+    &.hide-map {
+        grid-template-areas:
+        "a b c"
+        "a b d";
+        grid-template-columns: repeat(3, minmax(340px, 1fr));
+
+        .item-e {
+            display: none;
+        }
+
+    }
+}

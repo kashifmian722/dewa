@@ -1,0 +1,93 @@
+.modal-backdrop {
+
+    &.fade{
+        display: none !important;
+    }
+}
+
+.modal {
+  background: $dewa-modal-background;
+
+  .modal-dialog {
+    .modal-content {
+      overflow: hidden;
+
+      .modal-header {
+        background-color: $dewa-primary-color;
+        padding: 15px 25px;
+        align-items: center;
+          border:none;
+
+        .modal-title {
+          color: $dewa-header-navigation-link-color;
+          display: inline-flex;
+          align-items: center;
+          font-size: 1.3em;
+
+          span {
+            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            font-size: .9em;
+            width: 40px;
+            height: 40px;
+            background: $dewa-header-actions-button-background-color;
+            justify-content: center;
+            border-radius: $border-radius;
+          }
+        }
+
+        button {
+          background-color: $dewa-header-actions-button-background-color;
+          opacity: 1;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          border-radius: $border-radius;
+          justify-content: center;
+          margin: 0;
+          color: $dewa-header-navigation-link-color;
+          text-shadow: none;
+          font-size: .8em;
+          transition: ease all $dewa-general-easing;
+
+          &:focus, &:active {
+            outline: none;
+            border: none;
+          }
+
+          &:hover {
+            background-color: lighten($dewa-header-actions-button-background-color, 5%);
+          }
+
+          > span {
+            display: flex;
+            align-items: center;
+
+            .icon {
+              color: $dewa-header-navigation-link-color;
+
+              svg {
+                position: static;
+              }
+            }
+          }
+        }
+      }
+
+      .modal-body {
+        background-color: darken($sw-background-color, 5%);
+        padding: 20px;
+        @import "inc/ingredients-modal";
+      }
+
+      .modal-footer {
+        background-color: darken($sw-background-color, 6%);
+      }
+    }
+  }
+}
+
+@import "inc/search-modal";
+@import "inc/cookie-modal";

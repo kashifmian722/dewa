@@ -1,0 +1,34 @@
+[
+  {
+    "id": "{ID:SHOP_ORDER_MAIL_TEMPLATE_TYPE}",
+    "technicalName": "appflix.dewa-shop.shop-order-mail",
+    "availableEntities": {
+      "salesChannel": "sales_channel",
+      "order": "order"
+    },
+    "translations": {
+      "{de-DE}": {
+        "name": "DeliveryWare Store Bestellbestätigung"
+      },
+      "{en-GB}": {
+        "name": "DeliveryWare Store Order Confirmation"
+      }
+    }
+  },
+  {
+    "id": "{ID:TABLE_REGISTRATION_MAIL_TEMPLATE_TYPE}",
+    "technicalName": "moorl.foundation.table-registration",
+    "availableEntities": {
+      "salesChannel": "sales_channel",
+      "order": "order"
+    },
+    "translations": {
+      "{de-DE}": {
+        "name": "DeliveryWare Tischreservierung"
+      },
+      "{en-GB}": {
+        "name": "DeliveryWare Table Registration"
+      }
+    }
+  }
+]

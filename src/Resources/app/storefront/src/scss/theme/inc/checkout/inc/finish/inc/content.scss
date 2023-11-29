@@ -1,0 +1,46 @@
+.dewa-checkout-finish-checkmark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.finish-header{
+    margin-bottom:20px;
+}
+
+.finish-order-details{
+    p{
+        margin: 0;
+    }
+}
+
+.finish-ordernumber{
+    padding-top: 40px;
+    border-top: 1px solid;
+    margin-top: 40px;
+}
+
+.dewa-checkout-finish-shopinfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dewa-shop-mail, .dewa-shop-phone{
+        display: flex;
+        align-items: center;
+
+        span{
+            margin-right: 10px;
+            color: $sw-color-brand-primary;
+        }
+    }
+
+    > div{
+        margin-right:15px;
+
+        &:last-child{
+            margin-right:0;
+        }
+    }
+}

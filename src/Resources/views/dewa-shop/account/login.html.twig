@@ -1,0 +1,88 @@
+<div class="dewa-account-login-wrapper" data-dewa-account-login="true">
+    {% if config('AppflixDewaShop.config.registrationFormDewa') %}
+        <div class="dewa-account-login-steps">
+            <div class="dewa-account-login-message" id="accountLoginMessage">
+                {% if loginError %}
+                    {% if errorSnippet != null %}
+                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                            type: "danger",
+                            content: errorSnippet|trans|sw_sanitize
+                        } %}
+                    {% else %}
+                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                            type: "danger",
+                            content: "account.loginBadCredentials"|trans|sw_sanitize
+                        } %}
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="dewa-account-login-steps-headline" id="accountLoginHeadline"></div>
+
+            <div class="dewa-account-login-step {% if controllerAction == 'recoverAccountForm' %}d-none{% endif %}" id="accountLoginCheckMail">
+                {% sw_include '@Storefront/dewa-shop/account/login-check-email.html.twig' %}
+            </div>
+
+            <div class="dewa-account-login-step d-none" id="accountLogin">
+                {% sw_include '@Storefront/dewa-shop/account/login-login.html.twig' %}
+
+                <div class="mt-2">
+                    <button type="button"
+                            data-step="accountLoginCheckMail"
+                            class="btn btn-sm btn-block btn-light">
+                        {{ "dewa-shop.account.back"|trans|sw_sanitize }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="dewa-account-login-step {% if controllerAction != 'recoverAccountForm' %}d-none{% endif %}" id="accountRecover">
+                {% sw_include '@Storefront/dewa-shop/account/login-recover.html.twig' %}
+
+                <div class="mt-2">
+                    <button type="button"
+                            data-step="accountLoginCheckMail"
+                            class="btn btn-sm btn-block btn-light">
+                        {{ "dewa-shop.account.back"|trans|sw_sanitize }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="dewa-account-login-step d-none" id="accountRegister">
+
+                {% sw_include '@Storefront/dewa-shop/component/account/register.html.twig' %}
+
+                <div class="mt-2">
+                    <button type="button"
+                            data-step="accountLoginCheckMail"
+                            class="btn btn-sm btn-block btn-light">
+                        {{ "dewa-shop.account.back"|trans|sw_sanitize }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="nav nav-tabs dewa-tab-navigation" role="tablist">
+            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#tabLogin" role="tab" aria-controls="nav-login" aria-selected="true">
+                {{ "account.loginSubmit"|trans|sw_sanitize }}
+            </a>
+            <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#tabRegister" role="tab" aria-controls="nav-register" aria-selected="false">
+                {{ "dewa-shop.account.register"|trans|sw_sanitize }}
+            </a>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="tabLogin" role="tabpanel" aria-labelledby="nav-login-tab">
+                {% sw_include '@Storefront/storefront/component/account/login.html.twig' with {
+                    'cardTitle': "account.loginHeader"|trans|sw_sanitize
+                } %}
+            </div>
+            <div class="tab-pane fade" id="tabRegister" role="tabpanel" aria-labelledby="nav-register-tab">
+                {% sw_include '@Storefront/storefront/page/checkout/address/register.html.twig' with {
+                    'cardTitle': "checkout.addressRegisterCardTitle"|trans|sw_sanitize,
+                    dewaRedirectRegister : 'frontend.account.register.page'
+                } %}
+            </div>
+        </div>
+    {% endif %}
+</div>

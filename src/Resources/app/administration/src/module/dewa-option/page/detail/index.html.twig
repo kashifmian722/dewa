@@ -1,0 +1,106 @@
+<sw-page class="dewa-option-detail">
+    <template slot="smart-bar-header" v-if="item">
+        <h2>{{ item.name }}</h2>
+    </template>
+
+    <template slot="smart-bar-actions" v-if="item">
+        <sw-button :routerLink="{ name: 'dewa.option.list' }">
+            {{ $tc('dewa-shop.action.cancel') }}
+        </sw-button>
+
+        <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+            {{ $tc('dewa-shop.action.save') }}
+        </sw-button-process>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch
+                slot="language-switch"
+                :disabled="item && item._isNew"
+                @on-change="onChangeLanguage">
+        </sw-language-switch>
+    </template>
+
+    <template slot="content">
+        <sw-card-view>
+            <sw-card v-if="item" :isLoading="isLoading" :title="$tc('dewa-shop.cards.general')">
+                <sw-field :label="$tc('dewa-shop.properties.name')"
+                          v-model="item.name"
+                          required
+                          validation="required"
+                          :error="itemNameError"></sw-field>
+                <sw-select-field :label="$tc('dewa-shop.properties.type')"
+                                 :helpText="$tc('dewa-shop.tooltip.optionType')"
+                                 v-model="item.type"
+                                 required
+                                 validation="required"
+                                 :error="itemTypeError">
+                    <option value="single">{{ $tc('dewa-shop.properties.single') }}</option>
+                    <option value="radio">{{ $tc('dewa-shop.properties.radio') }}</option>
+                    <option value="checkbox">{{ $tc('dewa-shop.properties.checkbox') }}</option>
+                    <option value="textarea">{{ $tc('dewa-shop.properties.textarea') }}</option>
+                    <option value="deposit">{{ $tc('dewa-shop.properties.deposit') }}</option>
+                </sw-select-field>
+
+                <template v-if="item.type === 'single'">
+                    <sw-entity-single-select
+                            :label="$tc('dewa-shop.properties.unit')"
+                            v-model="item.unitId"
+                            labelProperty="name"
+                            entity="unit">
+                    </sw-entity-single-select>
+
+                    <sw-number-field :label="$tc('dewa-shop.properties.referenceUnit')"
+                                     :helpText="$tc('dewa-shop.tooltip.optionReferenceUnit')"
+                                     v-model="item.referenceUnit"></sw-number-field>
+                </template>
+
+                <template v-if="item.type === 'deposit'">
+                    <sw-number-field :label="$tc('dewa-shop.properties.deposit')"
+                                     v-model="item.referenceUnit"></sw-number-field>
+                </template>
+            </sw-card>
+
+            <sw-card v-if="item && !item._isNew"
+                     :isLoading="isLoading"
+                     :title="$tc('dewa-shop.cards.linkedCategories')"
+                     class="dewa-entity-grid">
+                <dewa-entity-grid entity="dewa_option_category"
+                                   :isLoading="isLoading"
+                                   :criteria="optionCategoryCriteria"
+                                   :filterColumns="optionCategoryFilterColumns"
+                                   :defaultItem="{ optionId: item.id }">
+                </dewa-entity-grid>
+            </sw-card>
+
+            <sw-card v-if="item && !item._isNew"
+                     :isLoading="isLoading"
+                     :title="$tc('dewa-shop.cards.linkedProducts')"
+                     class="dewa-entity-grid">
+                <dewa-entity-grid entity="dewa_option_product"
+                                  :isLoading="isLoading"
+                                  :criteria="optionProductCriteria"
+                                  :filterColumns="optionProductFilterColumns"
+                                  :defaultItem="{ optionId: item.id }">
+                </dewa-entity-grid>
+            </sw-card>
+
+            <sw-card v-if="item && !item._isNew && item.type !== 'comment'"
+                     :isLoading="isLoading"
+                     :title="$tc('dewa-shop.cards.linkedOptionItems')"
+                     class="dewa-entity-grid">
+                <dewa-entity-grid entity="dewa_option_item"
+                                   :isLoading="isLoading"
+                                   :criteria="optionItemCriteria"
+                                   :filterColumns="optionItemFilterColumns"
+                                   :defaultItem="{ optionId: item.id }">
+                </dewa-entity-grid>
+            </sw-card>
+        </sw-card-view>
+    </template>
+</sw-page>

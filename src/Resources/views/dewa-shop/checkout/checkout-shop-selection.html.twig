@@ -1,0 +1,108 @@
+<form data-form-auto-submit="true"
+      method="post"
+      class="dewa-shop-selection"
+      action="{{ path('dewa-shop.checkout-shop-selection') }}">
+    {{ sw_csrf('dewa-shop.checkout-shop-selection') }}
+
+    <input name="redirectTo" value="frontend.checkout.confirm.page" type="hidden">
+
+    {% sw_include '@Storefront/dewa-shop/shop/shop-selection-options.html.twig' %}
+
+    {% if checkout.timepicker == 'datetime' %}
+        <div class="dewa-time-selection">
+            <label class="dewa-card-subtitle">
+                {{ "dewa-shop.checkout.desiredTime"|trans }}
+            </label>
+
+            <input type="datetime-local"
+                   class="form-control"
+                   name="desiredTime"
+                   value="{{ desiredTime }}"
+                   min="{{ calculatedTime|date('Y-m-d\\TH:i') }}">
+
+            <small class="text-muted">{{ "dewa-shop.checkout.minDatetime"|trans }}: {{ calculatedTime|date('Y-m-d H:i') }}</small>
+        </div>
+    {% elseif checkout.timepicker == 'date' %}
+        <div class="dewa-time-selection">
+            <label class="dewa-card-subtitle">
+                {{ "dewa-shop.checkout.desiredTime"|trans }}
+            </label>
+
+            <input type="date"
+                   class="form-control"
+                   name="desiredTime"
+                   value="{{ desiredTime }}"
+                   min="{{ checkout.minDate }}">
+
+            <small class="text-muted">{{ "dewa-shop.checkout.minDatetime"|trans }}: {{ checkout.minDate }}</small>
+        </div>
+    {% elseif checkout.timepicker == 'dropdownMinutes' %}
+        <div class="dewa-time-selection">
+            <label class="dewa-card-subtitle">
+                {{ "dewa-shop.checkout.desiredTime"|trans }}
+            </label>
+
+            <select class="custom-select" name="desiredTime">
+                {% for t in checkout.dropdownSteps %}
+                    {% set desiredTimeValue = "+#{t} minute" %}
+
+                    {% if t == '0' %}
+                        <option value="">
+                            {{ "dewa-shop.checkout.desiredTimeNow"|trans }}
+                        </option>
+                    {% else %}
+                        <option value="{{ desiredTimeValue }}" {% if desiredTimeValue == desiredTime %}selected{% endif %}>
+                            {{ "dewa-shop.checkout.desiredTimeOptionMinutes"|trans({'%minutes%':t}) }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    {% elseif checkout.timepicker == 'dropdownDays' %}
+        <div class="dewa-time-selection">
+            <label class="dewa-card-subtitle">
+                {{ "dewa-shop.checkout.desiredTime"|trans }}
+            </label>
+
+            <select class="custom-select" name="desiredTime">
+                {% for t in checkout.dropdownSteps %}
+                    {% set desiredTimeValue = "+#{t} day" %}
+
+                    {% if t == '0' %}
+                        <option value="">
+                            {{ "dewa-shop.checkout.desiredTimeNow"|trans }}
+                        </option>
+                    {% else %}
+                        <option value="{{ desiredTimeValue }}" {% if desiredTimeValue == desiredTime %}selected{% endif %}>
+                            {{ "dewa-shop.checkout.desiredTimeOptionDays"|trans({'%days%':t}) }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    {% else %}
+        <input name="desiredTime" value="" type="hidden">
+    {% endif %}
+
+    {% if config("AppflixDewaShop.config.checkoutPhoneNumber") %}
+        <div class="dewa-phone">
+            <label class="dewa-card-subtitle">
+                {{ "dewa-shop.checkout.phoneNumber"|trans }}
+            </label>
+
+            <input type="tel"
+                   class="form-control"
+                   name="phoneNumber"
+                   value="{{ phoneNumber }}"
+                   required>
+        </div>
+    {% endif %}
+
+    <div class="dewa-comment-selection">
+        <label class="dewa-card-subtitle">
+            {{ "dewa-shop.checkout.comment"|trans }}
+        </label>
+
+        <textarea class="form-control" name="comment">{{ comment }}</textarea>
+    </div>
+</form>

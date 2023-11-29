@@ -1,0 +1,30 @@
+.footer-payments{
+    display: flex;
+    flex-wrap: wrap;
+
+    .footer-logo{
+        height: $dewa-footer-icon-height;
+        transition: ease all $dewa-general-easing;
+        margin:0 10px 10px 0;
+
+        &.image{
+            img{
+                max-height: 100%;
+            }
+        }
+
+        &.text{
+            background-color: darken($dewa-footer-background-color,5%);
+            border-radius: $border-radius;
+            padding:0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+
+            &:hover{
+                background-color: darken($dewa-footer-background-color,10%);
+            }
+        }
+    }
+}

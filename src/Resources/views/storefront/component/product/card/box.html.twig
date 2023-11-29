@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box.html.twig' %}
+
+{% block component_product_box_include %}
+    {% if product.extensions.dewaProductIndex %}
+        {% sw_include '@Storefront/dewa-shop/menu/menu-product-item.html.twig' with {
+            dewaLayout: 'dewaCard'
+        } %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

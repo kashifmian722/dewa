@@ -1,0 +1,15 @@
+.dewa-ingredient-container{
+
+    .ingredient{
+        margin-bottom: 15px;
+
+        .ingredient-headline{
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}

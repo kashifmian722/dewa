@@ -1,0 +1,12 @@
+.dewa-sidebar-container{
+    .container-main{
+        padding:0;
+
+        .dewa-checkout-main-column{
+            padding-top:40px;
+            padding-bottom:40px;
+        }
+
+        @import "checkout-aside";
+    }
+}

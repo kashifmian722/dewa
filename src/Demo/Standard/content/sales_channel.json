@@ -1,0 +1,8 @@
+[
+    {
+        "id": "{SALES_CHANNEL_ID}",
+        "footerCategoryId": "{ID:CATEGORY_FOOTER}",
+        "serviceCategoryId": "{ID:CATEGORY_SERVICE}",
+        "shippingMethodId": "{SHIPPING_METHOD_DELIVERY_ID}"
+    }
+]

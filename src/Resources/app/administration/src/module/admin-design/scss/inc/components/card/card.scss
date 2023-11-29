@@ -1,0 +1,80 @@
+.sw-card{
+    &.sw-theme-manager-detail__info-card{
+        margin-top:0 !important;
+        max-width: $dewa-admin-config-max-content-width;
+
+        .sw-card__content{
+            padding: 20px;
+            border-radius: $dewa-admin-config-border-radius;
+            border:none;
+
+            .sw-theme-manager-detail__info-image{
+                border:none;
+                border-radius: $dewa-admin-config-border-radius;
+            }
+
+            .sw-theme-manager-detail__info-content{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .sw-theme-manager-detail__info-saleschannels{
+
+                    .sw-theme-manager-detail__saleschannel{
+
+                        a{
+                            display: inline-block;
+                            background: $dewa-admin-config-highlight-color;
+                            padding: 5px 10px;
+                            color: #fff;
+                            border-radius: $dewa-admin-config-border-radius;
+                            margin-top:10px;
+                            cursor: pointer;
+
+                            &:hover{
+                                text-decoration: none;
+                                background: darken($dewa-admin-config-highlight-color, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .sw-theme-manager-detail__info-content{
+
+            .sw-theme-manager-detail__info-name{
+                font-size: 1.4em;
+            }
+
+            .sw-theme-manager-detail__info-author{
+                font-size: 1.1em;
+            }
+        }
+
+        .sw-theme-manager-detail__context-button{
+            button{
+                background-color: $dewa-admin-config-general-background;
+
+                &:hover{
+                    background-color: $dewa-admin-config-highlight-color;
+                    border-color:$dewa-admin-config-highlight-color;
+                    color:#fff;
+                }
+            }
+        }
+    }
+
+
+    max-width: $dewa-admin-config-max-content-width;
+    background-color: $dewa-admin-config-background-card;
+    border-radius: $dewa-admin-config-border-radius;
+    margin-top: $dewa-admin-config-block-margin-top;
+
+    &:first-child{
+        margin-top:$dewa-admin-config-block-title-height;
+    }
+
+    @import "inc/card_title";
+    @import "inc/card_content";
+}

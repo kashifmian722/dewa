@@ -1,0 +1,67 @@
+<div class="dewa-product-action-container">
+    {% if not context.activeShop %}
+        <button data-dewa-modal="{{ path('dewa-shop.shop-selection-modal') }}"
+                data-target="#dewaModal"
+                class="btn btn-buy btn-dewa"
+                name="action"
+                value="select">
+            <div class="dewa-menu-btn-label">
+                {{ "dewa-shop.checkout.shopSelection"|trans }}
+            </div>
+
+            <div class="dewa-button-append">
+                <span class="fi-rs-shop"></span>
+            </div>
+        </button>
+    {% else %}
+        {% set isAvailable = true %}
+
+        {% if product.extensions.stocks %}
+            {% set stock = product.extensions.stocks.first() %}
+            {% if stock and stock.isStock and stock.stock < 1 %}
+                {% set isAvailable = false %}
+            {% endif %}
+        {% endif %}
+
+        {% if not isAvailable %}
+            <span class="text-muted">
+                {{ "dewa-shop.menu.notAvailable"|trans }}
+            </span>
+        {% elseif hasToggle %}
+            <button type="button"
+                    class="btn btn-buy btn-dewa"
+                    data-dewa-modal="{{ path('dewa-shop.menu-buy-form', {'productId': product.id}) }}">
+                <div class="dewa-menu-btn-label">
+                    {{ "dewa-shop.menu.configure"|trans }}
+                </div>
+                <div class="dewa-button-append">
+                    <div class="loader" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <span class="fi-rs-angle-down"></span>
+                </div>
+            </button>
+        {% else %}
+            <form action="{{ path('dewa-shop.add-to-cart') }}"
+                  method="post"
+                  data-add-to-cart="true">
+                {{ sw_csrf('dewa-shop.add-to-cart') }}
+
+                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+
+                {% set namePrefix = "lineItems[#{product.id}]" %}
+                <input type="hidden" name="{{ namePrefix }}[id]" value="{{ product.id }}">
+                <input type="hidden" name="{{ namePrefix }}[quantity]" value="1">
+
+                <button type="submit" class="btn btn-buy btn-dewa">
+                    <div class="dewa-menu-btn-label">
+                        {{ "dewa-shop.menu.addToCart"|trans }}
+                    </div>
+                    <div class="dewa-button-append">
+                        <span class="fi-rs-shopping-cart-add"></span>
+                    </div>
+                </button>
+            </form>
+        {% endif %}
+    {% endif %}
+</div>

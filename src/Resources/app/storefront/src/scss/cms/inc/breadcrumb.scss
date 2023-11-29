@@ -1,0 +1,39 @@
+.is-act-index{
+
+    &:not(.is-ctl-product){
+        .container-main{
+            padding-top:0;
+
+            .cms-breadcrumb{
+                max-width: 100%;
+            }
+        }
+    }
+
+}
+
+.cms-breadcrumb{
+    background-color: darken($sw-background-color, 5%);
+    border-radius: $border-radius;
+
+    ol.breadcrumb{
+        padding:0;
+        margin:0;
+    }
+}
+
+nav[aria-label=breadcrumb]{
+    padding:0 15px;
+    background-color: darken($sw-background-color, 5%);
+    border-radius: $border-radius;
+
+    svg{
+        color:$sw-text-color;
+    }
+}
+
+.is-ctl-product{
+    nav[aria-label=breadcrumb]{
+        margin-bottom: 40px;
+    }
+}

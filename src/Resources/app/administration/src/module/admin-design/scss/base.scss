@@ -1,0 +1,43 @@
+$dewa-admin-config-max-content-width: 1000px;
+$dewa-admin-config-general-background: #f2f2f2;
+$dewa-admin-config-highlight-color: #d95030;
+$dewa-admin-config-background-card: #ffffff;
+$dewa-admin-config-border-radius: 8px;
+$dewa-admin-config-block-title-height: 30px;
+$dewa-admin-config-block-margin-top: $dewa-admin-config-block-title-height * 3;
+$dewa-admin-config-scrollbar-width: 12px;
+
+/*.sw-page {
+    &.sw-theme-manager-detail{
+        .sw-field--switch{
+            .sw-field__label label{
+                margin-right: 0;
+            }
+        }
+    }
+
+
+    &.sw-theme-manager-detail, &[class*="dewa-"]{
+
+        @import "inc/components/header/base";
+
+        .sw-page__content{
+            @import "inc/components/specials/scrollbar";
+
+            .sw-page__main-content{
+
+                background-color: $dewa-admin-config-general-background;
+
+                .sw-tabs{
+                    max-width: $dewa-admin-config-max-content-width;
+
+                    @import "inc/components/tabs/tabs_content";
+                }
+
+                @import "inc/components/card/card";
+            }
+        }
+    }
+}*/
+
+@import "inc/components/specials/buttons";

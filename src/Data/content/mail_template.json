@@ -1,0 +1,44 @@
+[
+  {
+    "id": "{ID:SHOP_ORDER_MAIL_TEMPLATE}",
+    "mailTemplateTypeId": "{ID:SHOP_ORDER_MAIL_TEMPLATE_TYPE}",
+    "systemDefault": true,
+    "translations": {
+      "{de-DE}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "Store Bestellbestätigung - {{ salesChannel.name }}",
+        "description": "DeliveryWare Store Bestellbestätigung",
+        "contentHtml": "{READ_FILE:mail_template/shop_order_mail/de-html.html.twig}",
+        "contentPlain": "{READ_FILE:mail_template/shop_order_mail/de-plain.html.twig}"
+      },
+      "{en-GB}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "Store Order Confirmation - {{ salesChannel.name }}",
+        "description": "DeliveryWare Store Order Confirmation",
+        "contentHtml": "{READ_FILE:mail_template/shop_order_mail/en-html.html.twig}",
+        "contentPlain": "{READ_FILE:mail_template/shop_order_mail/en-plain.html.twig}"
+      }
+    }
+  },
+  {
+    "id": "{ID:TABLE_REGISTRATION_MAIL_TEMPLATE}",
+    "mailTemplateTypeId": "{ID:TABLE_REGISTRATION_MAIL_TEMPLATE_TYPE}",
+    "systemDefault": true,
+    "translations": {
+      "{de-DE}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "Tischreservierung - {{ salesChannel.name }}",
+        "description": "DeliveryWare Tischreservierung",
+        "contentHtml": "{READ_FILE:mail_template/table_registration/de-html.html.twig}",
+        "contentPlain": "{READ_FILE:mail_template/table_registration/de-plain.html.twig}"
+      },
+      "{en-GB}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "Table Registration - {{ salesChannel.name }}",
+        "description": "DeliveryWare Table Registration",
+        "contentHtml": "{READ_FILE:mail_template/table_registration/en-html.html.twig}",
+        "contentPlain": "{READ_FILE:mail_template/table_registration/en-plain.html.twig}"
+      }
+    }
+  }
+]

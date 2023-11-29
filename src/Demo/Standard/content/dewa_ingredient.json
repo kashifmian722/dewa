@@ -1,0 +1,91 @@
+[
+  {
+    "id": "{ID:INGREDIENT_1}",
+    "name": "Fisch und Fischerzeugnisse",
+    "description": "Fischhaltige Zutaten und Fischerzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_2}",
+    "name": "Schalenfrüchte",
+    "description": "Nusseiweißhaltige Zutaten. Unter Nüsse fallen Mandel, Hasel-, Pecan-, Wal-, Para-, Macadamia-Nuss, Cashew-Kern und Pistazie"
+  },
+  {
+    "id": "{ID:INGREDIENT_3}",
+    "name": "Soja",
+    "description": "Sojaeiweißhaltige Zutaten, auch Sojalezithin"
+  },
+  {
+    "id": "{ID:INGREDIENT_4}",
+    "name": "Ei und Eierzeugnisse",
+    "description": "Eiweißhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_5}",
+    "name": "Gluten",
+    "description": "Glutenhaltige Zutaten, d.h. klebereiweißhaltiges Getreide bzw. Getreideprodukte aus Weizen, Grünkern, Dinkel, Hafer, Roggen und Gerste"
+  },
+  {
+    "id": "{ID:INGREDIENT_6}",
+    "name": "Sellerie",
+    "description": "Selleriehaltige Zutaten"
+  },
+  {
+    "id": "{ID:Krebstiere und Krebstiererzeugnisse}",
+    "name": "Krebstiere und Krebstiererzeugnisse",
+    "description": "Krebstierhaltige Zutaten und Krebstiererzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_7}",
+    "name": "Sesamsamen und Sesamsamenerzeugnisse",
+    "description": "Sesamsamenhaltige Zutaten und Sesamsamenerzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_8}",
+    "name": "Schwefeldioxid und Sulfite",
+    "description": "Schwefeldioxid und Sulfithaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_9}",
+    "name": "Weizen",
+    "description": "Weizeneiweißhaltige Zutaten",
+    "products": [
+      {"id": "{ID:PRODUCT_001}"},
+      {"id": "{ID:PRODUCT_002}"},
+      {"id": "{ID:PRODUCT_003}"},
+      {"id": "{ID:PRODUCT_004}"},
+      {"id": "{ID:PRODUCT_005}"},
+      {"id": "{ID:PRODUCT_006}"},
+      {"id": "{ID:PRODUCT_007}"},
+      {"id": "{ID:PRODUCT_008}"},
+      {"id": "{ID:PRODUCT_009}"},
+      {"id": "{ID:PRODUCT_010}"},
+      {"id": "{ID:PRODUCT_011}"},
+      {"id": "{ID:PRODUCT_012}"}
+    ]
+  },
+  {
+    "id": "{ID:INGREDIENT_10}",
+    "name": "Senf und Senferzeugnisse",
+    "description": "Senfhaltige Zutaten und Senferzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_11}",
+    "name": "Lupine und daraus hergestellte Erzeugnisse",
+    "description": "Lupinhaltige Zutaten und daraus hergestellte Erzeugnisse"
+  },
+  {
+    "id": "{ID:INGREDIENT_12}",
+    "name": "Milch",
+    "description": "Milcheiweiß- und milchzuckerhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_13}",
+    "name": "Erdnuss",
+    "description": "Erdnusseiweißhaltige Zutaten"
+  },
+  {
+    "id": "{ID:INGREDIENT_14}",
+    "name": "Weichtiere und daraus hergestellte Erzeugnisse",
+    "description": "Weichtierhaltige Zutaten und daraus hergestellte Erzeugnisse"
+  }
+]

@@ -1,0 +1,203 @@
+.dewa-menu-content{
+    padding:50px 0;
+
+    .dewa-menu-category{
+        margin-top:50px;
+
+        .dewa-category-title{
+            padding: 10px 20px;
+            background: darken($sw-background-color, 5%);
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: $border-radius;
+        }
+
+        .dewa-menu-category-image{
+            border-radius: $border-radius;
+            margin-top: $dewa-menu-general-spacing;
+        }
+
+        .dewa-menu-product{
+            border:1px solid $sw-border-color;
+            border-bottom-color: transparent;
+            padding: 20px;
+            position: relative;
+
+            .list-price-percentage{
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                font-size: .7em;
+                padding: 3px 10px;
+                border-radius: $border-radius;
+                margin: 0;
+            }
+
+            .dewa-product-title{
+                font-weight: 700;
+                font-size: 1.3em;
+                display: flex;
+                align-items: center;
+
+                .dewa-product-number{
+                    margin-right: 5px;
+                }
+
+                .dewa-product-info-container{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            &:first-child{
+                border-top-left-radius: $border-radius;
+                border-top-right-radius: $border-radius;
+                margin-top: $dewa-menu-general-spacing;
+            }
+
+            &:last-child{
+                margin-bottom: $dewa-menu-general-spacing;
+                border-bottom-left-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
+                border-bottom-color: $sw-border-color;
+            }
+
+            .dewa-product-content{
+
+                .dewa-product-description{
+                    font-size: .8em;
+                }
+
+                .dewa-product-price-action-container{
+                    margin-top:10px;
+
+                    .dewa-product-price{
+                        font-size: 1.1em;
+                        font-weight: 500;
+                        color:$sw-color-price;
+                    }
+
+                    .dewa-list-price-stroke{
+                        color:$dewa-color-price-line-through;
+                        font-size: .8em;
+                        margin-left: 7px;
+                        text-decoration: line-through;
+                    }
+
+                    .dewa-product-action-container{
+                        margin-top:5px;
+                    }
+                }
+            }
+
+            .dewa-product-image{
+
+                img{
+                    max-width: 100%;
+                    border-radius: $border-radius;
+                }
+            }
+        }
+
+        &:first-child{
+            margin-top:0;
+        }
+    }
+}
+
+.dewa-product-info-popup{
+    font-size: .6em;
+    font-weight: 500;
+    margin-left: 10px;
+    color:$sw-color-brand-secondary;
+    display: inline-flex;
+
+    &:hover{
+        text-decoration: none;
+        color:darken($sw-color-brand-secondary,5%);
+    }
+}
+
+.dewa-menu-buy-form{
+    .modal-body {
+        max-height: 75vh;
+        overflow-y: scroll;
+    }
+}
+
+.dewa-option-collapse-container{
+    margin-bottom:20px;
+
+    .dewa-option-collapse-label{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom:1px solid darken($sw-background-color, 20%);
+
+        &:hover{
+            text-decoration: none;
+        }
+
+        &[aria-expanded="true"]{
+            border-color:transparent;
+            span{
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.dewa-option-multi-list{
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .custom-control{
+        padding: 5px 30px;
+
+        &:first-child{
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+        }
+
+        &:last-child{
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+        }
+
+        &:nth-child(odd){
+            background: darken($sw-background-color, 8%);
+        }
+
+        &:nth-child(even){
+            background: darken($sw-background-color, 6%);
+        }
+    }
+}
+
+@include media-breakpoint-up(md){
+    .dewa-option-multi-list{
+        grid-template-columns: 1fr 1fr;
+
+        .custom-control{
+            padding: 5px 30px;
+
+            &:first-child{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:last-child{
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:nth-child(odd){
+                background: transparent;
+            }
+
+            &:nth-child(even){
+                background: transparent;
+            }
+        }
+    }
+}

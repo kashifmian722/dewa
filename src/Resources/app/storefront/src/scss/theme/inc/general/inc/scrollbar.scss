@@ -1,0 +1,25 @@
+*{
+    &::-webkit-scrollbar {
+        width: $dewa-scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $dewa-scrollbar-background-color-items;
+        border-radius: $border-radius;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: darken($primary, 5%);
+    }
+}
+
+body{
+    &::-webkit-scrollbar-thumb {
+        background: $dewa-scrollbar-background-color-body;
+        border-radius: 0;
+    }
+}

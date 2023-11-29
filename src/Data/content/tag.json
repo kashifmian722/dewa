@@ -1,0 +1,22 @@
+[
+  {
+    "id": "{ID:DW_DEPOSIT_025}",
+    "name": "DW_DEPOSIT_025"
+  },
+  {
+    "id": "{ID:DW_DEPOSIT_015}",
+    "name": "DW_DEPOSIT_015"
+  },
+  {
+    "id": "{ID:DW_DEPOSIT_008}",
+    "name": "DW_DEPOSIT_008"
+  },
+  {
+    "id": "{ID:DW_ALC_16}",
+    "name": "DW_ALC_16"
+  },
+  {
+    "id": "{ID:DW_ALC_18}",
+    "name": "DW_ALC_18"
+  }
+]

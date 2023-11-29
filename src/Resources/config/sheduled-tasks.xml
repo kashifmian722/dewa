@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Restock -->
+        <service id="Appflix\DewaShop\Core\ScheduledTask\RestockTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Appflix\DewaShop\Core\ScheduledTask\RestockTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Appflix\DewaShop\Core\Service\StockService" />
+
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <!-- ProductWeekday -->
+        <service id="Appflix\DewaShop\Core\ScheduledTask\ProductWeekdayTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Appflix\DewaShop\Core\ScheduledTask\ProductWeekdayTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Appflix\DewaShop\Core\Service\ProductWeekdayService" />
+
+            <tag name="messenger.message_handler" />
+        </service>
+    </services>
+</container>

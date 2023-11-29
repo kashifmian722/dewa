@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>General settings</title>
+        <title lang="de-DE">Allgemeine Einstellungen</title>
+
+        <input-field type="float">
+            <name>pricePrecision</name>
+            <label>Round prices by:</label>
+            <label lang="de-DE">Runden Sie Preise um:</label>
+            <helpText>This value converts the floating point values in the price to the entered factor.</helpText>
+            <helpText lang="de-DE">Dieser Wert rechnet die Fließkommazahlen im Preis auf den eingegebenen Faktor um.</helpText>
+            <defaultValue>0.01</defaultValue>
+            <placeholder>0.01</placeholder>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>priceRounding</name>
+            <label>Rounding rule for prices</label>
+            <label lang="de-DE">Rundungsregel für Preise</label>
+            <options>
+                <option>
+                    <id>normal</id>
+                    <name>Normal</name>
+                    <name lang="de-DE">Normal</name>
+                </option>
+                <option>
+                    <id>ceil</id>
+                    <name>Ceil round</name>
+                    <name lang="de-DE">Aufrunden</name>
+                </option>
+                <option>
+                    <id>floor</id>
+                    <name>Floor round</name>
+                    <name lang="de-DE">Abrunden</name>
+                </option>
+            </options>
+            <defaultValue>normal</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>useMenuAsLandingPage</name>
+            <label>Use Menu as Landing Page</label>
+            <label lang="de-DE">Speisekarte als Landing Page nutzen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>useMenuBadgeFilter</name>
+            <label>Use Menu Badge Filter</label>
+            <label lang="de-DE">Bagde Filter auf der Speisekarte nutzen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>POS Settings</title>
+        <title lang="de-DE">POS Einstellungen</title>
+
+        <input-field type="bool">
+            <name>posAutoOpen</name>
+            <label>Ignore opening hours - control via POS terminal</label>
+            <label lang="de-DE">Öffnungszeiten ignorieren - Steuerung über POS Terminal</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Location Detection</title>
+        <title lang="de-DE">Standortermittlung</title>
+
+        <input-field>
+            <name>googleMapsApiKey</name>
+            <label>Google Maps API Key</label>
+            <label lang="de-DE">Google Maps API Schlüssel</label>
+            <helpText>Optional: For better Location Detection.</helpText>
+            <helpText lang="de-DE">Optional: Für eine bessere Standortermittlung.</helpText>
+            <placeholder>Optional</placeholder>
+            <placeholder lang="de-DE">Optional</placeholder>
+        </input-field>
+
+        <component name="dewa-google-api-test">
+            <name>apiTest</name>
+        </component>
+    </card>
+
+    <card>
+        <title>Registration</title>
+        <title lang="de-DE">Registrierung</title>
+
+        <input-field type="bool">
+            <name>registrationFormDewa</name>
+            <label>Use DeliveryWare registration form?</label>
+            <label lang="de-DE">DeliveryWare Registrierungsformular verwenden?</label>
+            <helpText>The theme provides a customized minimalist registration form for the store. If you want to use the default DeliveryWare form, enable this setting.</helpText>
+            <helpText lang="de-DE">Das Theme liefert ein angepasstes, minimalistisches Registrierungsformular für den Shop. Wenn Sie das DeliveryWare Formular verwenden möchten, aktivieren Sie diese Einstellung.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Checkout</title>
+        <title lang="de-DE">Checkout</title>
+
+        <input-field type="bool">
+            <name>checkoutOpenDeliveryMethods</name>
+            <label>Open delivery methods for all products</label>
+            <label lang="de-DE">Offene Zustellungsmethoden für alle Produkte</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>checkoutPhoneNumber</name>
+            <label>Field for phone number</label>
+            <label lang="de-DE">Eingabefeld für Telefonnummer</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>checkoutTimepicker</name>
+            <label>Type Desired Deliverytime/Self Collect Time</label>
+            <label lang="de-DE">Typ Wunschlieferzeit/Wunschabholzeit</label>
+            <options>
+                <option>
+                    <id>now</id>
+                    <name>Now (Disable field)</name>
+                    <name lang="de-DE">Sofort (Feld deaktivieren)</name>
+                </option>
+                <option>
+                    <id>datetime</id>
+                    <name>Pick Date and Time</name>
+                    <name lang="de-DE">Zeit und Datum</name>
+                </option>
+                <option>
+                    <id>date</id>
+                    <name>Date only</name>
+                    <name lang="de-DE">Nur Datum</name>
+                </option>
+                <option>
+                    <id>dropdownMinutes</id>
+                    <name>Dropdown with Options (Minutes)</name>
+                    <name lang="de-DE">Dropdown mit Optionen (Minuten)</name>
+                </option>
+                <option>
+                    <id>dropdownDays</id>
+                    <name>Dropdown with Options (Days)</name>
+                    <name lang="de-DE">Dropdown mit Optionen (Tage)</name>
+                </option>
+            </options>
+            <defaultValue>datetime</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>checkoutDropdownAsap</name>
+            <label>ASAP (Dropdown with Options)</label>
+            <label lang="de-DE">So schnell wie möglich (Dropdown mit Optionen)</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>checkoutDropdownSteps</name>
+            <label>Steps in Minutes/Days (Dropdown with Options)</label>
+            <label lang="de-DE">Schritte in Minuten/Tage (Dropdown mit Optionen)</label>
+            <defaultValue>30,45,60,90,120</defaultValue>
+            <placeholder>30,45,60,90,120</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>checkoutDateMin</name>
+            <label>Minimum ? Days in Future for (Date only)</label>
+            <label lang="de-DE">Mindestens ? Tage in der Zukunft (Nur Datum)</label>
+            <helpText>In some cases you have to prepare your Order for ? Days.</helpText>
+            <helpText lang="de-DE">In einigen Fällen musst Du Deine Bestellung für ? Tage vorbereiten.</helpText>
+            <defaultValue>0</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>appflixDeactivateOffcanvasCart</name>
+            <label>Deactivate Offcanvas Cart when adding product</label>
+            <label lang="de-DE">Offcanvas Warenkorb deaktivieren, wenn ein Produkt hinzugefügt wird</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Orders</title>
+        <title lang="de-DE">Bestellungen</title>
+
+        <component name="sw-entity-multi-id-select">
+            <name>orderWhitelistPaymentMethods</name>
+            <entity>payment_method</entity>
+            <label>Show orders with following payment methods always in dashboard</label>
+            <label lang="de-DE">Bestellungen mit folgenden Zahlungsmethoden im Dashboard immer anzeigen</label>
+        </component>
+
+        <input-field type="bool">
+            <name>orderPrintJob</name>
+            <label>Print Orders instantly</label>
+            <label lang="de-DE">Bestellungen sofort drucken</label>
+            <helpText>If you have a configured Thermal Printer for your Shop, you can instantly print your Orders.</helpText>
+            <helpText lang="de-DE">Wenn Du einen Bon-Drucker eingerichtet hast, kannst Du Deine Bestellungen direkt ausdrucken lassen.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>orderInvoice</name>
+            <label>Create Invoice on Delivery</label>
+            <label lang="de-DE">Erstelle Rechnung bei Lieferung</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>orderMail</name>
+            <label>Send Order Confirmation to Store</label>
+            <label lang="de-DE">Bestellbestätigung an Filiale senden</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Search portal</title>
+        <title lang="de-DE">Suchportal</title>
+
+        <input-field type="bool">
+            <name>searchPortalActive</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>searchPortalUrl</name>
+            <label>URL</label>
+            <label lang="de-DE">URL</label>
+            <defaultValue>https://paderfood.com</defaultValue>
+            <placeholder>https://paderfood.com</placeholder>
+        </input-field>
+    </card>
+</config>

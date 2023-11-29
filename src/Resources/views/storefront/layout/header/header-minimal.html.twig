@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/layout/header/header-minimal.html.twig' %}
+
+{% block layout_header_minimal_inner %}
+    <div class="container-fluid">
+        {% block layout_header_minimal_row %}
+            <div class="row header-row header-minimal-row">
+                {{ block('layout_header_minimal_logo') }}
+
+                {% if context.activeShop %}
+                    <div class="col-md-4 header-minimal-contact text-center">
+                        {{ context.activeShop.name }} |
+                        {{ context.activeShop.street }} |
+                        {{ context.activeShop.city }} |
+                        {{ "dewa-shop.phone"|trans|striptags }}: {{ context.activeShop.phoneNumber }}
+                    </div>
+                {% else %}
+                    {{ block('layout_header_minimal_contact') }}
+                {% endif %}
+
+                {{ block('layout_header_minimal_button') }}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

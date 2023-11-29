@@ -1,0 +1,185 @@
+<sw-page class="dewa-dashboard-detail" :showSmartBar="true" :showSearchBar="false">
+    <template slot="smart-bar-header" v-if="item">
+        <h2>{{ item.name }}</h2>
+    </template>
+
+    <template slot="smart-bar-actions" v-if="item">
+        <sw-button @click="editItem" variant="dewa">
+            <sw-icon name="default-time-clock"/>
+        </sw-button>
+
+        <sw-button @click="getItem()">
+            <sw-icon name="default-arrow-360-full"/>
+        </sw-button>
+
+        <sw-button v-if="showMap" @click="showMap = false">
+            <sw-icon name="default-location-map"/>
+        </sw-button>
+
+        <sw-button v-if="!showMap" @click="showMap = true">
+            <sw-icon name="default-location-map"/>
+        </sw-button>
+
+        <sw-button :routerLink="{ name: 'dewa.shop.detail' }" variant="dewa">
+            <sw-icon name="default-action-settings"/>
+        </sw-button>
+    </template>
+
+    <template slot="content">
+        <div class="dewa-dashboard-content" :class="showMap ? 'show-map' : 'hide-map'" v-if="item && orderStates">
+            <dewa-dashboard-orders
+                    :items="shopOrdersOpen"
+                    class="item-a"
+                    :title="$tc('dewa-shop.cards.open')"
+                    @order-state-change="orderStateChange"
+                    v-model="shopOrderItemId"
+            />
+
+            <dewa-dashboard-orders
+                    :items="shopOrdersInProgress"
+                    class="item-b"
+                    :title="$tc('dewa-shop.cards.inProgress')"
+                    @order-state-change="orderStateChange"
+                    v-model="shopOrderItemId"
+            />
+
+            <dewa-dashboard-orders
+                    :items="shopOrdersDelivery"
+                    class="item-c"
+                    :title="$tc('dewa-shop.cards.delivery')"
+                    @order-state-change="orderStateChange"
+                    v-model="shopOrderItemId"
+            />
+
+            <dewa-dashboard-orders
+                    :items="shopOrdersCollect"
+                    class="item-d"
+                    :title="$tc('dewa-shop.cards.collect')"
+                    @order-state-change="orderStateChange"
+                    v-model="shopOrderItemId"
+            />
+
+            <dewa-map
+                    :item="item"
+                    class="item-e"
+                    v-model="shopOrderItemId"
+            />
+        </div>
+
+        <sw-confirm-modal
+                v-if="showConfirmModal"
+                type="delete"
+                :text="$tc('dewa-shop.confirm.cancelOrder')"
+                @confirm="onChangeState"
+                @close="onCloseModal"
+                @cancel="onCloseModal"
+        />
+
+        <sw-modal v-if="showEditModal"
+                  :title="$tc('global.default.edit')"
+                  @modal-close="onCloseModal">
+            <sw-field
+                    type="switch"
+                    bordered
+                    :label="$tc('dewa-shop.properties.active')"
+                    v-model="item.active"
+                    @change="onSaveItem"
+            />
+
+            <sw-field
+                    type="switch"
+                    bordered
+                    :label="$tc('dewa-shop.properties.deliveryActive')"
+                    v-model="item.deliveryActive"
+                    @change="onSaveItem"
+            />
+
+            <sw-field
+                    type="switch"
+                    bordered
+                    :label="$tc('dewa-shop.properties.collectActive')"
+                    v-model="item.collectActive"
+                    @change="onSaveItem"
+            />
+
+            <sw-field
+                    type="number"
+                    :label="$tc('dewa-shop.properties.preparationTime')"
+                    v-model="item.preparationTime"
+                    @change="onSaveItem"
+            />
+
+            <sw-field
+                    type="number"
+                    :helpText="$tc('dewa-shop.tooltip.shopDeliveryTime')"
+                    :label="$tc('dewa-shop.properties.deliveryTime')"
+                    v-model="item.deliveryTime"
+                    @change="onSaveItem"
+            />
+
+            <template #modal-footer>
+                <sw-button @click="onCloseModal" size="small">
+                    {{ $t('dewa-shop.action.cancel') }}
+                </sw-button>
+            </template>
+        </sw-modal>
+
+        <sw-modal v-if="showDelivererModal"
+                  class="dewa-dashboard-modal"
+                  :title="$tc('dewa-shop.cards.selectDeliverer')"
+                  @modal-close="onCloseModal">
+            <sw-container columns="repeat(auto-fit, minmax(60px, 1fr)" gap="0 20px">
+                <sw-button v-for="minutes in [15,30,45,60,75,90]"
+                           @click="onSetTime(minutes)">
+                    {{ minutes }}
+                </sw-button>
+            </sw-container>
+
+            <sw-container columns="repeat(auto-fit, minmax(160px, 1fr)" gap="0 20px">
+                <sw-button variant="primary"
+                           v-for="deliverer in item.deliverers"
+                           @click="onSelectDeliverer(deliverer.id)">
+                    {{ deliverer.name }}
+                </sw-button>
+            </sw-container>
+
+            <template #modal-footer>
+                <sw-button @click="onCloseModal" size="small">
+                    {{ $t('dewa-shop.action.cancel') }}
+                </sw-button>
+            </template>
+        </sw-modal>
+
+        <sw-modal v-if="showPrintModal"
+                  class="dewa-dashboard-modal"
+                  :title="$tc('dewa-shop.cards.selectPrinter')"
+                  @modal-close="onCloseModal">
+            <sw-container columns="repeat(auto-fit, minmax(60px, 1fr)" gap="0 20px">
+                <sw-button v-for="minutes in [15,30,45,60,75,90]"
+                           @click="onSetTime(minutes)">
+                    {{ minutes }}
+                </sw-button>
+            </sw-container>
+
+            <sw-container columns="repeat(auto-fit, minmax(160px, 1fr)" gap="0 20px">
+                <sw-button variant="primary"
+                           v-for="printer in item.printers"
+                           @click="onSelectPrinter(printer.id)">
+                    {{ printer.name }}
+                </sw-button>
+            </sw-container>
+
+            <template #modal-footer>
+                <sw-button @click="onCloseModal" size="small">
+                    {{ $t('dewa-shop.action.cancel') }}
+                </sw-button>
+
+                <sw-button @click="onChangeState"
+                           variant="primary"
+                           size="small">
+                    {{ $t('dewa-shop.action.doNotPrint') }}
+                </sw-button>
+            </template>
+        </sw-modal>
+    </template>
+</sw-page>

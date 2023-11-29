@@ -1,0 +1,46 @@
+.pagination-nav{
+
+    .pagination{
+
+        .page-item{
+            margin-right: 5px;
+
+            .page-link{
+                border:none;
+                border-radius: $border-radius;
+                background-color:$dewa-background-highlight-color ;
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &:hover, &.active{
+                .page-link{
+                    background-color: $dewa-primary-color;
+                    color:color-yiq($dewa-primary-color);
+                }
+            }
+
+            &.page-next, &.page-last, &.page-first, &.page-prev{
+                &:hover{
+                    .page-link{
+                        background-color: darken($dewa-background-highlight-color,2%);
+                    }
+                }
+            }
+
+            &.disabled{
+                .page-link{
+                    background-color: lighten($dewa-background-highlight-color,2%);
+                }
+
+                &:hover {
+                    .page-link {
+                        background-color: lighten($dewa-background-highlight-color,2%);
+                    }
+                }
+            }
+        }
+    }
+}

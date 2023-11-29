@@ -1,0 +1,23 @@
+.cms-element-category-navigation{
+
+    .category-navigation-entry{
+        margin:5px 0;
+        border:none !important;
+
+        .category-navigation-link{
+            border-radius: $border-radius;
+            font-size: 1.1em;
+
+            &:last-child{
+                margin-bottom:0;
+            }
+
+            background-color: $dewa-background-highlight-color;
+
+            &.is-active, &:hover{
+                background-color: $dewa-primary-color;
+                color:color-yiq($dewa-primary-color);
+            }
+        }
+    }
+}

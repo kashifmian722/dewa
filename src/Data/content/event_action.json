@@ -1,0 +1,18 @@
+[
+  {
+    "id": "{ID:SHOP_ORDER_MAIL}",
+    "eventName": "{SHOP_ORDER_MAIL_EVENT}",
+    "actionName": "{MAIL_TEMPLATE_MAIL_SEND_ACTION}",
+    "config": {
+      "mail_template_id": "{ID:SHOP_ORDER_MAIL_TEMPLATE}"
+    }
+  },
+  {
+    "id": "{ID:TABLE_REGISTRATION_MAIL}",
+    "eventName": "{TABLE_REGISTRATION_MAIL_EVENT}",
+    "actionName": "{MAIL_TEMPLATE_MAIL_SEND_ACTION}",
+    "config": {
+      "mail_template_id": "{ID:TABLE_REGISTRATION_MAIL_TEMPLATE}"
+    }
+  }
+]

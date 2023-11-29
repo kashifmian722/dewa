@@ -1,0 +1,72 @@
+{% block dewa_layout_search_suggest_result_item %}
+    <div class="row align-items-center">
+        {% block layout_search_suggest_result_image %}
+            {% if product.cover.media.url %}
+                <div class="col-4 col-sm-3">
+                    <a href="{{ menuLink }}"
+                       title="{{ product.translated.name }}"
+                       class="dewa-search-suggest-product-link">
+                        <div class="dewa-search-suggest-product-image-container">
+                            {% sw_thumbnails 'search-suggest-product-image-thumbnails' with {
+                                media: product.cover.media,
+                                sizes: {
+                                    'default': '150px'
+                                },
+                                attributes: {
+                                    'class': 'search-suggest-product-image',
+                                    'alt': (product.cover.media.translated.alt ?: ''),
+                                    'title': (product.cover.media.translated.title ?: '')
+                                }
+                            } %}
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block layout_search_suggest_result_name %}
+            <div class="{% if product.cover.media.url %}col-8 col-sm-9{% else %}col-12{% endif %}">
+                <a href="{{ menuLink }}"
+                   title="{{ product.translated.name }}"
+                   class="dewa-search-suggest-product-link">
+                    <div class="dewa-search-suggest-product-name">
+                        {{ product.translated.name }}
+                        {% if product.extensions.ingredients | length > 0 %}
+                            <a href="javascript:" aria-label="{{ 'dewa-shop.menu.ingredients' |trans }}" data-dewa-modal="{{ path('dewa-shop.menu-ingredients', {'entityName': 'product', 'id': product.id}) }}" class="dewa-product-info-popup">
+                                <span class="fi-rs-info"></span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </a>
+                <div class="dewa-search-suggest-product-description">
+                    {{ product.translated.description }}
+                </div>
+
+                {% block layout_search_suggest_result_price %}
+                    <div class="dewa-search-suggest-product-price">
+                        {% if product.priceRange %}
+                            {{ product.calculatedListingPrice.from.unitPrice|currency }}
+                            -
+                            {{ product.calculatedListingPrice.to.unitPrice|currency}}
+                        {% elseif product.calculatedPrices|length == 1 %}
+                            {{ product.calculatedPrices.first.unitPrice|currency }}
+                        {% else %}
+                            {{ product.calculatedPrice.unitPrice|currency }}
+                        {% endif %}
+                        {% if product.calculatedPrice.referencePrice is not null %}
+                            <br><small class="search-suggest-product-reference-price">({{ product.calculatedPrice.referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ product.calculatedPrice.referencePrice.referenceUnit }}&nbsp;{{ product.calculatedPrice.referencePrice.unitName }})</small>
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% if menuCategory.extensions.options.count() > 0 %}
+                    {% set hasToggle = true %}
+                {% else %}
+                    {% set hasToggle = false %}
+                {% endif %}
+
+                {% sw_include '@Storefront/dewa-shop/component/dewa-product-action.html.twig' %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

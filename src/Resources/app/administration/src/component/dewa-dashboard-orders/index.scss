@@ -1,0 +1,138 @@
+@import "~scss/variables";
+
+$sw-admin-menu-background: #243758;
+$sw-admin-menu-background-hover: #293f65;
+
+.dewa-dashboard-orders {
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.dewa-orders-watermark {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 10px;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  color: $color-white;
+  z-index: 10;
+}
+
+.dewa-orders-list {
+  position: relative;
+  list-style: none;
+  z-index: 20;
+}
+
+.dewa-order-headline {
+  color: $color-black;
+  border-bottom: 1px solid $color-gray-100;
+  transition: all ease-in-out .3s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &.active {
+    color: $color-white;
+  }
+
+  .dewa-order-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+    grid-gap: 2px;
+
+    .sw-button {
+      border-color: $color-white;
+      color: $color-white;
+      text-transform: uppercase;
+    }
+    .sw-button--confirm {
+      background: $color-pumpkin-spice-600;
+      &:hover {
+        background:  $color-pumpkin-spice-700;
+      }
+    }
+    .sw-button--cancel {
+      background: $color-crimson-600;
+      &:hover {
+        background:  $color-crimson-700;
+      }
+    }
+    .sw-button--delivery {
+      background: $color-module-blue-600;
+      &:hover {
+        background:  $color-module-blue-700;
+      }
+    }
+    .sw-button--done,
+    .sw-button--donePaid {
+      background: $color-emerald-600;
+      &:hover {
+        background:  $color-emerald-700;
+      }
+    }
+    .sw-button--collect {
+      background: $color-module-purple-600;
+      &:hover {
+        background:  $color-module-purple-700;
+      }
+    }
+  }
+}
+
+.dewa-order-content {
+  background: rgba(255, 255, 255, .7);
+  font-size: .8em;
+  line-height: 24px;
+
+  &.active {
+    background: rgba(255, 255, 255, .9);
+  }
+
+  .sw-icon {
+    width: 24px;
+  }
+
+  .dewa-line-item {
+    border-bottom: 1px solid $color-gray-100;
+
+    .dewa-line-item-meta {
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr;
+
+      > div {
+        padding: 5px;
+      }
+    }
+
+    .dewa-line-item-extra {
+      padding: 0 5px 5px 5px;
+    }
+  }
+
+  .dewa-order-detail {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    border-bottom: 1px solid $color-gray-100;
+
+    > div {
+      padding: 5px;
+
+      &.deadline {
+        color: $color-crimson-800;
+        font-weight: 600;
+      }
+    }
+  }
+}

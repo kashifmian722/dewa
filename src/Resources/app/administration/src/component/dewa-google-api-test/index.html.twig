@@ -1,0 +1,8 @@
+<div>
+    <sw-button-process
+            :isLoading="isLoading"
+            :processSuccess="isSaveSuccessful"
+            @process-finish="saveFinish"
+            @click="check"
+    >{{ $tc('dewa-shop.action.testApi') }}</sw-button-process>
+</div>

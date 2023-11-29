@@ -1,0 +1,116 @@
+<div class="dewa-entity-grid" :key="entity">
+    <sw-container columns="4fr 1fr" gap="0 10px" class="dewa-entity-grid__top-bar">
+        <sw-field :placeholder="$tc('dewa-shop.action.search')"
+                  type="text"
+                  v-model="searchTerm"
+                  @input="onSearch">
+        </sw-field>
+
+        <sw-button variant="dewa"
+                   :block="true"
+                   size="small"
+                   @click="onEditItem(null)">
+            <sw-icon name="default-basic-plus-block" size="16"></sw-icon>
+            {{ $tc('dewa-shop.action.newItem') }}
+        </sw-button>
+    </sw-container>
+
+    <sw-data-grid v-if="totalCount > 0"
+                  :dataSource="items"
+                  :columns="gridColumns"
+                  :showSelection="true"
+                  :showSettings="false"
+                  :isLoading="isLoading"
+                  :sortBy="sortBy"
+                  :sortDirection="sortDirection"
+                  :allowColumnEdit="false"
+                  @column-sort="onSortColumn"
+                  @select-all-items="onSelectionChanged"
+                  @selection-change="onSelectionChanged">
+        <template #column-order.orderNumber="{ item }">
+            <router-link :to="{ name: 'sw.order.detail.base', params: { id: item.order.id } }">
+                {{ item.order.orderNumber }}
+            </router-link>
+        </template>
+        <template #column-shop.name="{ item }">
+            <router-link :to="{ name: 'dewa.shop.detail', params: { id: item.shop.id } }">
+                {{ item.shop.name }}
+            </router-link>
+        </template>
+        <template #column-option.name="{ item }">
+            <router-link :to="{ name: 'dewa.option.detail', params: { id: item.option.id } }">
+                {{ item.option.name }}
+            </router-link>
+        </template>
+        <template #column-product.name="{ item }">
+            <router-link :to="{ name: 'sw.product.detail.dewa', params: { id: item.product.id } }">
+                {{ item.product.name }}
+            </router-link>
+        </template>
+        <template #column-ingredient.name="{ item }">
+            <router-link :to="{ name: 'dewa.ingredient.detail', params: { id: item.ingredient.id } }">
+                {{ item.ingredient.name }}
+            </router-link>
+        </template>
+        <template #column-category.name="{ item }">
+            <router-link :to="{ name: 'sw.category.detail.dewa', params: { id: item.category.id } }">
+                {{ item.category.name }}
+            </router-link>
+        </template>
+
+        <template #actions="{ item }">
+            <sw-context-menu-item v-if="path" :routerLink="{ name: path, params: {id: item.id} }">
+                {{ $tc('global.default.edit') }}
+            </sw-context-menu-item>
+
+            <sw-context-menu-item v-else @click="onEditItem(item)">
+                {{ $tc('global.default.edit') }}
+            </sw-context-menu-item>
+
+            <sw-context-menu-item variant="danger"
+                                  @click="onDeleteItem(item)">
+                {{ $tc('global.default.delete') }}
+            </sw-context-menu-item>
+        </template>
+
+        <template slot="bulk">
+            <a class="link link-danger" @click="onEditSelectedItems">
+                {{ $tc('global.default.edit') }}
+            </a>
+
+            <a class="link link-danger" @click="onDeleteSelectedItems">
+                {{ $tc('global.default.delete') }}
+            </a>
+        </template>
+
+        <template slot="pagination">
+            <sw-pagination :total="totalCount"
+                           :limit="limit"
+                           :page="page"
+                           :total-visible="gridPagesVisible"
+                           :steps="gridSteps"
+                           @page-change="onPageChange">
+            </sw-pagination>
+        </template>
+    </sw-data-grid>
+
+    <sw-modal v-if="showEditModal"
+              :title="$tc('global.default.edit')"
+              @modal-close="onCloseModal">
+        <dewa-entity-form-element v-for="column in editColumns"
+                                   :value="selectedItem"
+                                   :column="column">
+        </dewa-entity-form-element>
+        <template #modal-footer>
+            <sw-button @click="onCloseModal" size="small">
+                {{ $t('dewa-shop.action.cancel') }}
+            </sw-button>
+            <sw-button @click="onSaveItem"
+                       variant="primary"
+                       size="small">
+                {{ $t('dewa-shop.action.save') }}
+            </sw-button>
+        </template>
+    </sw-modal>
+</div>
+

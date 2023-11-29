@@ -1,0 +1,39 @@
+<form class="login-form"
+      id="accountLoginCheckMailForm"
+      action="{{ path('dewa-shop.account-check-mail') }}"
+      method="post"
+      data-form-csrf-handler="true"
+      data-form-validation="true">
+    {{ sw_csrf('dewa-shop.account-check-mail') }}
+
+    <div class="dewa-account-login-steps-headline">
+        {{ "dewa-shop.account.login"|trans|sw_sanitize }}
+    </div>
+
+    <div class="form-group">
+
+        <div class="row form-row">
+            <div class="col-sm-8 mb-2 mb-sm-0">
+                <input type="email"
+                       class="form-control"
+                       id="loginCheckMail"
+                       placeholder="{{ "account.loginMailPlaceholder"|trans|striptags }}"
+                       name="email"
+                       required="required">
+            </div>
+
+            <div class="col-sm-4">
+                <button type="submit"
+                        class="btn btn-block btn-primary">
+                    {{ "dewa-shop.account.forward"|trans|sw_sanitize }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-password-recover">
+        <a href="{{ seoUrl('frontend.account.recover.page') }}">
+            {{ 'account.loginPasswordRecover'|trans }}
+        </a>
+    </div>
+</form>

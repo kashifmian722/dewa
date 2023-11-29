@@ -1,0 +1,128 @@
+{% block dewa_aside_item_container %}
+    {% set type = lineItem.type %}
+    {% set quantity = lineItem.quantity %}
+    {% set id = lineItem.id %}
+
+    {% if area == 'offcanvas' %}
+        {% set dewaRedirect = 'frontend.cart.offcanvas' %}
+    {% endif %}
+
+    {% if area == 'checkout' %}
+        {% set dewaRedirect = 'frontend.checkout.confirm.page' %}
+    {% endif %}
+
+        <div class="dewa-aside-item dewa-aside-item-{{ type }} js-cart-item">
+            <div class="dewa-aside-item-info">
+                {% block dewa_aside_item_data %}
+                    {% block dewa_aside_item_title %}
+                        <div class="dewa-aside-item-title grid-item">
+                            {% if lineItem.label | length >= 15 %}
+                                {{ lineItem.label|u.truncate(15)~"..." }}
+                            {% else %}
+                                {{ lineItem.label }}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {% block dewa_aside_item_buy_quantity %}
+                        {% if area == 'finish' %}
+                            <div class="grid-item">
+                                {{ quantity }}
+                            </div>
+                        {% else %}
+                            {% if lineItem.quantityInformation and lineItem.stackable %}
+                                <form action="{{ path('frontend.checkout.line-item.change-quantity', {'id': id}) }}"
+                                    {% if area == 'checkout' %}
+                                        data-form-auto-submit="true"
+                                    {% endif %}
+                                      class="grid-item"
+                                      method="post">
+
+                                    {% block dewa_aside_item_quantity_form_csrf %}
+                                        {{ sw_csrf('frontend.checkout.line-item.change-quantity') }}
+                                    {% endblock %}
+
+                                    {% block dewa_aside_item_quantity_form_redirect %}
+                                        <input type="hidden"
+                                               name="redirectTo"
+                                               value="{{ dewaRedirect }}"/>
+                                    {% endblock %}
+
+                                    {% set quantityInformation = lineItem.quantityInformation %}
+                                    {% if quantityInformation.maxPurchase %}
+                                        {% set maxQuantity = quantityInformation.maxPurchase %}
+                                    {% else %}
+                                        {% set maxQuantity = config('core.cart.maxQuantity') %}
+                                    {% endif %}
+                                    <select name="quantity"
+                                            class="custom-select quantity-select-{{ id }} js-offcanvas-cart-change-quantity">
+                                        {% for quantityItem in range(quantityInformation.minPurchase, maxQuantity, quantityInformation.purchaseSteps) %}
+                                            <option value="{{ quantityItem }}"
+                                                {% if quantityItem == quantity %} selected="selected"{% endif %}>
+                                                {{ quantityItem }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </form>
+                            {% endif %}
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block dewa_aside_item_price %}
+                        <div class="dewa-aside-item-link-price grid-item">
+                            {{ lineItem.price.totalPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                        </div>
+                    {% endblock %}
+
+                    {% block dewa_aside_item_remove %}
+                        <div class="grid-item">
+                            {% if area == 'finish' %}
+                                <div class="dewa-checkout-finish-checkmark-sidebar">
+                                    <svg class="dewa-animated-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                    </svg>
+                                </div>
+                            {% else %}
+                                {% block dewa_aside_item_remove_form %}
+                                    {% if lineItem.removable %}
+                                        <form action="{{ path('frontend.checkout.line-item.delete', {'id': id}) }}"
+                                              class="cart-item-remove js-offcanvas-cart-remove-product"
+                                              method="post">
+
+                                            {% block dewa_aside_item_remove_form_csrf %}
+                                                {{ sw_csrf('frontend.checkout.line-item.delete') }}
+                                            {% endblock %}
+
+                                            {% block dewa_aside_item_remove_redirect %}
+                                                <input type="hidden"
+                                                       name="redirectTo"
+                                                       value="{{ dewaRedirect }}"/>
+                                            {% endblock %}
+
+                                            {% block dewa_aside_item_remove_submit %}
+                                                <button type="submit"
+                                                        title="{{ "checkout.removeLineItem"|trans|striptags }}"
+                                                        data-product-id="{{ lineItem.id }}"
+                                                        class="btn btn-danger dewa-aside-item-remove-button">
+                                                    <span class="fi-rs-cross"></span>
+                                                </button>
+                                            {% endblock %}
+                                        </form>
+                                    {% endif %}
+                                {% endblock %}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                {% endblock %}
+            </div>
+
+            {% if lineItem.payload.dewa %}
+                <div class="dewa-aside-item-properties">
+                    {% sw_include '@Storefront/dewa-shop/component/checkout/cart-option.html.twig' %}
+                </div>
+            {% endif %}
+        </div>
+{% endblock %}
+
+

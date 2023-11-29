@@ -1,0 +1,21 @@
+.offcanvas{
+    background-color: $dewa-offcanvas-background-color;
+    max-width: $dewa-offcanvas-width-base;
+    width: $dewa-offcanvas-width-base;
+
+    @include media-breakpoint-up(sm){
+        max-width: $dewa-offcanvas-width-sm-up;
+        width: $dewa-offcanvas-width-sm-up;
+    }
+
+    @include media-breakpoint-up(lg){
+        max-width: $dewa-offcanvas-width-lg-up;
+        width: $dewa-offcanvas-width-lg-up;
+    }
+
+    @import "inc/offcanvas-close";
+    @import "inc/offcanvas-content";
+    @import "inc/offcanvas-navigation";
+}
+
+

@@ -1,0 +1,39 @@
+.filter-panel-wrapper{
+
+    .filter-panel{
+
+        .filter-panel-item{
+
+            .filter-panel-item-toggle{
+                font-size: .9em;
+                background-color: $dewa-background-highlight-color;
+                border:none;
+
+                &:focus, &:active{
+                    box-shadow: none;
+                }
+
+                svg{
+                    color:$sw-text-color;
+                }
+
+                &[aria-expanded=true], &:hover{
+                    background-color: $dewa-primary-color;
+                    color:color-yiq($dewa-primary-color);
+                    border-color: $dewa-primary-color;
+
+                    svg{
+                        color:color-yiq($dewa-primary-color);
+                    }
+                }
+            }
+
+            .filter-panel-item-dropdown{
+                border:none;
+                background-color: $dewa-background-highlight-color;
+                border-bottom-right-radius: $border-radius;
+                border-bottom-left-radius: $border-radius;
+            }
+        }
+    }
+}

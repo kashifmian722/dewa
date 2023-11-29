@@ -1,0 +1,88 @@
+<div class="dewa-dashboard-orders">
+    <div class="dewa-orders-watermark">{{ title }}</div>
+
+    <ul class="dewa-orders-list">
+        <li v-for="shopOrder in items" @click="focusShopOrder(shopOrder)">
+            <div class="dewa-order-headline" :class="value === shopOrder.id ? 'active' : ''">
+                <div>
+                    <router-link :to="{ name: 'sw.order.detail.base', params: { id: shopOrder.order.id } }">
+                        {{ shopOrder.order.orderNumber }}
+                    </router-link>
+                </div>
+
+                <div class="dewa-order-actions">
+                    <sw-button v-for="option in shopOrder.options"
+                               :variant="option"
+                               size="small"
+                               @click="$emit('order-state-change', shopOrder, option)">
+                        {{ $tc('dewa-shop.action.' + option) }}
+                    </sw-button>
+                </div>
+            </div>
+
+            <div class="dewa-order-content" :class="value === shopOrder.id ? 'active' : ''">
+                <ul v-if="value === shopOrder.id">
+                    <li v-for="lineItem in shopOrder.order.lineItems" class="dewa-line-item">
+                        <div class="dewa-line-item-meta">
+                            <div>{{ lineItem.label }}</div>
+                            <div class="dewa-price">{{ lineItem.price.quantity }}</div>
+                            <div class="dewa-price">{{ lineItem.price.totalPrice | currency(shopOrder.order.currency.translated.shortName) }}</div>
+                        </div>
+
+                        <div v-if="lineItem.payload.dewa" class="dewa-line-item-extra">
+                            {{ formatPayload(lineItem.payload.dewa) }}
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="dewa-order-detail">
+                    <div>
+                        <div v-if="shopOrder.order.deliveries.length > 0">
+                            <p>{{ shopOrder.order.deliveries.last().shippingOrderAddress.firstName }}
+                                {{ shopOrder.order.deliveries.last().shippingOrderAddress.lastName }}
+                                <br>{{ shopOrder.order.deliveries.last().shippingOrderAddress.street }}
+                                <br>{{ shopOrder.order.deliveries.last().shippingOrderAddress.zipcode }}
+                                {{ shopOrder.order.deliveries.last().shippingOrderAddress.city }}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div v-if="shopOrder.order.transactions.length > 0">
+                            <sw-icon small name="default-money-cash"></sw-icon>
+                            {{ shopOrder.order.transactions.last().paymentMethod.translated.name }}
+                        </div>
+
+                        <div v-if="shopOrder.order.deliveries.length > 0">
+                            <sw-icon small name="default-package-closed"></sw-icon>
+                            {{ shopOrder.order.deliveries.last().shippingMethod.translated.name }}
+                            <span v-if="shopOrder.deliverer">- {{ shopOrder.deliverer.name }}</span>
+                        </div>
+
+                        <div v-if="shopOrder.order.billingAddress.phoneNumber">
+                            <sw-icon small name="default-device-mobile"></sw-icon>
+                            {{ shopOrder.order.billingAddress.phoneNumber }}
+                        </div>
+                    </div>
+
+                    <div class="dewa-price">
+                        {{ shopOrder.order.amountTotal | currency(shopOrder.order.currency.translated.shortName) }}
+                    </div>
+                </div>
+
+                <div class="dewa-order-detail">
+                    <div :class="deadline(shopOrder.desiredTime)">
+                        <sw-icon small name="default-time-clock"></sw-icon>
+                        {{ shopOrder.desiredTime | date({hour: '2-digit', minute: '2-digit'}) }}
+                    </div>
+
+                    <div>{{ shopOrder.comment }}</div>
+
+                    <div class="dewa-price">
+                        <sw-icon small name="default-location-flag"></sw-icon>
+                        {{ Math.ceil(shopOrder.distance) }} km
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

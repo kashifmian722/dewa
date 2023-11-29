@@ -1,0 +1,75 @@
+<sw-page class="dewa-shop-list">
+    <template slot="smart-bar-actions">
+        <sw-button variant="primary" :routerLink="{ name: 'dewa.shop.create' }">
+            {{ $tc('dewa-shop.action.newShop') }}
+        </sw-button>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch slot="language-switch" @on-change="changeLanguage"></sw-language-switch>
+    </template>
+
+    <template slot="content">
+        <sw-entity-listing
+                v-if="items"
+                :items="items"
+                :repository="repository"
+                :columns="columns"
+                :isLoading="isLoading"
+                detailRoute="dewa.shop.detail">
+            <template #column-id="{ item }">
+                <div class="button-group">
+                    <sw-button :routerLink="{ name: 'dewa.dashboard.detail', params: { id: item.id } }"
+                               variant="dewa"
+                               size="small">
+                        {{ $tc('dewa-shop.navigation.dashboard') }}
+                    </sw-button>
+
+                    <sw-button :routerLink="{ name: 'dewa.shop.detail', params: { id: item.id } }"
+                               variant="dewa"
+                               size="small">
+                        {{ $tc('dewa-shop.navigation.settings') }}
+                    </sw-button>
+                </div>
+            </template>
+
+            <template #column-active="{ item, isInlineEdit }">
+                <template v-if="isInlineEdit">
+                    <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
+                </template>
+                <template v-else>
+                    <sw-icon v-if="item.active" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                </template>
+            </template>
+
+            <template #column-deliveryActive="{ item, isInlineEdit }">
+                <template v-if="isInlineEdit">
+                    <sw-checkbox-field v-model="item.deliveryActive"></sw-checkbox-field>
+                </template>
+                <template v-else>
+                    <sw-icon v-if="item.deliveryActive" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                </template>
+            </template>
+
+            <template #column-collectActive="{ item, isInlineEdit }">
+                <template v-if="isInlineEdit">
+                    <sw-checkbox-field v-model="item.collectActive"></sw-checkbox-field>
+                </template>
+                <template v-else>
+                    <sw-icon v-if="item.collectActive" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                </template>
+            </template>
+
+            <template #column-city="{ item }">
+                <span>{{ item.zipcode }} {{ item.city }}</span>
+            </template>
+
+            <template #column-locationLon="{ item }">
+                <span>{{ item.locationLon }}|{{ item.locationLat }}</span>
+            </template>
+        </sw-entity-listing>
+    </template>
+</sw-page>

@@ -1,0 +1,62 @@
+@import "inc/buttons";
+
+form{
+    .custom-control{
+
+        &.custom-checkbox{
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-control-input{
+            &:focus{
+                ~ .custom-control-label{
+                    &:before{
+                        box-shadow: $dewa-general-form-focus-box-shadow;
+                    }
+                }
+            }
+        }
+    }
+
+    .form-control{
+        @include mxn_placeholder(lighten($sw-text-color,10%));
+    }
+
+    .form-control, .custom-select{
+        background-color: $sw-background-color;
+
+        &:focus{
+            background-color: darken($sw-background-color, 3%);
+        }
+    }
+
+    .custom-select{
+        &:invalid{
+            color:lighten($sw-text-color,10%);
+        }
+
+        &:hover{
+            color: $sw-text-color;
+        }
+    }
+
+    .form-label{
+        font-weight: 700;
+    }
+
+    textarea{
+
+        &.form-control{
+            font-size: .9em;
+            transition: ease all $dewa-general-easing;
+            height:100px;
+        }
+    }
+
+    .custom-select{
+        &:focus{
+            box-shadow: $dewa-general-form-focus-box-shadow;
+        }
+    }
+}

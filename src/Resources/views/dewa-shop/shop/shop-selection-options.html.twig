@@ -1,0 +1,129 @@
+{% if shops.count() > 0 %}
+    {% for shop in shops %}
+        <div class="dewa-checkout-shop-custom-control custom-control custom-radio">
+            <input
+                    type="radio"
+                    id="shop{{ shop.id }}"
+                    name="shopId"
+                    class="custom-control-input payment-method-input"
+                    value="{{ shop.id }}"
+                   {% if context.activeShop.id == shop.id %}checked{% endif %}
+            >
+            <label class="custom-control-label dewa-checkout-shop-header" for="shop{{ shop.id }}">
+                <a class="dewa-checkout-shop-header-content">
+                    {% if shop.media %}
+                        <div class="dewa-checkout-shop-logo">
+                            {% sw_thumbnails 'shop-image-thumbnails' with {
+                                media: shop.media,
+                                sizes: {
+                                    'xs': '501px',
+                                    'sm': '315px',
+                                    'md': '427px',
+                                    'lg': '333px',
+                                    'xl': '284px'
+                                },
+                                attributes: {
+                                    'class': 'img-fluid',
+                                    'alt': shop.name,
+                                    'title': shop.name
+                                }
+                            } %}
+                        </div>
+                    {% endif %}
+
+                    <div class="dewa-checkout-shop-title">
+                        {{ shop.name }}
+
+                        {% if shop.distance %}
+                            <span class="distance">
+                                ({{ shop.distance|number_format }}km/{{ shop.maxRadius }}km)
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    {% if config('AppflixDewaShop.config.posAutoOpen') %}
+                        <div class="dewa-checkout-shop-states">
+                            <span class="delivery">
+                                {% if shop.isOpen and shop.get('deliveryActive') %}
+                                    <span class="dewa-tooltip success" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.delivery" |trans }} {{ "dewa-shop.checkout.available" |trans }}">
+                                        {{ "dewa-shop.checkout.delivery" |trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="dewa-tooltip danger" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.delivery" |trans }} {{ "dewa-shop.checkout.notAvailable" |trans }}">
+                                        {{ "dewa-shop.checkout.delivery" |trans }}
+                                    </span>
+                                {% endif %}
+                            </span>
+
+                            <span class="collect">
+                                {% if shop.isOpen and shop.get('collectActive') %}
+                                    <span class="dewa-tooltip success" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.collect" |trans }} {{ "dewa-shop.checkout.available" |trans }}">
+                                        {{ "dewa-shop.checkout.collect" |trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="dewa-tooltip danger" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.collect" |trans }} {{ "dewa-shop.checkout.notAvailable" |trans }}">
+                                        {{ "dewa-shop.checkout.collect" |trans }}
+                                    </span>
+                                {% endif %}
+                            </span>
+
+                            <span data-dewa-modal="{{ path('dewa-shop.shop-modal', {id:shop.id}) }}"
+                                  data-target="#dewaIngredientModal"
+                                  title="{{ "dewa-shop.shopInfo" | trans }}"
+                                  class="modal-open-button fi-rs-interrogation"></span>
+                        </div>
+                    {% else %}
+                        <div class="dewa-checkout-shop-states">
+                            <span class="delivery">
+                                {% if shop.getDeliveryActive(desiredTime) %}
+                                    <span class="dewa-tooltip success" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.delivery" |trans }} {{ "dewa-shop.checkout.available" |trans }}">
+                                        {{ "dewa-shop.checkout.delivery" |trans }}
+                                        {{ "dewa-shop.checkout.until" |trans }}
+                                        {{ shop.getDeliveryNextTime() }}
+                                    </span>
+                                {% else %}
+                                    <span class="dewa-tooltip danger" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.delivery" |trans }} {{ "dewa-shop.checkout.notAvailable" |trans }}">
+                                        {{ "dewa-shop.checkout.delivery" |trans }}
+                                        {{ "dewa-shop.checkout.until" |trans }}
+                                        {{ shop.getDeliveryNextTime() }}
+                                    </span>
+                                {% endif %}
+                            </span>
+
+                            <span class="collect">
+                                {% if shop.getCollectActive(desiredTime) %}
+                                    <span class="dewa-tooltip success" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.collect" |trans }} {{ "dewa-shop.checkout.available" |trans }}">
+                                        {{ "dewa-shop.checkout.collect" |trans }}
+                                        {{ "dewa-shop.checkout.until" |trans }}
+                                        {{ shop.getCollectNextTime() }}
+                                    </span>
+                                {% else %}
+                                    <span class="dewa-tooltip danger" data-toggle="tooltip" data-placement="top"
+                                          title="{{ "dewa-shop.checkout.collect" |trans }} {{ "dewa-shop.checkout.notAvailable" |trans }}">
+                                        {{ "dewa-shop.checkout.collect" |trans }}
+                                        {{ "dewa-shop.checkout.until" |trans }}
+                                        {{ shop.getCollectNextTime() }}
+                                    </span>
+                                {% endif %}
+                            </span>
+
+                            <span data-dewa-modal="{{ path('dewa-shop.shop-modal', {id:shop.id}) }}"
+                                  data-target="#dewaIngredientModal"
+                                  title="{{ "dewa-shop.shopInfo" | trans }}"
+                                  class="modal-open-button fi-rs-interrogation"></span>
+                        </div>
+                    {% endif %}
+                </a>
+            </label>
+        </div>
+    {% endfor %}
+{% else %}
+    <div>{{ "dewa-shop.checkout.noShopFound"|trans }}</div>
+{% endif %}

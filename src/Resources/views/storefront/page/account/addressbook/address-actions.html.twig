@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/account/addressbook/address-actions.html.twig' %}
+
+{% block page_account_address_actions_update %}
+    <div class="col-auto">
+        <a href="{{ path('frontend.account.address.edit.page', {'addressId': address.id}) }}"
+           title="{{ "account.addressesContentItemActionEdit"|trans|striptags }}"
+           class="dewa-checkout-change-btn">
+            <span class="fi-rs-edit"></span>
+        </a>
+    </div>
+{% endblock %}

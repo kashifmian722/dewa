@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation_menu_home %}
+    <div class="dewa-link">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block layout_main_navigation_menu_item %}
+    <div class="dewa-link">
+        {{ parent() }}
+
+        {% if treeItem.children|length > 0 %}
+            {% sw_include '@Storefront/dewa-shop/header/dewa-flyout-simple.html.twig' %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block layout_main_navigation_menu_flyout_wrapper %}{% endblock %}

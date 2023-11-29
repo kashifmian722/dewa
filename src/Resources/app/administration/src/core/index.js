@@ -1,0 +1,9 @@
+import './dewa-entity-form-element';
+import './dewa-entity-grid';
+import './dewa-opening-hours';
+import './dewa-map';
+import './dewa-dashboard-orders';
+import './dewa-icon-select';
+import './dewa-google-api-test';
+import './dewa-weekday-config';
+import './dewa-dashboard-quick-order';

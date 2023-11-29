@@ -1,0 +1,73 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+
+
+{% block page_checkout_confirm_tos %}{% endblock %}
+
+{% block page_checkout_confirm_address %}
+    {% if context.dewa %}
+        <div class="card checkout-card">
+            <div class="card-body">
+                <div class="card-title">{{ "dewa-shop.checkout.shopSelection"|trans }}</div>
+
+                {% sw_include '@Storefront/dewa-shop/checkout/checkout-shop-selection.html.twig' with {
+                    'shops': context.dewa.shops,
+                    'desiredTime': context.dewa.desiredTime,
+                    'comment': context.dewa.comment,
+                    'calculatedTime': context.dewa.calculatedTime,
+                    'checkout': context.dewa.checkout,
+                    'phoneNumber': context.dewa.phoneNumber
+                } %}
+            </div>
+        </div>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+
+{% block page_checkout_confirm_product_table %}{% endblock %}
+
+{% block page_checkout_aside_summary %}
+    <div class="confirm-product">
+        {% block page_checkout_confirm_table_container %}
+            <div class="card">
+                <div class="card-body">
+                    {% block page_checkout_confirm_table_header %}{% endblock %}
+
+                    {% block page_checkout_confirm_table_items %}
+                        {% for lineItem in page.cart.lineItems %}
+                            {% block page_checkout_confirm_table_item %}
+                                {% sw_include '@Storefront/dewa-shop/component/checkout/dewa-aside-item.html.twig' with {
+                                    area: 'checkout'
+                                } %}
+                            {% endblock %}
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {{ parent() }}
+
+    {% block page_checkout_confirm_tos_control %}
+        <div class="dewa-confirm-terms custom-control custom-checkbox">
+            {% block page_checkout_confirm_tos_control_checkbox %}
+                <input type="checkbox"
+                       class="checkout-confirm-tos-checkbox custom-control-input{% if formViolations.getViolations('/tos') is not empty %} is-invalid{% endif %}"
+                       required="required"
+                       id="tos"
+                       form="confirmOrderForm"
+                       name="tos"/>
+            {% endblock %}
+
+            {% block page_checkout_confirm_tos_control_label %}
+                <label for="tos"
+                       class="checkout-confirm-tos-label custom-control-label">
+                    {{ "checkout.confirmTerms"|trans({
+                        '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.tosPage') })
+                    })|raw }}
+                </label>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+
+{% block layout_header_actions_account_widget %}
+    <div class="dropdown">
+        {% block layout_header_actions_account_widget_dropdown_button %}
+            {% set urlParams = {
+                'activeRoute': activeRoute,
+                'redirectParameters': {
+                    'productId': page.product.id,
+                    'id': cmsPage.id,
+                    'navigationId': page.header.navigation.active.id
+                }
+            }|url_encode %}
+
+            <button class="btn account-menu-btn header-actions-btn"
+                    type="button"
+                    id="accountWidget"
+                    {% if context.customer %}
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    {% else %}
+                        data-dewa-modal="{{ path('dewa-shop.account-login') }}?{{ urlParams }}"
+                    {% endif %}
+                    data-offcanvas-account-menu="true"
+                    aria-label="{{ "account.myAccount"|trans|striptags }}"
+                    title="{{ "account.myAccount"|trans|striptags }}">
+                <span class="fi-rs-user"></span>
+            </button>
+        {% endblock %}
+
+        {% block layout_header_actions_account_widget_dropdown_menu %}
+            {% if context.customer %}
+                {{ parent() }}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

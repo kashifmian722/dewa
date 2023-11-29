@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_rating %}
+    {% if config('core.listing.showReview') %}
+        <div class="product-rating">
+            {% if product.ratingAverage %}
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: product.ratingAverage,
+                    style: 'text-primary'
+                } %}
+            {% else %}
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: 0,
+                    style: 'text-primary'
+                } %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

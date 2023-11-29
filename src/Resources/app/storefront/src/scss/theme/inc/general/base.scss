@@ -1,0 +1,32 @@
+@import "inc/product-badges";
+@import "inc/scrollbar";
+@import "inc/opening-hours";
+@import "inc/flaticons";
+@import "inc/modal/base";
+@import "inc/offcanvas/base";
+@import "inc/form/base";
+@import "inc/product-box";
+@import "inc/product-price";
+@import "inc/fixed-content-pages/base";
+@import "inc/animated-checkmark";
+@import "inc/flashbags";
+@import "inc/fixed-sidebar";
+@import "inc/dewa-options";
+
+.is-act-home{
+    .container-main{
+        padding:0;
+    }
+
+    .breadcrumb{
+        display:none;
+    }
+}
+
+.is-act-index{
+    &:not(is-ctl-product){
+        .container-main{
+            padding-bottom: 0;
+        }
+    }
+}

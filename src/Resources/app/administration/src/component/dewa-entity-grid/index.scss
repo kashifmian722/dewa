@@ -1,0 +1,53 @@
+@import "~scss/variables";
+
+.dewa-entity-grid {
+    .dewa-entity-grid__top-bar {
+        background-color: #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 25px;
+
+        input {
+            padding: 6px 16px;
+            height: 32px;
+        }
+
+        .sw-field {
+            margin-bottom: 0;
+
+            .sw-field__help-text {
+                position: relative;
+                top: 33px;
+                right: 15px;
+            }
+        }
+
+        .sw-button {
+            height: 32px;
+            line-height: 16px;
+            position: relative;
+            width: auto;
+        }
+    }
+
+    .dewa-entity-grid__progress-bar {
+        background-color: #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        .sw-progress-bar {
+            margin-bottom: 25px;
+        }
+    }
+
+    .dewa-entity-grid__selected-codes-delete {
+        z-index: 20;
+        position: absolute;
+        right: 28px;
+        top: 155px;
+    }
+
+    .sw-card__content {
+        padding: 0;
+    }
+}

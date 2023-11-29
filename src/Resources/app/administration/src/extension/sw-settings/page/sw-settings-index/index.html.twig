@@ -1,0 +1,10 @@
+{% block sw_settings_content_tab_plugins %}
+    {% parent %}
+
+    <sw-tabs-item class="sw-settings__tab-dewa"
+                  name="dewa"
+                  :activeTab="active"
+                  :title="$tc('dewa-shop.navigation.main')">
+        {{ $tc('dewa-shop.navigation.main') }}
+    </sw-tabs-item>
+{% endblock %}

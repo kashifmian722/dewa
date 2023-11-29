@@ -1,0 +1,31 @@
+{% block sw_dashboard_index_content_info_grid_inner %}
+    {% parent %}
+
+    <div class="sw-dashboard-index__card sw-dashboard-index__card">
+        <h2 class="sw-dashboard-index__card-title">
+            {{ $tc('dewa-shop.dashboard.shopsTitle') }}
+        </h2>
+
+        <ul v-if="dewaShops.length > 0" class="sw-dashboard-index__card-list">
+            <li class="sw-dashboard-index__card-list-item" v-for="dewaShop in dewaShops">
+                <router-link :to="{ name: 'dewa.dashboard.detail', params: { id: dewaShop.id } }"
+                             class="sw-external-link">
+                    {{ dewaShop.name }}
+                </router-link>
+            </li>
+        </ul>
+        <div v-else>
+            {{ $tc('dewa-shop.dashboard.noShops') }}
+        </div>
+    </div>
+
+    <div class="sw-dashboard-index__card sw-dashboard-index__card--dimmed">
+        <h2 class="sw-dashboard-index__card-title">{{ $tc('dewa-shop.dashboard.dokuTitle') }}</h2>
+        <p class="sw-dashboard-index__card-text">
+            {{ $tc('dewa-shop.dashboard.dokuText') }}
+        </p>
+        <sw-external-link :href="$tc('dewa-shop.dashboard.dokuUrl')">
+            {{ $tc('dewa-shop.dashboard.dokuButton') }}
+        </sw-external-link>
+    </div>
+{% endblock %}

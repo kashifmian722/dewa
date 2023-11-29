@@ -1,0 +1,22 @@
+<sw-page class="dewa-option-list">
+    <template slot="smart-bar-actions">
+        <sw-button variant="primary" :routerLink="{ name: 'dewa.option.create' }">
+            {{ $tc('dewa-shop.action.newOption') }}
+        </sw-button>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch slot="language-switch" @on-change="changeLanguage"></sw-language-switch>
+    </template>
+
+    <template slot="content">
+        <sw-entity-listing
+                v-if="items"
+                :items="items"
+                :repository="repository"
+                :columns="columns"
+                :isLoading="isLoading"
+                detailRoute="dewa.option.detail">
+        </sw-entity-listing>
+    </template>
+</sw-page>

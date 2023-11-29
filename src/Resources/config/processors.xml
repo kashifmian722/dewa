@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Appflix\DewaShop\Core\Checkout\DewaProduct\Cart\DewaProductCartProcessor">
+            <argument type="service" id="Shopware\Core\Content\Product\Cart\ProductGateway"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator"/>
+            <argument type="service" id="Appflix\DewaShop\Core\Service\CartValidatorService"/>
+
+            <tag name="shopware.cart.processor" priority="9999991" />
+            <tag name="shopware.cart.collector" priority="9999991" />
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Checkout\DewaProduct\Cart\DewaProductHandler">
+            <argument type="service" id="Shopware\Core\Checkout\Cart\PriceDefinitionFactory"/>
+
+            <tag name="shopware.cart.line_item.factory"/>
+        </service>
+
+        <service id="Appflix\DewaShop\Core\Checkout\DewaProduct\Discount\DewaProductDiscountPackager"
+                 decorates="Shopware\Core\Checkout\Promotion\Cart\Discount\ScopePackager\CartScopeDiscountPackager">
+            <argument type="service" id="Appflix\DewaShop\Core\Checkout\DewaProduct\Discount\DewaProductDiscountPackager.inner" />
+        </service>
+    </services>
+</container>

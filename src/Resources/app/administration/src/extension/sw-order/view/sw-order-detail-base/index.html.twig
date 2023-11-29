@@ -1,0 +1,17 @@
+{% block sw_order_detail_base_leave_page_modal %}
+    <div class="sw-product-detail-base">
+        <sw-card v-if="order"
+                 :isLoading="isLoading"
+                 :title="$tc('dewa-shop.cards.linkedShops')"
+                 class="dewa-entity-grid">
+            <dewa-entity-grid entity="dewa_shop_order"
+                              :isLoading="isLoading"
+                              :criteria="shopOrderCriteria"
+                              :filterColumns="shopOrderFilterColumns"
+                              :defaultItem="{ orderId: order.id }">
+            </dewa-entity-grid>
+        </sw-card>
+    </div>
+
+    {% parent %}
+{% endblock %}

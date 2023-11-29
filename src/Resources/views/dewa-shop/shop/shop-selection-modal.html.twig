@@ -1,0 +1,59 @@
+{% set options = product.extensions.options %}
+
+<div class="modal-dialog {{ modal.size ? "modal-#{modal.size}" : "" }} {{ modal.centered ? "modal-dialog-centered" : "" }}" role="document">
+    <form method="post"
+          data-dewa-shop-selection
+          class="dewa-shop-selection modal-content"
+          action="{{ path('dewa-shop.shop-selection-search') }}">
+        {{ sw_csrf('dewa-shop.shop-selection-search') }}
+
+        <div class="modal-header">
+            <div class="modal-title h4">
+                {{ modal.title }}
+            </div>
+
+            <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">{% sw_icon 'x' %}</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="input-group">
+                <input class="form-control"
+                       name="term"
+                       placeholder="{{ "dewa-shop.checkout.shopSearchPlaceholder"|trans }}">
+                <div class="input-group-append">
+                    <button class="btn btn-primary d-flex align-items-center"
+                            type="submit"
+                            name="action"
+                            value="search">
+                        <span class="fi-rs-search"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="shopSelectionOptions">
+                {% if context.activeShop %}
+                    {% sw_include '@Storefront/dewa-shop/shop/shop-info.html.twig' with { shop: context.activeShop } %}
+                {% else %}
+                    {% sw_include '@Storefront/dewa-shop/shop/shop-selection-options.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="modal-footer text-right">
+            <button type="submit"
+                    class="btn btn-buy btn-dewa"
+                    name="action"
+                    value="select">
+                <div class="dewa-menu-btn-label">
+                    {{ "dewa-shop.checkout.saveSelection"|trans }}
+                </div>
+
+                <div class="dewa-button-append">
+                    <span class="fi-rs-shop"></span>
+                </div>
+            </button>
+        </div>
+    </form>
+</div>

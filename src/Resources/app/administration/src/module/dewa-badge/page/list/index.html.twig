@@ -1,0 +1,31 @@
+<sw-page class="dewa-badge-list">
+    <template slot="smart-bar-actions">
+        <sw-button variant="primary" :routerLink="{ name: 'dewa.badge.create' }">
+            {{ $tc('dewa-shop.action.newBadge') }}
+        </sw-button>
+    </template>
+
+    <template #language-switch>
+        <sw-language-switch slot="language-switch" @on-change="changeLanguage"></sw-language-switch>
+    </template>
+
+    <template slot="content">
+        <sw-entity-listing
+                v-if="items"
+                :items="items"
+                :repository="repository"
+                :columns="columns"
+                :isLoading="isLoading"
+                detailRoute="dewa.badge.detail">
+            <template #column-isDefault="{ item, isInlineEdit }">
+                <template v-if="isInlineEdit">
+                    <sw-checkbox-field v-model="item.isDefault"></sw-checkbox-field>
+                </template>
+                <template v-else>
+                    <sw-icon v-if="item.isDefault" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                </template>
+            </template>
+        </sw-entity-listing>
+    </template>
+</sw-page>
